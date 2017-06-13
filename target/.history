@@ -39,3 +39,8 @@ cleanb
 clean
 run
 test
+run
+quit
+exit
+test
+exit

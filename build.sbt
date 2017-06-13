@@ -9,3 +9,6 @@ mainClass in (Compile, packageBin) := Some("controller.Controller")
 mainClass in (Compile, run) := Some("controller.Controller")
 
 connectInput in run := true
+
+libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test"
