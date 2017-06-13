@@ -43,6 +43,8 @@ class Board {
   private var enemyParty = Party.empty
   private var tiles = Array.empty[Array[Tile]]
 
+  def setTiles(t: Array[Array[Tile]]): Unit = tiles = t
+
   private def setPlayerParty(party: Party): Unit = playerParty = party
 
   private def setEnemyParty(party: Party): Unit = enemyParty = party

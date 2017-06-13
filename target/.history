@@ -40,7 +40,6 @@ clean
 run
 test
 run
-quit
-exit
+clean
 test
 exit
