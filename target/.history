@@ -47,3 +47,6 @@ test feature
 exit
 clean
 test
+clean
+build
+compile
