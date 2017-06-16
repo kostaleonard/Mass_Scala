@@ -49,13 +49,27 @@ class Board {
 
   private def setEnemyParty(party: Party): Unit = enemyParty = party
 
-  private def placeFighterOnBoard(fighter: Fighter): Unit = {
+  def placeFighterOnBoard(fighter: Fighter): Unit = {
     if(fighter.getLocation.inBounds(tiles)){
       tiles(fighter.getLocation.row)(fighter.getLocation.col).getFighter match {
         case Some(otherFighter) => throw new UnsupportedOperationException("There is already a Fighter on that tile")
         case None => tiles(fighter.getLocation.row)(fighter.getLocation.col).setFighter(Some(fighter))
       }
     }
+    else throw new ArrayIndexOutOfBoundsException("Fighter not placed within board boundaries")
+  }
+
+  def moveFighterTo(fighter: Fighter, newLoc: Location): Unit = {
+    if(newLoc.inBounds(tiles) && fighter.getLocation.inBounds(tiles)){
+      val oldLoc = fighter.getLocation
+      //Check to make sure that the fighter on the tile is the one requested.
+      if(!tiles(oldLoc.row)(oldLoc.col).getFighter.contains(fighter))
+        throw new UnsupportedOperationException("The fighter on the tile is not the specified Fighter")
+      tiles(oldLoc.row)(oldLoc.col).setFighter(None)
+      tiles(newLoc.row)(newLoc.col).setFighter(Some(fighter))
+      fighter.setLocation(newLoc)
+    }
+    else throw new ArrayIndexOutOfBoundsException("Cannot move Fighter to/from outside board boundaries")
   }
 
   def placePlayerPartyOnBoard(party: Party): Unit = {

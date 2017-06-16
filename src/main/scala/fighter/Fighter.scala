@@ -85,10 +85,6 @@ class Fighter(level: Int) {
     statTracker.setCurrentStatsToMax
   }
 
-  def moveTo(newLoc: Location): Unit = {
-    location = newLoc
-  }
-
   def getPowers: scala.collection.mutable.Set[Power] = powerTracker.getPowers
 
   def getLevel: Int = expTracker.getLevel
