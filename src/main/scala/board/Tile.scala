@@ -14,17 +14,17 @@ sealed trait Tile {
   //Abstract methods
   def getDefenseModifier: Float
   def getAttackModifier: Float
-  def getMovementModifier: Float
+  def getMovementCost: Int
 }
 
 class GrassPlains extends Tile {
   override def getAttackModifier: Float = 1.0f
   override def getDefenseModifier: Float = 1.0f
-  override def getMovementModifier: Float = 1.0f
+  override def getMovementCost: Int = 1
 }
 
 class Mountains extends Tile {
   override def getAttackModifier: Float = 1.5f
   override def getDefenseModifier: Float = 1.5f
-  override def getMovementModifier: Float = 0.5f
+  override def getMovementCost: Float = 2
 }

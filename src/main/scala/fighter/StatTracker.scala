@@ -16,7 +16,7 @@ class StatTracker {
   private var movementMax = 1
   private var canMove = true
   private var canAttack = true
-  private val crossableTiles = scala.collection.mutable.Set.empty[Tile]
+  private val crossableTiles = scala.collection.mutable.Set.empty[Class[_ <: Tile]]
   //Stat growth rates
   private var hpGrowthRate = 1
   private var hpNumberOfLevelsBeforeIncrement = 1
@@ -24,7 +24,6 @@ class StatTracker {
   private var eezoNumberOfLevelsBeforeIncrement = 1
   private var movementGrowthRate = 1
   private var movementNumberOfLevelsBeforeIncrement = 1
-
   //Per turn recovery rate
   private var eezoRecoveryRateCurrent = 1
   private var eezoRecoveryRateMax = 1
@@ -72,6 +71,14 @@ class StatTracker {
   def canFighterMove: Boolean = canMove
 
   def canFighterAttack: Boolean = canAttack
+
+  def getCrossableTiles: scala.collection.mutable.Set[Class[_ <: Tile]] = crossableTiles
+
+  def addCrossableTile(tile: Class[_ <: Tile]): Unit = crossableTiles.add(tile)
+
+  def removeCrossableTile(tile: Class[_ <: Tile]): Unit = crossableTiles.remove(tile)
+
+  def canCross(tile: Class[_ <: Tile]): Boolean = crossableTiles(tile)
 
   def setCurrentStatsToMax: Unit = {
     //Set the current stats of this fighter to their maxes

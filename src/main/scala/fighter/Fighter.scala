@@ -4,7 +4,7 @@ import armor.{Armor, CBRNArmor, N7Armor}
 import skillclasses.{Engineer, SkillClass, Soldier}
 import weapons._
 import powers.Power
-import board.Location
+import board.{Board, Location, Tile}
 
 /**
   * Created by Leonard on 6/3/2017.
@@ -85,6 +85,8 @@ class Fighter(level: Int) {
     statTracker.setCurrentStatsToMax
   }
 
+  def getArmor: Option[Armor] = armor
+
   def getPowers: scala.collection.mutable.Set[Power] = powerTracker.getPowers
 
   def getLevel: Int = expTracker.getLevel
@@ -93,9 +95,23 @@ class Fighter(level: Int) {
 
   def setLocation(loc: Location): Unit = location = loc
 
+  def crowFliesDistance(other: Fighter): Int = {
+    //Returns the distance as the crow flies from this to other.
+    //Used to make sure that weapons are not firing outside of their designated range.
+    //NOT used in movement calculations (by default--bonuses could change this).
+    math.abs(location.row - other.getLocation.row) + math.abs(location.col - other.getLocation.col)
+  }
+
   def canMove: Boolean = this.statTracker.canFighterMove
 
   def canAttack: Boolean = this.statTracker.canFighterAttack
+
+  def attack(weapon: Weapon, target: Fighter, board: Board): Unit = {
+    //Make sure weapon is in this Fighter's inventory
+    if(!weapons(weapon))
+      throw new UnsupportedOperationException("Cannot attack with a weapon that is not in the inventory")
+    weapon.doAttack(this, target, board)
+  }
 
   def gainEXP(amount: Int): Unit = {
     this.expTracker.gainEXP(amount)
@@ -113,6 +129,14 @@ class Fighter(level: Int) {
     if(this.armor.nonEmpty && this.armor.get.isShieldActive) this.armor.get.takeShieldDamage(amount)
     else this.statTracker.takeHpDamage(amount)
   }
+
+  def getMovementCurrent: Int = statTracker.getMovementCurrent
+
+  def getMovementMax: Int = statTracker.getMovementMax
+
+  def getCrossableTiles: scala.collection.mutable.Set[Class[_ <: Tile]] = statTracker.getCrossableTiles
+
+  def canCross(tile: Class[_ <: Tile]): Boolean = statTracker.canCross(tile)
 
   override def toString: String = {
     //TODO Fighter toString

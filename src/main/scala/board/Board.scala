@@ -102,4 +102,24 @@ class Board {
   def getTiles: Array[Array[Tile]] = tiles
 
   def isActive: Boolean = enemyParty.getFighters.nonEmpty
+
+  def availableMoveLocations(fighter: Fighter): scala.collection.immutable.Set[Location] = {
+    //Returns the Set of all available move locations for this fighter on this board.
+    var result = scala.collection.immutable.Set.empty[Location]
+    def addAvailableMoveLocations(loc: Location, distance: Int): Unit = {
+      if(distance >= 0 && loc.inBounds(tiles) && fighter.canCross(tiles(loc.row)(loc.col).getClass)){
+        //If you can cross this tile, add it to the available move locations
+        result += loc
+        val movementCost = tiles(loc.row)(loc.col).getMovementCost
+        //Also try surrounding locations
+        addAvailableMoveLocations(Location(loc.row + 1, loc.col), distance - movementCost)
+        addAvailableMoveLocations(Location(loc.row - 1, loc.col), distance - movementCost)
+        addAvailableMoveLocations(Location(loc.row, loc.col + 1), distance - movementCost)
+        addAvailableMoveLocations(Location(loc.row, loc.col - 1), distance - movementCost)
+      }
+    }
+    addAvailableMoveLocations(fighter.getLocation, fighter.getMovementCurrent)
+    //Remove the fighter's own location
+    result - fighter.getLocation
+  }
 }
