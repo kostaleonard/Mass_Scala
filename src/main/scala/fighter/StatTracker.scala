@@ -68,9 +68,13 @@ class StatTracker {
 
   def getMovementMax: Int = movementMax
 
-  def canFighterMove: Boolean = canMove
+  def getCanFighterMove: Boolean = canMove
 
-  def canFighterAttack: Boolean = canAttack
+  def getCanFighterAttack: Boolean = canAttack
+
+  def setCanFighterMove(b: Boolean): Unit = canMove = b
+
+  def setCanFighterAttack(b: Boolean): Unit = canAttack = b
 
   def getCrossableTiles: scala.collection.mutable.Set[Class[_ <: Tile]] = crossableTiles
 

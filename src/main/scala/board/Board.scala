@@ -67,7 +67,7 @@ class Board {
         throw new UnsupportedOperationException("The fighter on the tile is not the specified Fighter")
       tiles(oldLoc.row)(oldLoc.col).setFighter(None)
       tiles(newLoc.row)(newLoc.col).setFighter(Some(fighter))
-      fighter.setLocation(newLoc)
+      fighter.moveTo(newLoc)
     }
     else throw new ArrayIndexOutOfBoundsException("Cannot move Fighter to/from outside board boundaries")
   }

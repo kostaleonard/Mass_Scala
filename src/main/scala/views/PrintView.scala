@@ -72,6 +72,11 @@ class PrintView(model: Model) extends View(model) {
     System.out.println("a: Attack")
   }
 
+  override def showAvailableMoves(moves: Set[Location]): Unit = {
+    System.out.println("======== Moves ========")
+    moves.foreach(loc => System.out.print(loc + "\t"))
+  }
+
   override def render: Unit = {
     //TODO implement the views.PrintView class render function.
     System.out.println("Rendering to stdout...")

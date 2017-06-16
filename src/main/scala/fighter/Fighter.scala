@@ -102,15 +102,16 @@ class Fighter(level: Int) {
     math.abs(location.row - other.getLocation.row) + math.abs(location.col - other.getLocation.col)
   }
 
-  def canMove: Boolean = this.statTracker.canFighterMove
+  def canMove: Boolean = this.statTracker.getCanFighterMove
 
-  def canAttack: Boolean = this.statTracker.canFighterAttack
+  def canAttack: Boolean = this.statTracker.getCanFighterAttack
 
   def attack(weapon: Weapon, target: Fighter, board: Board): Unit = {
     //Make sure weapon is in this Fighter's inventory
     if(!weapons(weapon))
       throw new UnsupportedOperationException("Cannot attack with a weapon that is not in the inventory")
     weapon.doAttack(this, target, board)
+    setCanFighterAttack(false)
   }
 
   def gainEXP(amount: Int): Unit = {
@@ -137,6 +138,15 @@ class Fighter(level: Int) {
   def getCrossableTiles: scala.collection.mutable.Set[Class[_ <: Tile]] = statTracker.getCrossableTiles
 
   def canCross(tile: Class[_ <: Tile]): Boolean = statTracker.canCross(tile)
+
+  def setCanFighterMove(b: Boolean): Unit = statTracker.setCanFighterMove(b)
+
+  def setCanFighterAttack(b: Boolean): Unit = statTracker.setCanFighterAttack(b)
+
+  def moveTo(loc: Location): Unit = {
+    setLocation(loc)
+    setCanFighterMove(false)
+  }
 
   override def toString: String = {
     //TODO Fighter toString

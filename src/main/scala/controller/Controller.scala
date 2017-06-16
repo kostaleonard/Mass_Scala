@@ -4,6 +4,7 @@ import views.PrintView
 import model.Model
 import board.Board
 import board.Location
+import fighter.Fighter
 
 /**
   * Created by Leonard on 6/3/2017.
@@ -107,18 +108,41 @@ class Controller {
         System.out.println("Unrecognized number.")
         None
     }
-    //view.showAvailableMoves
-    System.out.println("Enter from row: ")
-    val fromRow = getNumFromInput(this.waitForStringInput)
-    System.out.println("Enter from col: ")
-    val fromCol = getNumFromInput(this.waitForStringInput)
-    System.out.println("Enter to row: ")
-    val toRow = getNumFromInput(this.waitForStringInput)
-    System.out.println("Enter to col: ")
-    val toCol = getNumFromInput(this.waitForStringInput)
-    if(fromRow.isEmpty || fromCol.isEmpty || toRow.isEmpty || toCol.isEmpty) return
-    else if(model.canFighterMove(Location(fromRow.get, fromCol.get)))
-      model.moveFighter(Location(fromRow.get, fromCol.get), Location(toRow.get, toCol.get))
+    def getFighterToMove: Option[Fighter] = {
+      System.out.println("Enter from row: ")
+      val fromRow = getNumFromInput(this.waitForStringInput)
+      System.out.println("Enter from col: ")
+      val fromCol = getNumFromInput(this.waitForStringInput)
+      if (fromRow.isEmpty || fromCol.isEmpty) None
+      else model.fighterAt(Location(fromRow.get, fromCol.get))
+    }
+    def getEndLocation: Option[Location] = {
+      System.out.println("Enter to row: ")
+      val toRow = getNumFromInput(this.waitForStringInput)
+      System.out.println("Enter to col: ")
+      val toCol = getNumFromInput(this.waitForStringInput)
+      if(toRow.isEmpty || toCol.isEmpty) None
+      else Some(Location(toRow.get, toCol.get))
+    }
+
+    val fighter = getFighterToMove
+    if(fighter == None){
+      System.out.println("No fighter at that location.")
+      return
+    }
+    else if(!fighter.get.canMove){
+      System.out.println("That fighter cannot move.")
+      return
+    }
+    val moves = model.getAvailableMoves(fighter.get)
+    view.showAvailableMoves(moves)
+    val endLocation = getEndLocation
+    if(endLocation == None){
+      System.out.println("Not a valid location.")
+      return
+    }
+    if(!moves(endLocation.get)) System.out.println("The Fighter cannot move to that location.")
+    else model.moveFighter(fighter.get.getLocation, endLocation.get)
   }
 
   def doEnemyTurn: Unit = {
