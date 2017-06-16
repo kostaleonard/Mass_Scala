@@ -39,3 +39,11 @@ cleanb
 clean
 run
 test
+run
+clean
+test
+test -feature
+test feature
+exit
+clean
+test
