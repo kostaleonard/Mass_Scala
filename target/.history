@@ -50,3 +50,5 @@ test
 clean
 build
 compile
+clean
+compile
