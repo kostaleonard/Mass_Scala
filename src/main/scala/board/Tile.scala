@@ -26,5 +26,5 @@ class GrassPlains extends Tile {
 class Mountains extends Tile {
   override def getAttackModifier: Float = 1.5f
   override def getDefenseModifier: Float = 1.5f
-  override def getMovementCost: Float = 2
+  override def getMovementCost: Int = 2
 }

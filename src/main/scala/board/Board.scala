@@ -105,6 +105,7 @@ class Board {
 
   def availableMoveLocations(fighter: Fighter): scala.collection.immutable.Set[Location] = {
     //Returns the Set of all available move locations for this fighter on this board.
+    if(!fighter.canMove) return scala.collection.immutable.Set.empty[Location]
     var result = scala.collection.immutable.Set.empty[Location]
     def addAvailableMoveLocations(loc: Location, distance: Int): Unit = {
       if(distance >= 0 && loc.inBounds(tiles) && fighter.canCross(tiles(loc.row)(loc.col).getClass)){

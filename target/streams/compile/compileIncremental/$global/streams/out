@@ -18,31 +18,23 @@
 [0m[[0minfo[0m] [0mCompiling 43 Scala sources to C:\Users\Leonard\IdeaProjects\Mass_Scala\target\scala-2.12\classes...[0m
 [0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.15:component from component compiler for Scala 2.12.2[0m
 [0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.15:component from component compiler for Scala 2.12.2[0m
-[0m[[0mdebug[0m] [0mRunning cached compiler 10b9417, interfacing (CompilerInterface) with Scala compiler version 2.12.2[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 1b8df29, interfacing (CompilerInterface) with Scala compiler version 2.12.2[0m
 [0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
 [0m[[0mdebug[0m] [0m	-bootclasspath[0m
 [0m[[0mdebug[0m] [0m	C:\Program Files (x86)\Java\jre1.8.0_131\lib\resources.jar;C:\Program Files (x86)\Java\jre1.8.0_131\lib\rt.jar;C:\Program Files (x86)\Java\jre1.8.0_131\lib\sunrsasign.jar;C:\Program Files (x86)\Java\jre1.8.0_131\lib\jsse.jar;C:\Program Files (x86)\Java\jre1.8.0_131\lib\jce.jar;C:\Program Files (x86)\Java\jre1.8.0_131\lib\charsets.jar;C:\Program Files (x86)\Java\jre1.8.0_131\lib\jfr.jar;C:\Program Files (x86)\Java\jre1.8.0_131\classes;C:\Users\Leonard\.ivy2\cache\org.scala-lang\scala-library\jars\scala-library-2.12.2.jar[0m
 [0m[[0mdebug[0m] [0m	-classpath[0m
 [0m[[0mdebug[0m] [0m	C:\Users\Leonard\IdeaProjects\Mass_Scala\target\scala-2.12\classes;C:\Users\Leonard\.ivy2\cache\org.scalactic\scalactic_2.12\bundles\scalactic_2.12-3.0.1.jar;C:\Users\Leonard\.ivy2\cache\org.scala-lang\scala-reflect\jars\scala-reflect-2.12.2.jar[0m
-[0m[[0mdebug[0m] [0mScala compilation took 10.940184271 s[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, wait, $asInstanceOf, equals, N7Armor, asInstanceOf, synchronized, $isInstanceOf, shieldMax, isLightArmor, notifyAll, isInstanceOf, isShieldActive, <init>, shieldRecoveryRateCurrent, shieldRecoveryRateMax, isHeavyArmor, ==, clone, shieldCurrent, toString, !=, takeShieldDamage, getClass, ne, eq, armorRating, ##, finalize, hashCode.[0m
+[0m[[0mdebug[0m] [0mScala compilation took 4.562149724 s[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, equals, asInstanceOf, accuracy, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, accuracyCheck, isInstanceOf, <init>, ==, clone, MeleeWeapon, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(N7Armor, isShieldActive, <init>, toString, takeShieldDamage)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, PredatorPistol, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, isInstanceOf, isShotgun, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
-[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(PredatorPistol, <init>, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(PredatorPistol, <init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(PredatorPistol, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala: Set(<init>, MeleeWeapon)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\PowerTracker.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\PowerTracker.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\PowerTracker.scala)[0m
@@ -51,6 +43,46 @@
 [0m[[0mdebug[0m] [0m[naha] 	notify, wait, $asInstanceOf, getPowers, equals, asInstanceOf, synchronized, $isInstanceOf, notifyAll, getAvailablePowerPoints, PowerTracker, isInstanceOf, <init>, ==, clone, levelUp, learnPower, toString, !=, getClass, ne, eq, setAvailablePowerPoints, ##, finalize, hashCode.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(getPowers, PowerTracker, <init>, levelUp, toString)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, accuracy, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, accuracyCheck, isInstanceOf, isShotgun, SniperRifle, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala: Set(SniperRifle, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, accuracy, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, accuracyCheck, isInstanceOf, isShotgun, MantisSniperRifle, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(MantisSniperRifle, <init>, toString, doAttack)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(MantisSniperRifle, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, accuracy, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, accuracyCheck, isInstanceOf, isShotgun, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, CrusaderShotgun, eq, ##, finalize, hashCode, getAttackDamage.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack, CrusaderShotgun)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>, CrusaderShotgun)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>, CrusaderShotgun)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	shieldRecoveryRateStandard, notify, wait, $asInstanceOf, armorProtectionModifier, equals, asInstanceOf, synchronized, $isInstanceOf, shieldMax, isLightArmor, setTurnsUntilShieldRecovery, notifyAll, isInstanceOf, isShieldActive, getTurnsUntilShieldRecovery, <init>, shieldRecoveryRateCurrent, turnsUntilShieldRecovery, isHeavyArmor, ==, clone, recoverShields, shieldCurrent, toString, LightArmor, !=, takeShieldDamage, getClass, ne, defaultTurnsUntilShieldRecovery, eq, armorRating, ##, finalize, hashCode, canRecoverShields.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala: Set(<init>, LightArmor)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(isShieldActive, <init>, toString, takeShieldDamage)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala)[0m
@@ -59,26 +91,6 @@
 [0m[[0mdebug[0m] [0m[naha] 	notify, getMovementGrowthRate, getEezoNumberOfLevelsBeforeIncrement, wait, Engineer, $asInstanceOf, getBaseEezo, availableWeapons, equals, getEezoGrowthRate, getAvailablePowers, asInstanceOf, synchronized, $isInstanceOf, getHpNumberOfLevelsBeforeIncrement, getBaseMovement, notifyAll, isInstanceOf, <init>, getMovementNumberOfLevelsBeforeIncrement, ==, clone, availablePowers, getHpGrowthRate, toString, !=, getClass, ne, eq, getAvailableWeapons, ##, finalize, getBaseHp, hashCode.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(Engineer, <init>, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, equals, asInstanceOf, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, isInstanceOf, <init>, ==, clone, MeleeWeapon, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
-[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala: Set(<init>, MeleeWeapon)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, wait, $asInstanceOf, equals, asInstanceOf, synchronized, $isInstanceOf, shieldMax, isLightArmor, notifyAll, isInstanceOf, isShieldActive, <init>, shieldRecoveryRateCurrent, shieldRecoveryRateMax, isHeavyArmor, ==, clone, shieldCurrent, HeavyArmor, toString, !=, takeShieldDamage, getClass, ne, eq, armorRating, ##, finalize, hashCode.[0m
-[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(isShieldActive, <init>, toString, takeShieldDamage)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala: Set(<init>, HeavyArmor)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Inferno.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Inferno.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Inferno.scala)[0m
@@ -87,53 +99,39 @@
 [0m[[0mdebug[0m] [0m[naha] 	damageMultiplierToShielded, notify, getLevel, addBonus, wait, $asInstanceOf, bonuses, equals, eezoCost, choiceDescription, asInstanceOf, levelUpChoices, usePower, synchronized, clearBonuses, $isInstanceOf, getEezoCost, getDescription, damage, notifyAll, getBonuses, isInstanceOf, isActivated, <init>, ==, lastingBurnDamage, clone, isSustained, levelUp, toString, !=, addChoiceEffect, getClass, Inferno, choiceName, ne, blastRadius, isPassive, eq, frozenTargetDamageBonus, armorRatingPenalty, ##, finalize, hashCode, level.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>, Inferno)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala)[0m
 [0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	Gun, notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, isInstanceOf, isShotgun, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, accuracy, synchronized, $isInstanceOf, maxRange, baseDamage, Pistol, notifyAll, accuracyCheck, isInstanceOf, isShotgun, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala: Set(Gun, <init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala: Set(Gun, <init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala: Set(Gun, <init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala: Set(Gun, <init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala: Set(Pistol, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\Armor.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\Armor.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\Armor.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\Armor.scala[0m
 [0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, wait, $asInstanceOf, equals, asInstanceOf, synchronized, $isInstanceOf, shieldMax, isLightArmor, notifyAll, isInstanceOf, isShieldActive, <init>, shieldRecoveryRateCurrent, shieldRecoveryRateMax, isHeavyArmor, ==, clone, shieldCurrent, toString, LightArmor, !=, takeShieldDamage, getClass, ne, eq, armorRating, ##, finalize, hashCode.[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\Armor.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\Armor.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\Armor.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	shieldRecoveryRateStandard, notify, wait, THEORETICAL_MAX_ARMOR_RATING, $asInstanceOf, armorProtectionModifier, equals, asInstanceOf, synchronized, $isInstanceOf, shieldMax, isLightArmor, setTurnsUntilShieldRecovery, notifyAll, isInstanceOf, isShieldActive, getTurnsUntilShieldRecovery, <init>, shieldRecoveryRateCurrent, turnsUntilShieldRecovery, isHeavyArmor, ==, clone, recoverShields, shieldCurrent, toString, !=, takeShieldDamage, getClass, ne, Armor, defaultTurnsUntilShieldRecovery, eq, armorRating, ##, finalize, hashCode, canRecoverShields.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala: Set(<init>, LightArmor)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(isShieldActive, <init>, toString, takeShieldDamage)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(isShieldActive, <init>, toString, takeShieldDamage, Armor)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala: Set(<init>, Armor)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(isShieldActive, <init>, toString, takeShieldDamage, Armor)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala: Set(armorProtectionModifier, asInstanceOf, isInstanceOf, <init>, ==, Armor)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala: Set(<init>, Armor)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(isShieldActive, <init>, toString, takeShieldDamage, Armor)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Fitness.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Fitness.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Fitness.scala)[0m
@@ -180,6 +178,86 @@
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Inferno.scala: Set(eezoCost, damage, <init>, ==, ActivatedPower)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala: Set(addBonus, asInstanceOf, getBonuses, isInstanceOf, <init>, ==, levelUp, level)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, equals, asInstanceOf, accuracy, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, accuracyCheck, isInstanceOf, <init>, ==, clone, toString, doAttack, THEORETICAL_MAX_BASE_DAMAGE, !=, getClass, isGrenade, ne, isGun, Weapon, eq, ##, finalize, hashCode, getAttackDamage.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala: Set(<init>, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala: Set(<init>, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\SkillClass.scala: Set(<init>, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala: Set(<init>, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>, Weapon)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, equals, asInstanceOf, accuracy, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, accuracyCheck, isInstanceOf, <init>, ==, OmniBlade, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, OmniBlade, toString, doAttack)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Tile.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Tile.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Tile.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Tile.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Tile.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, wait, $asInstanceOf, equals, asInstanceOf, synchronized, Tile, $isInstanceOf, notifyAll, isInstanceOf, <init>, setFighter, ==, clone, getDefenseModifier, $init$, toString, getFighter, getMovementCost, !=, Mountains, getClass, ne, getAttackModifier, eq, GrassPlains, ##, finalize, hashCode.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\PrintView.scala: Set(asInstanceOf, Tile, isInstanceOf, <init>, ==, toString, Mountains, GrassPlains)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(Tile, <init>, toString)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala: Set(asInstanceOf, Tile, isInstanceOf, <init>, ==, getDefenseModifier, getAttackModifier)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala: Set(asInstanceOf, Tile, isInstanceOf, <init>, ==)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala: Set(Tile, isInstanceOf, <init>, setFighter, ==, getFighter, getMovementCost, !=, Mountains, getClass, GrassPlains)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Location.scala: Set(equals, asInstanceOf, Tile, isInstanceOf, <init>, ==, toString)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\controller\Controller.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\controller\Controller.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\controller\Controller.scala)[0m
@@ -187,14 +265,6 @@
 [0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\controller\Controller.scala source file has the following regular definitions changed:[0m
 [0m[[0mdebug[0m] [0m[naha] 	notify, wait, $asInstanceOf, waitForStringInput, equals, asInstanceOf, waitForCharInput, playRandomBoard, synchronized, movePlayerFighter, $isInstanceOf, customizeParty, main, doEnemyTurn, runMainMenu, notifyAll, isInstanceOf, <init>, Controller, startGame, ==, ANY_INPUT, clone, doPlayerTurn, exitGame, toString, getProfileName, !=, getClass, ne, eq, doTurn, ##, finalize, hashCode.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, wait, $asInstanceOf, equals, asInstanceOf, synchronized, $isInstanceOf, shieldMax, isLightArmor, notifyAll, isInstanceOf, isShieldActive, <init>, shieldRecoveryRateCurrent, shieldRecoveryRateMax, isHeavyArmor, ==, clone, shieldCurrent, toString, !=, takeShieldDamage, getClass, CBRNArmor, ne, eq, armorRating, ##, finalize, hashCode.[0m
-[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(isShieldActive, <init>, toString, takeShieldDamage, CBRNArmor)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala)[0m
@@ -203,6 +273,18 @@
 [0m[[0mdebug[0m] [0m[naha] 	notify, getMovementGrowthRate, getEezoNumberOfLevelsBeforeIncrement, wait, $asInstanceOf, getBaseEezo, availableWeapons, equals, getEezoGrowthRate, getAvailablePowers, asInstanceOf, synchronized, $isInstanceOf, getHpNumberOfLevelsBeforeIncrement, getBaseMovement, notifyAll, isInstanceOf, <init>, Soldier, getMovementNumberOfLevelsBeforeIncrement, ==, clone, availablePowers, getHpGrowthRate, toString, !=, getClass, ne, eq, getAvailableWeapons, ##, finalize, getBaseHp, hashCode.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, Soldier, toString)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, accuracy, synchronized, $isInstanceOf, maxRange, baseDamage, Shotgun, notifyAll, accuracyCheck, isInstanceOf, isShotgun, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala: Set(Shotgun, <init>)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Party.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Party.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Party.scala)[0m
@@ -212,7 +294,7 @@
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\model\Model.scala: Set(random, empty, asInstanceOf, isInstanceOf, <init>, ==, Party)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\PrintView.scala: Set(asInstanceOf, isInstanceOf, <init>, ==, toString, getFighters, Party)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala: Set(random, empty, isInstanceOf, <init>, ==, !=, getFighters, Party)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala: Set(random, empty, isInstanceOf, <init>, ==, !=, getClass, getFighters, Party)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Power.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Power.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Power.scala)[0m
@@ -252,6 +334,16 @@
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\AmmoPower.scala: Set(<init>)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala: Set(addBonus, asInstanceOf, getBonuses, isInstanceOf, <init>, ==, levelUp, Power, level)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\CryoAmmo.scala: Set(LVL_1, LVL_5A, LVL_4A, <init>, ==, Power, LVL_5B, LVL_2, LVL_6B, LVL_4B, LVL_6A, LVL_3)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	shieldRecoveryRateStandard, notify, wait, $asInstanceOf, armorProtectionModifier, equals, asInstanceOf, synchronized, $isInstanceOf, shieldMax, isLightArmor, setTurnsUntilShieldRecovery, notifyAll, isInstanceOf, isShieldActive, getTurnsUntilShieldRecovery, <init>, shieldRecoveryRateCurrent, turnsUntilShieldRecovery, isHeavyArmor, ==, clone, recoverShields, shieldCurrent, HeavyArmor, toString, !=, takeShieldDamage, getClass, ne, defaultTurnsUntilShieldRecovery, eq, armorRating, ##, finalize, hashCode, canRecoverShields.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(isShieldActive, <init>, toString, takeShieldDamage)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala: Set(<init>, HeavyArmor)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\PrintView.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\PrintView.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\PrintView.scala)[0m
@@ -265,24 +357,63 @@
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala)[0m
 [0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, FragGrenade, equals, asInstanceOf, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, isInstanceOf, <init>, ==, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, blastRadius, eq, ##, finalize, hashCode, getAttackDamage.[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, FragGrenade, equals, asInstanceOf, accuracy, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, accuracyCheck, isInstanceOf, <init>, ==, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, blastRadius, eq, ##, finalize, hashCode, getAttackDamage.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(FragGrenade, <init>, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, getLevel, setCurrentStatsToMax, random, name, wait, $asInstanceOf, location, getPowers, calculateStats, weapons, equals, Fighter, takeDamage, asInstanceOf, expTracker, canMove, synchronized, $isInstanceOf, notifyAll, skillClass, isInstanceOf, canAttack, <init>, powerTracker, instantiateFighter, ==, statTracker, clone, getLocation, toString, gainEXP, !=, getClass, ne, setLocation, armor, eq, ##, finalize, hashCode.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(FragGrenade, <init>, toString, doAttack)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	shieldRecoveryRateStandard, notify, wait, $asInstanceOf, armorProtectionModifier, equals, asInstanceOf, synchronized, $isInstanceOf, shieldMax, isLightArmor, setTurnsUntilShieldRecovery, notifyAll, isInstanceOf, isShieldActive, getTurnsUntilShieldRecovery, <init>, shieldRecoveryRateCurrent, turnsUntilShieldRecovery, isHeavyArmor, ==, clone, recoverShields, shieldCurrent, toString, !=, takeShieldDamage, getClass, CBRNArmor, ne, defaultTurnsUntilShieldRecovery, eq, armorRating, ##, finalize, hashCode, canRecoverShields.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\PrintView.scala: Set(Fighter, asInstanceOf, isInstanceOf, <init>, ==, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\model\Model.scala: Set(random, Fighter, asInstanceOf, canMove, isInstanceOf, <init>, ==)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Party.scala: Set(random, Fighter, <init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Inferno.scala: Set(Fighter, <init>, ==)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\ActivatedPower.scala: Set(Fighter, <init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala: Set(weapons, Fighter, takeDamage, <init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala: Set(random, Fighter, isInstanceOf, <init>, ==, getLocation, !=, setLocation)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Tile.scala: Set(Fighter, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(isShieldActive, <init>, toString, takeShieldDamage, CBRNArmor)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	Gun, notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, accuracy, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, accuracyCheck, isInstanceOf, isShotgun, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala: Set(Gun, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala: Set(Gun, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala: Set(Gun, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala: Set(Gun, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, accuracy, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, AvengerAssaultRifle, accuracyCheck, isInstanceOf, isShotgun, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(AvengerAssaultRifle, <init>, toString, doAttack)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(AvengerAssaultRifle, <init>)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\PassivePower.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\PassivePower.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\PassivePower.scala)[0m
@@ -303,15 +434,21 @@
 [0m[[0mdebug[0m] [0m[naha] 	notify, getLevel, wait, $asInstanceOf, equals, canLevelUp, asInstanceOf, synchronized, $isInstanceOf, getNextLevelEXP, create, notifyAll, isInstanceOf, <init>, ==, EXPTracker, clone, levelUp, toString, gainEXP, !=, getClass, getEXPAtLevel, ne, eq, ##, finalize, hashCode.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(getLevel, canLevelUp, create, <init>, EXPTracker, levelUp, toString, gainEXP)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, AvengerAssaultRifle, isInstanceOf, isShotgun, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, getLevel, setCurrentStatsToMax, random, name, wait, $asInstanceOf, location, getPowers, calculateStats, weapons, equals, getArmor, Fighter, getCrossableTiles, takeDamage, asInstanceOf, expTracker, canMove, synchronized, $isInstanceOf, canCross, notifyAll, getMovementCurrent, skillClass, isInstanceOf, canAttack, <init>, powerTracker, instantiateFighter, ==, statTracker, clone, crowFliesDistance, getLocation, toString, gainEXP, attack, !=, getClass, getMovementMax, ne, setLocation, armor, eq, ##, finalize, hashCode.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(AvengerAssaultRifle, <init>, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(AvengerAssaultRifle, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\PrintView.scala: Set(Fighter, asInstanceOf, isInstanceOf, <init>, ==, toString)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\model\Model.scala: Set(random, Fighter, asInstanceOf, canMove, isInstanceOf, <init>, ==)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Party.scala: Set(random, Fighter, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Inferno.scala: Set(Fighter, <init>, ==)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\ActivatedPower.scala: Set(Fighter, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala: Set(random, weapons, getArmor, Fighter, takeDamage, asInstanceOf, isInstanceOf, <init>, ==, crowFliesDistance, getLocation, armor)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala: Set(random, Fighter, canMove, canCross, getMovementCurrent, isInstanceOf, <init>, ==, getLocation, !=, getClass, setLocation)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Tile.scala: Set(Fighter, <init>)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\CryoAmmo.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\CryoAmmo.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\CryoAmmo.scala)[0m
@@ -321,16 +458,6 @@
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(CryoAmmo, <init>)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(CryoAmmo, <init>)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, Grenade, $asInstanceOf, equals, asInstanceOf, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, isInstanceOf, <init>, ==, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, blastRadius, eq, ##, finalize, hashCode, getAttackDamage.[0m
-[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala: Set(Grenade, <init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\model\Model.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\model\Model.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\model\Model.scala)[0m
@@ -341,94 +468,6 @@
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\controller\Controller.scala: Set(isBoardActive, asInstanceOf, loadOrCreate, moveFighter, Model, isInstanceOf, <init>, ==, canFighterMove, setCurrentBoard)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\PrintView.scala: Set(asInstanceOf, getPlayerParty, Model, isInstanceOf, <init>, ==, getCurrentBoard, toString)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\View.scala: Set(Model, <init>, ==)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, isInstanceOf, isShotgun, MantisSniperRifle, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
-[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(MantisSniperRifle, <init>, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(MantisSniperRifle, <init>)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, equals, asInstanceOf, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, isInstanceOf, <init>, ==, OmniBlade, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
-[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, OmniBlade, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, synchronized, $isInstanceOf, maxRange, baseDamage, Pistol, notifyAll, isInstanceOf, isShotgun, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
-[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala: Set(Pistol, <init>)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, equals, asInstanceOf, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, isInstanceOf, <init>, ==, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, Weapon, eq, ##, finalize, hashCode, getAttackDamage.[0m
-[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MeleeWeapon.scala: Set(<init>, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala: Set(<init>, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\OmniBlade.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\SkillClass.scala: Set(<init>, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Gun.scala: Set(<init>, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>, Weapon)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Pistol.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala: Set(<init>)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\View.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\View.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\View.scala)[0m
@@ -447,42 +486,11 @@
 [0m[[0mdebug[0m] [0m[naha] 	notify, Location, wait, copy$default$2, $asInstanceOf, productArity, equals, inBounds, asInstanceOf, synchronized, $isInstanceOf, canEqual, row, productPrefix, notifyAll, isInstanceOf, <init>, ==, col, clone, $init$, copy, toString, !=, getClass, copy$default$1, ne, eq, productIterator, ##, finalize, productElement, hashCode.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\PrintView.scala: Set(Location, asInstanceOf, isInstanceOf, <init>, ==, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(Location, <init>, toString)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(Location, row, <init>, col, toString)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\model\Model.scala: Set(Location, asInstanceOf, isInstanceOf, <init>, ==)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\controller\Controller.scala: Set(Location, asInstanceOf, isInstanceOf, <init>, ==)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala: Set(Location, inBounds, row, isInstanceOf, <init>, ==, col, !=)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Tile.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Tile.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Tile.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Tile.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Tile.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, wait, $asInstanceOf, equals, asInstanceOf, synchronized, Tile, $isInstanceOf, notifyAll, isInstanceOf, <init>, setFighter, ==, clone, getDefenseModifier, $init$, toString, getFighter, !=, Mountains, getClass, getMovementModifier, ne, getAttackModifier, eq, GrassPlains, ##, finalize, hashCode.[0m
-[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\PrintView.scala: Set(asInstanceOf, Tile, isInstanceOf, <init>, ==, toString, Mountains, GrassPlains)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala: Set(Tile, isInstanceOf, <init>, setFighter, ==, getFighter, !=, Mountains, GrassPlains)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Location.scala: Set(equals, asInstanceOf, Tile, isInstanceOf, <init>, ==, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala: Set(asInstanceOf, Tile, isInstanceOf, <init>, ==)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	getPlayerPartyLocationsMap, notify, wait, $asInstanceOf, loadDefaultBoardFromFile, Board, fighterAt, getEnemyPartyLocationsMap, equals, asInstanceOf, setTiles, synchronized, $isInstanceOf, getAllFighterLocationsMap, notifyAll, isInstanceOf, getTiles, placeFighterOnBoard, <init>, getTestBoard, ==, placePlayerPartyOnBoard, clone, isActive, toString, !=, getClass, moveFighterTo, ne, eq, placeEnemyPartyOnBoard, ##, finalize, hashCode.[0m
-[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\controller\Controller.scala: Set(Board, asInstanceOf, isInstanceOf, <init>, getTestBoard, ==)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\model\Model.scala: Set(Board, fighterAt, asInstanceOf, isInstanceOf, <init>, ==, isActive, moveFighterTo)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\PrintView.scala: Set(getPlayerPartyLocationsMap, Board, getEnemyPartyLocationsMap, asInstanceOf, isInstanceOf, getTiles, <init>, ==, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\SniperRifle.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, isInstanceOf, isShotgun, SniperRifle, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
-[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\MantisSniperRifle.scala: Set(SniperRifle, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala: Set(Location, asInstanceOf, row, isInstanceOf, <init>, ==, col)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala: Set(Location, inBounds, row, isInstanceOf, <init>, ==, col, !=, getClass)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Bonus.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Bonus.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Bonus.scala)[0m
@@ -493,34 +501,39 @@
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Power.scala: Set(DoubleBonus, Bonus, <init>)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala: Set(DoubleBonus, asInstanceOf, Bonus, amount, isInstanceOf, <init>, ==, HpPercentBonus, bonus1, bonus2)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\powers\Fitness.scala: Set(MeleeDamageBonus, HeavyArmorArmorRatingBonus, MovementBonus, Bonus, <init>, ==, HpPercentBonus, ShieldBonus, LightArmorArmorRatingBonus)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\Armor.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\Armor.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\Armor.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\Armor.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\Armor.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\Armor.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\Armor.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, wait, $asInstanceOf, equals, asInstanceOf, synchronized, $isInstanceOf, shieldMax, isLightArmor, notifyAll, isInstanceOf, isShieldActive, <init>, shieldRecoveryRateCurrent, shieldRecoveryRateMax, isHeavyArmor, ==, clone, shieldCurrent, toString, !=, takeShieldDamage, getClass, ne, Armor, eq, armorRating, ##, finalize, hashCode.[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\board\Board.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	getPlayerPartyLocationsMap, notify, wait, $asInstanceOf, loadDefaultBoardFromFile, Board, fighterAt, getEnemyPartyLocationsMap, equals, asInstanceOf, setTiles, synchronized, $isInstanceOf, getAllFighterLocationsMap, notifyAll, isInstanceOf, getTiles, placeFighterOnBoard, availableMoveLocations, <init>, getTestBoard, ==, placePlayerPartyOnBoard, clone, isActive, toString, !=, getClass, moveFighterTo, ne, eq, placeEnemyPartyOnBoard, ##, finalize, hashCode.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(isShieldActive, <init>, toString, takeShieldDamage, Armor)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\LightArmor.scala: Set(<init>, Armor)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(isShieldActive, <init>, toString, takeShieldDamage, Armor)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\HeavyArmor.scala: Set(<init>, Armor)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\CBRNArmor.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(isShieldActive, <init>, toString, takeShieldDamage, Armor)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	setHpCurrent, notify, setCurrentStatsToMax, setHpNumberOfLevelsBeforeIncrement, wait, isAlive, $asInstanceOf, calculateStats, setEezoCurrent, takeHpDamage, equals, getEezoMax, asInstanceOf, setMovementGrowthRate, synchronized, getHpMax, setHpMax, $isInstanceOf, setMovementNumberOfLevelsBeforeIncrement, canUseEezo, notifyAll, getMovementCurrent, isInstanceOf, <init>, setEezoMax, ==, clone, recoverEezo, canFighterAttack, levelUp, canFighterMove, StatTracker, setEezoNumberOfLevelsBeforeIncrement, toString, !=, getHpCurrent, getClass, getMovementMax, setHpGrowthRate, getEezoCurrent, ne, loseEezo, eq, ##, finalize, setMovementMax, hashCode, setEezoGrowthRate.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\views\PrintView.scala: Set(getPlayerPartyLocationsMap, Board, getEnemyPartyLocationsMap, asInstanceOf, isInstanceOf, getTiles, <init>, ==, toString)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(Board, <init>, toString)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\model\Model.scala: Set(Board, fighterAt, asInstanceOf, isInstanceOf, <init>, ==, isActive, moveFighterTo)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\controller\Controller.scala: Set(Board, asInstanceOf, isInstanceOf, <init>, getTestBoard, ==)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Weapon.scala: Set(Board, asInstanceOf, isInstanceOf, getTiles, <init>, ==)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\PredatorPistol.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, PredatorPistol, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, accuracy, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, accuracyCheck, isInstanceOf, isShotgun, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(setCurrentStatsToMax, calculateStats, takeHpDamage, getEezoMax, getHpMax, <init>, canFighterAttack, levelUp, canFighterMove, StatTracker, toString, getHpCurrent, getEezoCurrent)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(PredatorPistol, <init>, toString, doAttack)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(PredatorPistol, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(PredatorPistol, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, accuracy, synchronized, $isInstanceOf, maxRange, AssaultRifle, baseDamage, notifyAll, accuracyCheck, isInstanceOf, isShotgun, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
+[0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala: Set(AssaultRifle, <init>)[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\SkillClass.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\SkillClass.scala...[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\SkillClass.scala)[0m
@@ -536,39 +549,32 @@
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(availableWeapons, SkillClass, <init>, availablePowers)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala: Set(getMovementGrowthRate, getEezoNumberOfLevelsBeforeIncrement, getBaseEezo, getEezoGrowthRate, asInstanceOf, SkillClass, getHpNumberOfLevelsBeforeIncrement, getBaseMovement, isInstanceOf, <init>, getMovementNumberOfLevelsBeforeIncrement, ==, getHpGrowthRate, getBaseHp)[0m
 [0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(SkillClass, <init>, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, isInstanceOf, isShotgun, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, CrusaderShotgun, eq, ##, finalize, hashCode, getAttackDamage.[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\armor\N7Armor.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	shieldRecoveryRateStandard, notify, wait, $asInstanceOf, armorProtectionModifier, equals, N7Armor, asInstanceOf, synchronized, $isInstanceOf, shieldMax, isLightArmor, setTurnsUntilShieldRecovery, notifyAll, isInstanceOf, isShieldActive, getTurnsUntilShieldRecovery, <init>, shieldRecoveryRateCurrent, turnsUntilShieldRecovery, isHeavyArmor, ==, clone, recoverShields, shieldCurrent, toString, !=, takeShieldDamage, getClass, ne, defaultTurnsUntilShieldRecovery, eq, armorRating, ##, finalize, hashCode, canRecoverShields.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, CrusaderShotgun)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>, CrusaderShotgun)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>, CrusaderShotgun)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AssaultRifle.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, synchronized, $isInstanceOf, maxRange, AssaultRifle, baseDamage, notifyAll, isInstanceOf, isShotgun, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(N7Armor, isShieldActive, <init>, toString, takeShieldDamage)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Grenade.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, Grenade, $asInstanceOf, equals, asInstanceOf, accuracy, synchronized, $isInstanceOf, maxRange, baseDamage, notifyAll, accuracyCheck, isInstanceOf, <init>, ==, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, blastRadius, eq, ##, finalize, hashCode, getAttackDamage.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\AvengerAssaultRifle.scala: Set(AssaultRifle, <init>)[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala...[0m
-[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] Including C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala by C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala[0m
-[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala, C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala)[0m
-[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\Shotgun.scala source file has the following regular definitions changed:[0m
-[0m[[0mdebug[0m] [0m[naha] 	notify, isMelee, minRange, wait, $asInstanceOf, isAssaultRifle, equals, asInstanceOf, synchronized, $isInstanceOf, maxRange, baseDamage, Shotgun, notifyAll, isInstanceOf, isShotgun, <init>, isSniperRifle, magazineSize, ==, isPistol, clone, toString, doAttack, !=, getClass, isGrenade, ne, isGun, eq, ##, finalize, hashCode, getAttackDamage.[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\FragGrenade.scala: Set(Grenade, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString, doAttack)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidating (transitively) by inheritance from C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala...[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated by transitive inheritance dependency: Set(C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala)[0m
+[0m[[0mdebug[0m] [0m[naha] The C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\StatTracker.scala source file has the following regular definitions changed:[0m
+[0m[[0mdebug[0m] [0m[naha] 	setHpCurrent, notify, setCurrentStatsToMax, setHpNumberOfLevelsBeforeIncrement, wait, isAlive, $asInstanceOf, calculateStats, setEezoCurrent, takeHpDamage, equals, getEezoMax, addCrossableTile, getCrossableTiles, asInstanceOf, setMovementGrowthRate, synchronized, getHpMax, setHpMax, $isInstanceOf, setMovementNumberOfLevelsBeforeIncrement, canUseEezo, canCross, notifyAll, getMovementCurrent, isInstanceOf, <init>, setEezoMax, ==, clone, recoverEezo, canFighterAttack, levelUp, canFighterMove, StatTracker, setEezoNumberOfLevelsBeforeIncrement, toString, !=, getHpCurrent, getClass, getMovementMax, setHpGrowthRate, getEezoCurrent, ne, loseEezo, eq, removeCrossableTile, ##, finalize, setMovementMax, hashCode, setEezoGrowthRate.[0m
 [0m[[0mdebug[0m] [0m[naha] All member reference dependencies will be considered within this context.[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(<init>, toString)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Engineer.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\skillclasses\Soldier.scala: Set(<init>)[0m
-[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\weapons\CrusaderShotgun.scala: Set(Shotgun, <init>)[0m
+[0m[[0mdebug[0m] [0m[naha] The following modified names cause invalidation of C:\Users\Leonard\IdeaProjects\Mass_Scala\src\main\scala\fighter\Fighter.scala: Set(setCurrentStatsToMax, calculateStats, takeHpDamage, getEezoMax, getCrossableTiles, getHpMax, canCross, getMovementCurrent, <init>, canFighterAttack, levelUp, canFighterMove, StatTracker, toString, getHpCurrent, getMovementMax, getEezoCurrent)[0m
 [0m[[0mdebug[0m] [0m[naha] New invalidations:[0m
 [0m[[0mdebug[0m] [0m[naha] 	Set()[0m
 [0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set()[0m

@@ -107,6 +107,7 @@ class Controller {
         System.out.println("Unrecognized number.")
         None
     }
+    //view.showAvailableMoves
     System.out.println("Enter from row: ")
     val fromRow = getNumFromInput(this.waitForStringInput)
     System.out.println("Enter from col: ")
