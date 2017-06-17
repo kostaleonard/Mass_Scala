@@ -63,7 +63,7 @@ abstract class Weapon {
     //Other bonuses
     //TODO update weapon attack damage with bonuses
 
-    rollingDamageCalculation
+    rollingDamageCalculation max 1
   }
 
   //Abstract methods

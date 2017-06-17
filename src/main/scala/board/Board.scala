@@ -79,6 +79,10 @@ class Board {
     else throw new ArrayIndexOutOfBoundsException("Cannot move Fighter to/from outside board boundaries")
   }
 
+  def doFighterAction(action: Action): Unit = {
+    action.doAction
+  }
+
   def placePlayerPartyOnBoard(party: Party): Unit = {
     setPlayerParty(party)
     party.getFighters.foreach(placeFighterOnBoard)
@@ -143,7 +147,7 @@ class Board {
     val usableWeapons = fighter.getWeapons.filter(fighter.canUseWeapon)
     val usablePowers = fighter.getPowers.filter(fighter.canUsePower)
     //You can always wait!
-    result += Wait
+    result += Wait(fighter)
     def addLocationIndependentPowerActions: Unit = {
       usablePowers.foreach(_ match {
         case pas: PassivePower => ;

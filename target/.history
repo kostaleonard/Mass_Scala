@@ -63,3 +63,8 @@ clean
 compile
 clean
 compile
+clean
+run
+clean
+compile
+run

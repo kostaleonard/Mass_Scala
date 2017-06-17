@@ -12,9 +12,9 @@ sealed trait Action {
   def doAction: Unit
 }
 
-case object Wait extends Action{
+case class Wait(attacker: Fighter) extends Action{
   //That was easy!
-  override def doAction: Unit = {}
+  override def doAction: Unit = attacker.waitOneTurn
 }
 
 case class UseWeapon(weapon: Weapon, attacker: Fighter, target: Fighter, board: Board) extends Action {

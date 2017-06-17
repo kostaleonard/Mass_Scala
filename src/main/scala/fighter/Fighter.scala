@@ -178,6 +178,8 @@ class Fighter(level: Int) {
     setCanFighterAttack(false)
   }
 
+  def waitOneTurn: Unit = setCanFighterAttack(false)
+
   def gainEXP(amount: Int): Unit = {
     this.expTracker.gainEXP(amount)
     if(this.expTracker.canLevelUp){
