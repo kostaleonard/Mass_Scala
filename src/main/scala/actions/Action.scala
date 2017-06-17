@@ -21,7 +21,15 @@ case class UseWeapon(weapon: Weapon, attacker: Fighter, target: Fighter, board: 
   override def doAction: Unit = {
     if(!attacker.getWeapons(weapon))
       throw new UnsupportedOperationException("Fighter must be using a Weapon in their inventory.")
-    weapon.doAttack(attacker, target, board)
+    attacker.useWeapon(weapon, target, board)
+  }
+}
+
+case class ReloadWeapon(weapon: Weapon, attacker: Fighter) extends Action {
+  override def doAction: Unit = {
+    if(!attacker.getWeapons(weapon))
+      throw new UnsupportedOperationException("Fighter must be reloading a Weapon in their inventory.")
+    attacker.reload(weapon)
   }
 }
 
@@ -29,7 +37,7 @@ case class UseActivatedPower(power: ActivatedPower, attacker: Fighter, targetOpt
   override def doAction: Unit = {
     if(!attacker.getPowers(power))
       throw new UnsupportedOperationException("Fighter must be using a learned Power.")
-    power.usePower(attacker, targetOption, board)
+    attacker.useActivatedPower(power, targetOption, board)
   }
 }
 
@@ -37,7 +45,7 @@ case class UseSustainedPower(power: SustainedPower, attacker: Fighter) extends A
   override def doAction: Unit = {
     if(!attacker.getPowers(power))
       throw new UnsupportedOperationException("Fighter must be using a learned Power.")
-    power.usePower(attacker)
+    attacker.useSustainedPower(power)
   }
 }
 
@@ -45,6 +53,6 @@ case class DiscontinueSustainedPower(power: SustainedPower, attacker: Fighter) e
   override def doAction: Unit = {
     if(!attacker.getPowers(power))
       throw new UnsupportedOperationException("Fighter must be using a learned Power.")
-    power.discontinuePower(attacker)
+    attacker.discontinueSustainedPower(power)
   }
 }

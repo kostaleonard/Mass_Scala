@@ -8,6 +8,11 @@ import fighter.Fighter
   */
 abstract class ActivatedPower extends Power {
   protected var damage = 0
+  protected var minRange = 0
+  protected var maxRange = 0
+
+  def getMinRange: Int = minRange
+  def getMaxRange: Int = maxRange
 
   def usePower(attacker: Fighter, targetOption: Option[Fighter], board: Board): Unit = ??? //TODO default implementation of usePower
   //Does this power need a target?

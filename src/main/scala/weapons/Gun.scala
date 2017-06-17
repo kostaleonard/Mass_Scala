@@ -5,7 +5,28 @@ package weapons
   */
 abstract class Gun extends Weapon {
   //Shots before reloading
-  protected var magazineSize: Int = 1
+  protected var usesUntilReloadMax: Int = 0
+  protected var usesUntilReloadCurrent: Int = usesUntilReloadMax
+
+  def getUsesUntilReloadCurrent: Int = usesUntilReloadCurrent
+
+  def getUsesUntilReloadMax: Int = usesUntilReloadMax
+
+  def setUsesUntilReloadCurrent(turns: Int): Unit = usesUntilReloadCurrent = turns
+
+  def setUsesUntilReloadMax(turns: Int): Unit = usesUntilReloadMax = turns
+
+  def isLoaded: Boolean = {
+    //Returns true if this weapon has ammunition that can be used right now.
+    usesUntilReloadCurrent > 0
+  }
+
+  def canReload: Boolean = {
+    //Returns true if this weapon is not full on ammunition.
+    usesUntilReloadCurrent < usesUntilReloadMax
+  }
+
+  def reload: Unit = setUsesUntilReloadCurrent(getUsesUntilReloadMax)
 
   override def isMelee: Boolean = false
   override def isGrenade: Boolean = false

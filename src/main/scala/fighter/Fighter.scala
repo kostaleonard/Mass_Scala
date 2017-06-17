@@ -3,7 +3,7 @@ package fighter
 import armor.{Armor, CBRNArmor, N7Armor}
 import skillclasses.{Engineer, SkillClass, Soldier}
 import weapons._
-import powers.Power
+import powers.{ActivatedPower, Power, SustainedPower}
 import board.{Board, Location, Tile}
 
 /**
@@ -104,18 +104,72 @@ class Fighter(level: Int) {
     //Returns the distance as the crow flies from this to other.
     //Used to make sure that weapons are not firing outside of their designated range.
     //NOT used in movement calculations (by default--bonuses could change this).
-    math.abs(location.row - other.getLocation.row) + math.abs(location.col - other.getLocation.col)
+    getLocation.crowFliesDistance(other.getLocation)
   }
 
   def canMove: Boolean = this.statTracker.getCanFighterMove
 
   def canAttack: Boolean = this.statTracker.getCanFighterAttack
 
-  def attack(weapon: Weapon, target: Fighter, board: Board): Unit = {
+  def canUsePower(power: Power): Boolean = power.getLevel > 0 && statTracker.canUseEezo(power.getEezoCost)
+
+  def canUseWeapon(weapon: Weapon): Boolean = weapon match {
+    case melee: MeleeWeapon => true //Can always use melee weapons
+    case grenade: Grenade => grenade.getAmmunitionCurrent > 0
+    case gun: Gun => gun.isLoaded
+    case _ => throw new UnsupportedOperationException("Unrecognized Weapon type.")
+  }
+
+  def reload(weapon: Weapon): Unit = {
+    //Make sure weapon is in this Fighter's inventory
+    if(!weapons(weapon))
+      throw new UnsupportedOperationException("Cannot attack with a weapon that is not in the inventory")
+    weapon match {
+      case melee: MeleeWeapon =>
+        throw new UnsupportedOperationException("Cannot reload a melee weapon")
+      case grenade: Grenade =>
+        throw new UnsupportedOperationException("Cannot reload a grenade")
+      case gun: Gun =>
+        if(!gun.canReload) throw new UnsupportedOperationException("Cannot reload a fully loaded gun")
+        gun.reload
+        setCanFighterAttack(false)
+      case _ => throw new UnsupportedOperationException("Unrecognized Weapon type.")
+    }
+  }
+
+  def useWeapon(weapon: Weapon, target: Fighter, board: Board): Unit = {
     //Make sure weapon is in this Fighter's inventory
     if(!weapons(weapon))
       throw new UnsupportedOperationException("Cannot attack with a weapon that is not in the inventory")
     weapon.doAttack(this, target, board)
+    setCanFighterAttack(false)
+  }
+
+  def useActivatedPower(power: ActivatedPower, targetOption: Option[Fighter], board: Board): Unit = {
+    //Make sure power is in this Fighter's inventory
+    if(!getPowers(power))
+      throw new UnsupportedOperationException("Cannot use a power that is not in the inventory")
+    power.usePower(this, targetOption, board)
+    setCanFighterAttack(false)
+  }
+
+  def useSustainedPower(power: SustainedPower): Unit = {
+    //Make sure power is in this Fighter's inventory
+    if(!getPowers(power))
+      throw new UnsupportedOperationException("Cannot use a power that is not in the inventory")
+    if(power.isInUse)
+      throw new UnsupportedOperationException("Cannot use a power that is already in use")
+    power.usePower(this)
+    setCanFighterAttack(false)
+  }
+
+  def discontinueSustainedPower(power: SustainedPower): Unit = {
+    //Make sure power is in this Fighter's inventory
+    if(!getPowers(power))
+      throw new UnsupportedOperationException("Cannot discontinue a power that is not in the inventory")
+    if(!power.isInUse)
+      throw new UnsupportedOperationException("Cannot discontinue a power that is not in use")
+    power.discontinuePower(this)
     setCanFighterAttack(false)
   }
 

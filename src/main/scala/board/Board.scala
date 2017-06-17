@@ -1,7 +1,9 @@
 package board
 
-import actions.Action
+import actions._
 import fighter.{Fighter, Party}
+import powers.{ActivatedPower, PassivePower, SustainedPower}
+import weapons.{Grenade, MeleeWeapon}
 
 /**
   * Created by Leonard on 6/3/2017.
@@ -131,6 +133,46 @@ class Board {
 
   def availableActions(fighter: Fighter): scala.collection.immutable.Set[Action] = {
     //TODO implement availableActions
-    ???
+    if(!fighter.canAttack) return scala.collection.immutable.Set.empty[Action]
+    var result = scala.collection.immutable.Set.empty[Action]
+    val usableWeapons = fighter.getWeapons.filter(fighter.canUseWeapon)
+    //You can always wait!
+    result += Wait
+    def addPowerActions: Unit = {
+      fighter.getPowers.foreach(_ match {
+        case pas: PassivePower => ;
+        case sus: SustainedPower =>
+          if(sus.isInUse) result += DiscontinueSustainedPower(sus, fighter)
+          else if(fighter.canUsePower(sus)) result += UseSustainedPower(sus, fighter)
+        case act: ActivatedPower =>
+          if(!act.isTargeted && fighter.canUsePower(act)) result += UseActivatedPower(act, fighter, None, this)
+        case _ => throw new UnsupportedOperationException("Unrecognized Power.")
+      })
+    }
+    def addWeaponReloadActions: Unit = ???
+    def addActionsOnTiles(loc: Location, distance: Int): Unit = {
+      if(distance >= 0 && loc.inBounds(tiles)){
+        //Add possible actions for this Tile
+        val crowFliesDistance = fighter.getLocation.crowFliesDistance(loc)
+        //Weapon Actions:
+        usableWeapons
+          .filter(w => crowFliesDistance >= w.getMinRange && crowFliesDistance <= w.getMaxRange && fighter.canUseWeapon(w))
+        //Check surrounding Tiles
+        addActionsOnTiles(Location(loc.row + 1, loc.col), distance - 1)
+        addActionsOnTiles(Location(loc.row - 1, loc.col), distance - 1)
+        addActionsOnTiles(Location(loc.row, loc.col + 1), distance - 1)
+        addActionsOnTiles(Location(loc.row, loc.col - 1), distance - 1)
+      }
+    }
+    addPowerActions
+    addWeaponReloadActions
+    val maxWeaponRange = (scala.collection.immutable.Set(0) ++ fighter.getWeapons.map(_.getMaxRange)).max
+    val maxPowerRange = (scala.collection.immutable.Set(0) ++ fighter.getPowers.map(_ match {
+      case act: ActivatedPower => if(act.isTargeted) act.getMaxRange else 0
+      case _ => 0
+    })).max
+    val maxRange = maxWeaponRange max maxPowerRange
+    addActionsOnTiles(fighter.getLocation, maxRange)
+    result
   }
 }

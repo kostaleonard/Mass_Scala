@@ -7,7 +7,8 @@ class PredatorPistol extends Pistol {
   baseDamage = 10
   minRange = 1
   maxRange = 3
-  magazineSize = 4
+  usesUntilReloadMax = 5
+  usesUntilReloadCurrent = usesUntilReloadMax
 
   override def toString: String = "M9 Predator"
 }

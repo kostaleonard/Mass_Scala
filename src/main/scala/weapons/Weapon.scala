@@ -16,6 +16,10 @@ abstract class Weapon {
   protected var maxRange: Int = 0
   protected var accuracy: Float = 1.0f
 
+  def getMinRange: Int = minRange
+
+  def getMaxRange: Int = maxRange
+
   protected def accuracyCheck(attacker: Fighter, target: Fighter): Boolean = {
     //Returns true if the attack hit, based on accuracy.
     //Bonuses/Effects also accounted for here.

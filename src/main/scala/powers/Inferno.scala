@@ -8,6 +8,8 @@ import fighter.Fighter
 class Inferno extends ActivatedPower {
   eezoCost = 10
   damage = 30
+  minRange = 1
+  maxRange = 5
   protected var damageMultiplierToShielded = 0.5f
   protected var armorRatingPenalty = 50
   protected var blastRadius = 1 //TODO add an AreaOfEffect interface so that you can call its useAoEPower implementation.

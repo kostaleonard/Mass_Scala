@@ -7,7 +7,8 @@ class MantisSniperRifle extends SniperRifle {
   baseDamage = 70
   minRange = 3
   maxRange = 10
-  magazineSize = 1
+  usesUntilReloadMax = 1
+  usesUntilReloadCurrent = usesUntilReloadMax
 
   override def toString: String = "M22 Mantis"
 }
