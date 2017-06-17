@@ -3,7 +3,7 @@ package fighter
 import armor.{Armor, CBRNArmor, N7Armor}
 import skillclasses.{Engineer, SkillClass, Soldier}
 import weapons._
-import powers.{ActivatedPower, Power, SustainedPower}
+import powers.{ActivatedPower, PassivePower, Power, SustainedPower}
 import board.{Board, Location, Tile}
 
 /**
@@ -111,7 +111,12 @@ class Fighter(level: Int) {
 
   def canAttack: Boolean = this.statTracker.getCanFighterAttack
 
-  def canUsePower(power: Power): Boolean = power.getLevel > 0 && statTracker.canUseEezo(power.getEezoCost)
+  def canUsePower(power: Power): Boolean = power.getLevel > 0 && (power match {
+    case act: ActivatedPower => statTracker.canUseEezo(act.getEezoCost)
+    case sus: SustainedPower => if(sus.isInUse) true else statTracker.canUseEezo(sus.getEezoCost)
+    case pas: PassivePower => false
+    case _ => throw new UnsupportedOperationException("Unrecognized Power type.")
+  })
 
   def canUseWeapon(weapon: Weapon): Boolean = weapon match {
     case melee: MeleeWeapon => true //Can always use melee weapons

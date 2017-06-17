@@ -61,3 +61,5 @@ run
 compile
 clean
 compile
+clean
+compile

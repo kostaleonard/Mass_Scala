@@ -3,7 +3,7 @@ package board
 import actions._
 import fighter.{Fighter, Party}
 import powers.{ActivatedPower, PassivePower, SustainedPower}
-import weapons.{Grenade, MeleeWeapon}
+import weapons.{Grenade, Gun, MeleeWeapon}
 
 /**
   * Created by Leonard on 6/3/2017.
@@ -131,32 +131,54 @@ class Board {
     result - fighter.getLocation
   }
 
+  def onOppositeTeams(f1: Fighter, f2: Fighter): Boolean = {
+    //Returns true if f1 and f2 are in different parties.
+    (playerParty.getFighters(f1) && enemyParty.getFighters(f2)) ||
+      (playerParty.getFighters(f2) && enemyParty.getFighters(f1))
+  }
+
   def availableActions(fighter: Fighter): scala.collection.immutable.Set[Action] = {
-    //TODO implement availableActions
     if(!fighter.canAttack) return scala.collection.immutable.Set.empty[Action]
     var result = scala.collection.immutable.Set.empty[Action]
     val usableWeapons = fighter.getWeapons.filter(fighter.canUseWeapon)
+    val usablePowers = fighter.getPowers.filter(fighter.canUsePower)
     //You can always wait!
     result += Wait
-    def addPowerActions: Unit = {
-      fighter.getPowers.foreach(_ match {
+    def addLocationIndependentPowerActions: Unit = {
+      usablePowers.foreach(_ match {
         case pas: PassivePower => ;
         case sus: SustainedPower =>
           if(sus.isInUse) result += DiscontinueSustainedPower(sus, fighter)
-          else if(fighter.canUsePower(sus)) result += UseSustainedPower(sus, fighter)
+          else result += UseSustainedPower(sus, fighter)
         case act: ActivatedPower =>
-          if(!act.isTargeted && fighter.canUsePower(act)) result += UseActivatedPower(act, fighter, None, this)
+          if(!act.isTargeted) result += UseActivatedPower(act, fighter, None, this)
         case _ => throw new UnsupportedOperationException("Unrecognized Power.")
       })
     }
-    def addWeaponReloadActions: Unit = ???
+    def addWeaponReloadActions: Unit = {
+      fighter.getWeapons.filter(_ match {
+        case gun: Gun => gun.canReload
+        case _ => false
+      }).foreach(result += ReloadWeapon(_, fighter))
+    }
     def addActionsOnTiles(loc: Location, distance: Int): Unit = {
       if(distance >= 0 && loc.inBounds(tiles)){
         //Add possible actions for this Tile
         val crowFliesDistance = fighter.getLocation.crowFliesDistance(loc)
-        //Weapon Actions:
-        usableWeapons
-          .filter(w => crowFliesDistance >= w.getMinRange && crowFliesDistance <= w.getMaxRange && fighter.canUseWeapon(w))
+        val targetOption = tiles(loc.row)(loc.col).getFighter
+        if(targetOption != None && onOppositeTeams(fighter, targetOption.get)) {
+          //Weapon Actions:
+          usableWeapons
+            .filter(w => crowFliesDistance >= w.getMinRange && crowFliesDistance <= w.getMaxRange)
+            .foreach(result += UseWeapon(_, fighter, targetOption.get, this))
+          //Power Actions:
+          usablePowers.foreach( p => p match{
+            case act: ActivatedPower =>
+              if(act.isTargeted && crowFliesDistance >= act.getMinRange && crowFliesDistance <= act.getMaxRange)
+                result += UseActivatedPower(act, fighter, targetOption, this)
+            case _ => ;
+          })
+        }
         //Check surrounding Tiles
         addActionsOnTiles(Location(loc.row + 1, loc.col), distance - 1)
         addActionsOnTiles(Location(loc.row - 1, loc.col), distance - 1)
@@ -164,7 +186,7 @@ class Board {
         addActionsOnTiles(Location(loc.row, loc.col - 1), distance - 1)
       }
     }
-    addPowerActions
+    addLocationIndependentPowerActions
     addWeaponReloadActions
     val maxWeaponRange = (scala.collection.immutable.Set(0) ++ fighter.getWeapons.map(_.getMaxRange)).max
     val maxPowerRange = (scala.collection.immutable.Set(0) ++ fighter.getPowers.map(_ match {
