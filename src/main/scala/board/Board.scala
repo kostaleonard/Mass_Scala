@@ -127,4 +127,6 @@ class Board {
     //Remove the fighter's own location
     result - fighter.getLocation
   }
+
+  //def availableActions(fighter: Fighter): scala.collection.immutable.Set[Action] = ???
 }
