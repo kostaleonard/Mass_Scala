@@ -42,4 +42,19 @@ test
 run
 clean
 test
+test -feature
+test feature
+exit
+clean
+test
+clean
+build
+compile
+clean
+compile
+clean
+compile
+clean
+compile
+clean
 run

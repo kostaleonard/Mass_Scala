@@ -1,12 +1,18 @@
 package fighter
 
-import board.Tile
+import board.{GrassPlains, Mountains, Tile}
 import skillclasses.SkillClass
 import powers._
 
 /**
   * Created by Leonard on 6/4/2017.
   */
+object StatTracker {
+  val DEFAULT_CROSSABLE_TILES: scala.collection.mutable.Set[Class[_ <: Tile]] = scala.collection.mutable.Set(
+    (new GrassPlains).getClass,
+    (new Mountains).getClass
+  )
+}
 class StatTracker {
   private var hpCurrent = 1
   private var hpMax = 1
@@ -16,7 +22,7 @@ class StatTracker {
   private var movementMax = 1
   private var canMove = true
   private var canAttack = true
-  private val crossableTiles = scala.collection.mutable.Set.empty[Class[_ <: Tile]]
+  private val crossableTiles = StatTracker.DEFAULT_CROSSABLE_TILES
   //Stat growth rates
   private var hpGrowthRate = 1
   private var hpNumberOfLevelsBeforeIncrement = 1

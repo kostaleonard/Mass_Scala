@@ -74,7 +74,42 @@ class PrintView(model: Model) extends View(model) {
 
   override def showAvailableMoves(moves: Set[Location]): Unit = {
     System.out.println("======== Moves ========")
-    moves.foreach(loc => System.out.print(loc + "\t"))
+    //moves.foreach(loc => System.out.print(loc + "\t"))
+    def showTile(t: Tile): Unit = {
+      t match{
+        case g: GrassPlains => System.out.print('_')
+        case m: Mountains => System.out.print('^')
+        case _ => System.out.print('?')
+      }
+    }
+    def showFighter(c: Char): Unit = {
+      System.out.print(c)
+    }
+    def showMove: Unit = System.out.print('+')
+    model.getCurrentBoard match {
+      case Some(board) =>
+        /*
+        //Do not show fighters:
+        board.getTiles.foreach{
+          row => row.foreach(showTile(_))
+          System.out.println
+        }
+        */
+        //Show fighters:
+        val playerFighterLocs = board.getPlayerPartyLocationsMap
+        val enemyFighterLocs = board.getEnemyPartyLocationsMap
+        for(r <- board.getTiles.indices){
+          for(c <- board.getTiles(r).indices){
+            //Check to see if there is a Fighter in this cell
+            if(playerFighterLocs.contains(Location(r, c))) showFighter('P')
+            else if(enemyFighterLocs.contains(Location(r, c))) showFighter('E')
+            else if(moves(Location(r, c))) showMove
+            else showTile(board.getTiles(r)(c))
+          }
+          System.out.println
+        }
+      case None => ;
+    }
   }
 
   override def render: Unit = {

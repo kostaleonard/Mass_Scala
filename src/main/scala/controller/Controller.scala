@@ -65,6 +65,12 @@ class Controller {
   def playRandomBoard: Unit = {
     //TODO remove playRandomBoard function
     model.setCurrentBoard(Some(Board.getTestBoard))
+    val fighterArray = model.getPlayerParty.getFighters.toArray
+    fighterArray.indices.foreach { i =>
+      fighterArray(i).setLocation(Location(i, i))
+      //model.getCurrentBoard.get.placeFighterOnBoard(fighterArray(i))
+    }
+    model.getCurrentBoard.get.placePlayerPartyOnBoard(model.getPlayerParty)
     while(model.isBoardActive){
       doTurn
     }
@@ -76,10 +82,10 @@ class Controller {
   }
 
   def doPlayerTurn: Unit = {
-    view.showBoard
-    view.showPlayerParty
     var endTurn = false
     while(!endTurn) {
+      view.showBoard
+      view.showPlayerParty
       view.showBoardCommands
       val command = this.waitForStringInput
       command match {
