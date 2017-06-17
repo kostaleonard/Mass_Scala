@@ -60,6 +60,10 @@ class StatTracker {
 
   def setMovementNumberOfLevelsBeforeIncrement(levels: Int): Unit = movementNumberOfLevelsBeforeIncrement = levels
 
+  def setEezoRecoveryRateCurrent(rate: Int): Unit = eezoRecoveryRateCurrent = rate
+
+  def getEezoRecoveryRateCurrent: Int = eezoRecoveryRateCurrent
+
   def isAlive: Boolean = this.hpCurrent <= 0
 
   def getHpCurrent: Int = hpCurrent

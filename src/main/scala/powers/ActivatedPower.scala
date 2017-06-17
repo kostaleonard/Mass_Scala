@@ -1,5 +1,6 @@
 package powers
 
+import board.Board
 import fighter.Fighter
 
 /**
@@ -8,7 +9,9 @@ import fighter.Fighter
 abstract class ActivatedPower extends Power {
   protected var damage = 0
 
-  def usePower(attacker: Fighter, target: Fighter): Unit = ??? //TODO default implementation of usePower
+  def usePower(attacker: Fighter, targetOption: Option[Fighter], board: Board): Unit = ??? //TODO default implementation of usePower
+  //Does this power need a target?
+  def isTargeted: Boolean
 
   override def isPassive: Boolean = false
   override def isActivated: Boolean = true

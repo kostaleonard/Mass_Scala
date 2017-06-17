@@ -1,4 +1,5 @@
 package powers
+import board.Board
 import fighter.Fighter
 
 /**
@@ -13,7 +14,9 @@ class Inferno extends ActivatedPower {
   protected var lastingBurnDamage = 0.0f //TODO add Burn interface to add lasting burn effect
   protected var frozenTargetDamageBonus = 1.0f
 
-  override def usePower(attacker: Fighter, target: Fighter): Unit = ??? //TODO Inferno usePower implementation
+  override def usePower(attacker: Fighter, targetOption: Option[Fighter], board: Board): Unit = ??? //TODO Inferno usePower implementation
+
+  override def isTargeted: Boolean = true
 
   override def toString: String = "Inferno"
 

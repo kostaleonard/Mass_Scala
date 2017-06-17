@@ -1,10 +1,10 @@
 package powers
+import fighter.Fighter
 
 /**
   * Created by Leonard on 6/4/2017.
   */
 class CryoAmmo extends AmmoPower {
-  maxEezoPenalty = 5
   eezoRechargePenalty = 5
   protected var chilledMovementPenalty = 1
   protected var armorPenalty = 20
@@ -50,5 +50,16 @@ class CryoAmmo extends AmmoPower {
     case Power.LVL_6A => ???
     case Power.LVL_6B => ???
     case _ => ???
+  }
+
+  override def usePower(attacker: Fighter): Unit = {
+    //Other effects (actual damage changes/chill) will be handled by Weapon.
+    inUse = true
+    attacker.setEezoRecoveryRateCurrent(attacker.getEezoRecoveryRateCurrent - eezoRechargePenalty)
+  }
+
+  override def discontinuePower(attacker: Fighter): Unit = {
+    inUse = false
+    attacker.setEezoRecoveryRateCurrent(attacker.getEezoRecoveryRateCurrent + eezoRechargePenalty)
   }
 }

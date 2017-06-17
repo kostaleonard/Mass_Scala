@@ -1,6 +1,7 @@
 package board
 
-import fighter.{Party, Fighter}
+import actions.Action
+import fighter.{Fighter, Party}
 
 /**
   * Created by Leonard on 6/3/2017.
@@ -128,5 +129,8 @@ class Board {
     result - fighter.getLocation
   }
 
-  //def availableActions(fighter: Fighter): scala.collection.immutable.Set[Action] = ???
+  def availableActions(fighter: Fighter): scala.collection.immutable.Set[Action] = {
+    //TODO implement availableActions
+    ???
+  }
 }

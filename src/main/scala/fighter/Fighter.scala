@@ -84,9 +84,15 @@ class Fighter(level: Int) {
     statTracker.setCurrentStatsToMax
   }
 
+  def setEezoRecoveryRateCurrent(rate: Int): Unit = statTracker.setEezoRecoveryRateCurrent(rate)
+
+  def getEezoRecoveryRateCurrent: Int = statTracker.getEezoRecoveryRateCurrent
+
   def getArmor: Option[Armor] = armor
 
   def getPowers: scala.collection.mutable.Set[Power] = powerTracker.getPowers
+
+  def getWeapons: scala.collection.mutable.Set[Weapon] = weapons
 
   def getLevel: Int = expTracker.getLevel
 

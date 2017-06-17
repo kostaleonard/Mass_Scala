@@ -1,10 +1,11 @@
 package powers
 
+import fighter.Fighter
+
 /**
   * Created by Leonard on 6/4/2017.
   */
 abstract class SustainedPower extends Power {
-  protected var maxEezoPenalty = 0
   protected var eezoRechargePenalty = 0
   protected var inUse: Boolean = false
 
@@ -14,6 +15,10 @@ abstract class SustainedPower extends Power {
   override def isActivated: Boolean = false
   override def isSustained: Boolean = true
 
-  def getMaxEezoPenalty: Int = maxEezoPenalty
   def getEezoRechargePenalty: Int = eezoRechargePenalty
+
+  //Abstract methods
+  def usePower(attacker: Fighter): Unit
+  def discontinuePower(attacker: Fighter): Unit
 }
+

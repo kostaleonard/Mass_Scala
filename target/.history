@@ -58,3 +58,4 @@ clean
 compile
 clean
 run
+compile
