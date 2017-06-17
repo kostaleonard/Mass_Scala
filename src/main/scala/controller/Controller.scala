@@ -152,7 +152,18 @@ class Controller {
   }
 
   def doEnemyTurn: Unit = {
-    ???
+    def moveFighterRandomly(fighter: Fighter): Unit = {
+      val moveChoices = scala.util.Random.shuffle(model.getCurrentBoard.get.availableMoveLocations(fighter).toList)
+      if(!moveChoices.isEmpty) model.getCurrentBoard.get.moveFighterTo(fighter, moveChoices.head)
+    }
+    def doRandomAction(fighter: Fighter): Unit = {
+      //TODO select a random action
+      ???
+    }
+    model.getCurrentBoard.get.getEnemyParty.getFighters.foreach{ f =>
+      while(f.canMove) moveFighterRandomly(f)
+      while(f.canAttack) doRandomAction(f)
+    }
   }
 
   def exitGame: Unit = {

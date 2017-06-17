@@ -26,8 +26,7 @@ object Fighter {
     else f.armor = None
 
     //Add weapons
-    rand = Math.random
-    if(rand < 0.8) f.weapons.add(new PredatorPistol)
+    f.weapons.add(new PredatorPistol)
     rand = Math.random
     if(rand < 0.3) f.weapons.add(new AvengerAssaultRifle)
     rand = Math.random

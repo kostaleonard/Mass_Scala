@@ -43,15 +43,24 @@ class PrintView(model: Model) extends View(model) {
         //Show fighters:
         val playerFighterLocs = board.getPlayerPartyLocationsMap
         val enemyFighterLocs = board.getEnemyPartyLocationsMap
+        //Print column headings:
+        System.out.print(' ')
+        for(c <- board.getTiles(0).indices) System.out.print(c % 10)
+        System.out.println
         for(r <- board.getTiles.indices){
+          System.out.print(r % 10)
           for(c <- board.getTiles(r).indices){
             //Check to see if there is a Fighter in this cell
             if(playerFighterLocs.contains(Location(r, c))) showFighter('P')
             else if(enemyFighterLocs.contains(Location(r, c))) showFighter('E')
             else showTile(board.getTiles(r)(c))
           }
+          System.out.print(r % 10)
           System.out.println
         }
+        System.out.print(' ')
+        for(c <- board.getTiles(0).indices) System.out.print(c % 10)
+        System.out.println
       case None => ;
     }
   }
@@ -98,7 +107,12 @@ class PrintView(model: Model) extends View(model) {
         //Show fighters:
         val playerFighterLocs = board.getPlayerPartyLocationsMap
         val enemyFighterLocs = board.getEnemyPartyLocationsMap
+        //Print column headings:
+        System.out.print(' ')
+        for(c <- board.getTiles(0).indices) System.out.print(c % 10)
+        System.out.println
         for(r <- board.getTiles.indices){
+          System.out.print(r % 10)
           for(c <- board.getTiles(r).indices){
             //Check to see if there is a Fighter in this cell
             if(playerFighterLocs.contains(Location(r, c))) showFighter('P')
@@ -106,8 +120,12 @@ class PrintView(model: Model) extends View(model) {
             else if(moves(Location(r, c))) showMove
             else showTile(board.getTiles(r)(c))
           }
+          System.out.print(r % 10)
           System.out.println
         }
+        System.out.print(' ')
+        for(c <- board.getTiles(0).indices) System.out.print(c % 10)
+        System.out.println
       case None => ;
     }
   }

@@ -45,6 +45,10 @@ class Board {
 
   def setTiles(t: Array[Array[Tile]]): Unit = tiles = t
 
+  def getPlayerParty: Party = playerParty
+
+  def getEnemyParty: Party = enemyParty
+
   private def setPlayerParty(party: Party): Unit = playerParty = party
 
   private def setEnemyParty(party: Party): Unit = enemyParty = party
