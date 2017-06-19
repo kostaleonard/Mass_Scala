@@ -39,7 +39,8 @@ object Fighter {
     if(rand < 0.9) f.weapons.add(new OmniBlade)
 
     //Add powers
-    //TODO add powers to random fighters
+    f.skillClass.getAvailablePowers.foreach(f.learnPower)
+    f.getPowers.foreach(_.levelUp(Power.LVL_1))
 
     //Select name
     rand = Math.random
@@ -77,6 +78,7 @@ class Fighter(level: Int) {
   def calculateStats: Unit = {
     //Change stats to the appropriate amounts based on level, skillClass, race, and powers
     statTracker.calculateStats(getLevel, skillClass, getPowers)
+    //TODO other items, like armor and weapons, will likely need to calculate their own stats too (to account for bonuses).
   }
 
   def setCurrentStatsToMax: Unit = {
@@ -102,6 +104,8 @@ class Fighter(level: Int) {
 
   def getPowers: scala.collection.mutable.Set[Power] = powerTracker.getPowers
 
+  def learnPower(power: Power): Unit = powerTracker.learnPower(power)
+
   def getWeapons: scala.collection.mutable.Set[Weapon] = weapons
 
   def getLevel: Int = expTracker.getLevel
@@ -121,7 +125,7 @@ class Fighter(level: Int) {
 
   def canAttack: Boolean = this.statTracker.getCanFighterAttack
 
-  def canUsePower(power: Power): Boolean = power.getLevel > 0 && (power match {
+  def canUsePower(power: Power): Boolean = power.canUse && (power match {
     case act: ActivatedPower => statTracker.canUseEezo(act.getEezoCost)
     case sus: SustainedPower => if(sus.isInUse) true else statTracker.canUseEezo(sus.getEezoCost)
     case pas: PassivePower => false

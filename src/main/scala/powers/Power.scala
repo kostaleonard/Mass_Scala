@@ -21,6 +21,7 @@ abstract class Power {
   protected val levelUpChoices = scala.collection.mutable.Set.empty[Int]
   protected val bonuses = scala.collection.mutable.Set.empty[Bonus]
 
+  def canUse: Boolean = getLevel > 0
   def getLevel: Int = level
   def getEezoCost: Int = eezoCost
   def getBonuses: scala.collection.mutable.Set[Bonus] = bonuses

@@ -21,12 +21,14 @@ abstract class SustainedPower extends Power {
     //Subclasses MUST override
     val e0 = getEezoCost
     if(attacker.canUseEezo(e0)) throw new UnsupportedOperationException("Fighter cannot use that much Eezo.")
+    inUse = true
     attacker.loseEezo(e0)
     attacker.takeEezoRechargePenalty(getEezoRechargePenalty)
   }
 
   def discontinuePower(attacker: Fighter): Unit = {
     //Subclasses MUST override
+    inUse = false
     attacker.removeEezoRechargePenalty(getEezoRechargePenalty)
   }
 }

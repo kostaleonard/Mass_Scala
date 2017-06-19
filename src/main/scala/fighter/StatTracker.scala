@@ -164,8 +164,10 @@ class StatTracker {
           case DoubleBonus(b1, b2) =>
             addBonus(b1)
             addBonus(b2)
-          case HpPercentBonus(amount) => hpMax = (hpMax * amount).toInt
+          case HpPercentBonus(amount) => hpMax = (hpMax * (1.0f + amount)).toInt
+            //The following are handled elsewhere, but I want to keep track of them so that I know who is responsible.
           case WeaponDamageBonus(amount) => ; //Do nothing--this is handled in Weapon
+          case ShieldBonus(amount) => ; //Do nothing--this is handled in Armor
           case _ => ???
         }
         power.getBonuses.foreach(addBonus)

@@ -54,12 +54,12 @@ class CryoAmmo extends AmmoPower {
 
   override def usePower(attacker: Fighter): Unit = {
     //Other effects (actual damage changes/chill) will be handled by Weapon.
-    inUse = true
-    attacker.setEezoRecoveryRateCurrent(attacker.getEezoRecoveryRateCurrent - eezoRechargePenalty)
+    super.usePower(attacker)
+    //TODO add more logic here for using the CryoAmmo Power
   }
 
   override def discontinuePower(attacker: Fighter): Unit = {
-    inUse = false
-    attacker.setEezoRecoveryRateCurrent(attacker.getEezoRecoveryRateCurrent + eezoRechargePenalty)
+    super.discontinuePower(attacker)
+    //TODO add more logic here for using the CryoAmmo Power
   }
 }

@@ -6,8 +6,8 @@ import fighter.Fighter
   * Created by Leonard on 6/4/2017.
   */
 class Inferno extends ActivatedPower {
-  eezoCost = 10
-  damage = 30
+  eezoCost = 1
+  damage = 40
   minRange = 1
   maxRange = 5
   protected var damageMultiplierToShielded = 0.5f
@@ -16,7 +16,10 @@ class Inferno extends ActivatedPower {
   protected var lastingBurnDamage = 0.0f //TODO add Burn interface to add lasting burn effect
   protected var frozenTargetDamageBonus = 1.0f
 
-  override def usePower(attacker: Fighter, targetOption: Option[Fighter], board: Board): Unit = ??? //TODO Inferno usePower implementation
+  override def usePower(attacker: Fighter, targetOption: Option[Fighter], board: Board): Unit = {
+    super.usePower(attacker, targetOption, board)
+    ??? //TODO Inferno usePower implementation
+  }
 
   override def isTargeted: Boolean = true
 
