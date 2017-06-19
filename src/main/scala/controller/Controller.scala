@@ -96,32 +96,52 @@ class Controller {
           System.out.println("Ending turn")
           endTurn = true
         case Some("m") => movePlayerFighter
-        case Some("a") => ???
+        case Some("a") => doPlayerAction
         case _ => System.out.println("Unrecognized command")
       }
     }
   }
 
-  def movePlayerFighter: Unit = {
-    def getNumFromInput(in: Option[String]): Option[Int] = in match {
-      case Some(str) =>
-        if(str.matches("[0-9]+")) Some(str.toInt)
-        else {
-          System.out.println("Unrecognized number.")
-          None
-        }
-      case _ =>
+  private def getNumFromInput(in: Option[String]): Option[Int] = in match {
+    case Some(str) =>
+      if(str.matches("[0-9]+")) Some(str.toInt)
+      else {
         System.out.println("Unrecognized number.")
         None
+      }
+    case _ =>
+      System.out.println("Unrecognized number.")
+      None
+  }
+
+  private def getFighterFromInput: Option[Fighter] = {
+    System.out.println("Enter from row: ")
+    val fromRow = getNumFromInput(this.waitForStringInput)
+    System.out.println("Enter from col: ")
+    val fromCol = getNumFromInput(this.waitForStringInput)
+    if (fromRow.isEmpty || fromCol.isEmpty) None
+    else model.fighterAt(Location(fromRow.get, fromCol.get))
+  }
+
+  def doPlayerAction: Unit = {
+    val fighter = getFighterFromInput
+    if(fighter == None){
+      System.out.println("No fighter at that location.")
+      return
     }
-    def getFighterToMove: Option[Fighter] = {
-      System.out.println("Enter from row: ")
-      val fromRow = getNumFromInput(this.waitForStringInput)
-      System.out.println("Enter from col: ")
-      val fromCol = getNumFromInput(this.waitForStringInput)
-      if (fromRow.isEmpty || fromCol.isEmpty) None
-      else model.fighterAt(Location(fromRow.get, fromCol.get))
+    else if(!fighter.get.canAttack){
+      System.out.println("That fighter cannot attack.")
+      return
     }
+    val actionsArray = model.getAvailableActions(fighter.get).toArray
+    view.showAvailableActions(fighter.get, actionsArray)
+    System.out.println("Which action (0..n)?")
+    val choice = getNumFromInput(this.waitForStringInput)
+    if(choice.isEmpty || choice.get < 0 || choice.get >= actionsArray.length) System.out.println("Unrecognized choice")
+    else model.doFighterAction(actionsArray(choice.get))
+  }
+
+  def movePlayerFighter: Unit = {
     def getEndLocation: Option[Location] = {
       System.out.println("Enter to row: ")
       val toRow = getNumFromInput(this.waitForStringInput)
@@ -130,8 +150,7 @@ class Controller {
       if(toRow.isEmpty || toCol.isEmpty) None
       else Some(Location(toRow.get, toCol.get))
     }
-
-    val fighter = getFighterToMove
+    val fighter = getFighterFromInput
     if(fighter == None){
       System.out.println("No fighter at that location.")
       return
@@ -161,7 +180,7 @@ class Controller {
       view.showAvailableActions(fighter, actionChoices.toSet)
       if(!actionChoices.isEmpty){
         view.showChosenAction(fighter, actionChoices.head)
-        model.getCurrentBoard.get.doFighterAction(actionChoices.head)
+        model.doFighterAction(actionChoices.head)
       }
 
     }

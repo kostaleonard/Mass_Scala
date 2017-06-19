@@ -80,7 +80,7 @@ class PrintView(model: Model) extends View(model) {
     System.out.println("q: Quit")
     System.out.println("e: End turn")
     System.out.println("m: Move fighter")
-    System.out.println("a: Attack")
+    System.out.println("a: Action")
   }
 
   override def showAvailableMoves(moves: Set[Location]): Unit = {
@@ -132,7 +132,7 @@ class PrintView(model: Model) extends View(model) {
     }
   }
 
-  override def showAvailableActions(fighter: Fighter, actions: Set[Action]): Unit = {
+  override def showAvailableActions(fighter: Fighter, actions: Iterable[Action]): Unit = {
     System.out.println("===== Available Actions for " + fighter.toString + " =====")
     actions.foreach(System.out.println)
   }

@@ -17,8 +17,8 @@ abstract class View(model: Model) {
   def showBoard: Unit
   def showPlayerParty: Unit
   def showBoardCommands: Unit
-  def showAvailableMoves(moves: scala.collection.immutable.Set[Location]): Unit
-  def showAvailableActions(fighter: Fighter, actions: scala.collection.immutable.Set[Action]): Unit
+  def showAvailableMoves(moves: Set[Location]): Unit
+  def showAvailableActions(fighter: Fighter, actions: Iterable[Action]): Unit
   def showChosenAction(fighter: Fighter, action: Action): Unit
   def render: Unit
 }

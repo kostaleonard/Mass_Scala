@@ -137,7 +137,7 @@ class Fighter(level: Int) {
       case gun: Gun =>
         if(!gun.canReload) throw new UnsupportedOperationException("Cannot reload a fully loaded gun")
         gun.reload
-        setCanFighterAttack(false)
+        waitOneTurn
       case _ => throw new UnsupportedOperationException("Unrecognized Weapon type.")
     }
   }
@@ -147,7 +147,7 @@ class Fighter(level: Int) {
     if(!weapons(weapon))
       throw new UnsupportedOperationException("Cannot attack with a weapon that is not in the inventory")
     weapon.doAttack(this, target, board)
-    setCanFighterAttack(false)
+    waitOneTurn
   }
 
   def useActivatedPower(power: ActivatedPower, targetOption: Option[Fighter], board: Board): Unit = {
@@ -155,7 +155,7 @@ class Fighter(level: Int) {
     if(!getPowers(power))
       throw new UnsupportedOperationException("Cannot use a power that is not in the inventory")
     power.usePower(this, targetOption, board)
-    setCanFighterAttack(false)
+    waitOneTurn
   }
 
   def useSustainedPower(power: SustainedPower): Unit = {
@@ -165,7 +165,7 @@ class Fighter(level: Int) {
     if(power.isInUse)
       throw new UnsupportedOperationException("Cannot use a power that is already in use")
     power.usePower(this)
-    setCanFighterAttack(false)
+    waitOneTurn
   }
 
   def discontinueSustainedPower(power: SustainedPower): Unit = {
@@ -175,10 +175,13 @@ class Fighter(level: Int) {
     if(!power.isInUse)
       throw new UnsupportedOperationException("Cannot discontinue a power that is not in use")
     power.discontinuePower(this)
-    setCanFighterAttack(false)
+    waitOneTurn
   }
 
-  def waitOneTurn: Unit = setCanFighterAttack(false)
+  def waitOneTurn: Unit = {
+    setCanFighterAttack(false)
+    setCanFighterMove(false)
+  }
 
   def gainEXP(amount: Int): Unit = {
     this.expTracker.gainEXP(amount)
@@ -220,7 +223,7 @@ class Fighter(level: Int) {
     s += "(" + skillClass.toString + "): "
     s += "HP=" + statTracker.getHpCurrent + "/" + statTracker.getHpMax
     if(armor.nonEmpty) s += "(SH:" + armor.get.getShieldCurrent + "/" + armor.get.getShieldMax + ")"
-    s += "\t"
+    s += " "
     s += "E0=" + statTracker.getEezoCurrent + "/" + statTracker.getEezoMax
     s
   }

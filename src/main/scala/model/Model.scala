@@ -1,5 +1,6 @@
 package model
 
+import actions.Action
 import board.{Board, Location}
 import fighter.{Fighter, Party}
 
@@ -54,6 +55,11 @@ class Model(profileName: String) {
     }
   }
 
+  def doFighterAction(action: Action): Unit = {
+    if(currentBoard.isEmpty) throw new UnsupportedOperationException("Cannot get Fighter on empty board")
+    currentBoard.get.doFighterAction(action)
+  }
+
   def fighterAt(loc: Location): Option[Fighter] = {
     if(currentBoard.isEmpty) throw new UnsupportedOperationException("Cannot get Fighter on empty board")
     currentBoard.get.fighterAt(loc)
@@ -62,6 +68,11 @@ class Model(profileName: String) {
   def getAvailableMoves(fighter: Fighter): scala.collection.immutable.Set[Location] = {
     if(currentBoard.isEmpty) throw new UnsupportedOperationException("Cannot get Fighter on empty board")
     currentBoard.get.availableMoveLocations(fighter)
+  }
+
+  def getAvailableActions(fighter: Fighter): scala.collection.immutable.Set[Action] = {
+    if(currentBoard.isEmpty) throw new UnsupportedOperationException("Cannot get Fighter on empty board")
+    currentBoard.get.availableActions(fighter)
   }
 
   def copyBoard(boardName: String): Unit = {
