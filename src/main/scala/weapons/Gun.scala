@@ -1,4 +1,6 @@
 package weapons
+import board.Board
+import fighter.Fighter
 
 /**
   * Created by Leonard on 6/4/2017.
@@ -7,6 +9,12 @@ abstract class Gun extends Weapon {
   //Shots before reloading
   protected var usesUntilReloadMax: Int = 0
   protected var usesUntilReloadCurrent: Int = usesUntilReloadMax
+
+  override def doAttack(attacker: Fighter, target: Fighter, board: Board): Unit = {
+    super.doAttack(attacker, target, board)
+    if(!isLoaded) throw new UnsupportedOperationException("Cannot fire an unloaded gun.")
+    usesUntilReloadCurrent -= 1
+  }
 
   def getUsesUntilReloadCurrent: Int = usesUntilReloadCurrent
 

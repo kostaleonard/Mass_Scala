@@ -1108,7 +1108,7 @@
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang#scala-compiler;2.12.2!scala-compiler.jar[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] org.scala-lang.modules#scala-xml_2.12;1.0.6!scala-xml_2.12.jar(bundle)[0m
 [0m[[0mdebug[0m] [0m	[NOT REQUIRED] jline#jline;2.14.3!jline.jar[0m
-[0m[[0mdebug[0m] [0m:: resolution report :: resolve 454ms :: artifacts dl 11ms[0m
+[0m[[0mdebug[0m] [0m:: resolution report :: resolve 130ms :: artifacts dl 8ms[0m
 [0m[[0mdebug[0m] [0m	report for default#mass_scala_2.12;1.0 compile produced in C:\Users\Leonard\IdeaProjects\Mass_Scala\target\resolution-cache\reports\default-mass_scala_2.12-compile.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#mass_scala_2.12;1.0 runtime produced in C:\Users\Leonard\IdeaProjects\Mass_Scala\target\resolution-cache\reports\default-mass_scala_2.12-runtime.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#mass_scala_2.12;1.0 test produced in C:\Users\Leonard\IdeaProjects\Mass_Scala\target\resolution-cache\reports\default-mass_scala_2.12-test.xml[0m
@@ -1122,5 +1122,5 @@
 [0m[[0mdebug[0m] [0m	report for default#mass_scala_2.12;1.0 docs produced in C:\Users\Leonard\IdeaProjects\Mass_Scala\target\resolution-cache\reports\default-mass_scala_2.12-docs.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#mass_scala_2.12;1.0 pom produced in C:\Users\Leonard\IdeaProjects\Mass_Scala\target\resolution-cache\reports\default-mass_scala_2.12-pom.xml[0m
 [0m[[0mdebug[0m] [0m	report for default#mass_scala_2.12;1.0 scala-tool produced in C:\Users\Leonard\IdeaProjects\Mass_Scala\target\resolution-cache\reports\default-mass_scala_2.12-scala-tool.xml[0m
-[0m[[0mdebug[0m] [0m	resolve done (454ms resolve - 11ms download)[0m
+[0m[[0mdebug[0m] [0m	resolve done (130ms resolve - 8ms download)[0m
 [0m[[0minfo[0m] [0mDone updating.[0m

@@ -75,6 +75,13 @@ class Model(profileName: String) {
     currentBoard.get.availableActions(fighter)
   }
 
+  def recoverMovesAndActions: Unit = {
+    //Allow Fighters to recover moves and actions so that they can use them next turn.
+    if(currentBoard.isEmpty) throw new UnsupportedOperationException("Cannot recover moves/actions on an empty board")
+    playerParty.recoverMovesAndActions
+    currentBoard.get.getEnemyParty.recoverMovesAndActions
+  }
+
   def copyBoard(boardName: String): Unit = {
     //TODO Load a default board and store it in this object.
   }

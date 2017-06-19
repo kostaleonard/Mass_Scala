@@ -22,4 +22,11 @@ class Party {
   def getFighters: scala.collection.mutable.Set[Fighter] = fighters
 
   def addFighter(f: Fighter): Unit = fighters.add(f)
+
+  def removeFighter(f: Fighter): Unit = fighters.remove(f)
+
+  def recoverMovesAndActions: Unit = {
+    //Allow Fighters to recover moves and actions so that they can use them next turn.
+    fighters.foreach(_.recoverMovesAndActions)
+  }
 }

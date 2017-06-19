@@ -14,7 +14,13 @@ abstract class ActivatedPower extends Power {
   def getMinRange: Int = minRange
   def getMaxRange: Int = maxRange
 
-  def usePower(attacker: Fighter, targetOption: Option[Fighter], board: Board): Unit = ??? //TODO default implementation of usePower
+  def usePower(attacker: Fighter, targetOption: Option[Fighter], board: Board): Unit = {
+    //Subclasses MUST override
+    val e0 = getEezoCost
+    if(attacker.canUseEezo(e0)) throw new UnsupportedOperationException("Fighter cannot use that much Eezo.")
+    attacker.loseEezo(e0)
+  }
+
   //Does this power need a target?
   def isTargeted: Boolean
 

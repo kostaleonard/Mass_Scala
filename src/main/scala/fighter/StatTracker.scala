@@ -35,6 +35,7 @@ class StatTracker {
   private var eezoRecoveryRateMax = 1
   private var eezoRecoveryRateGrowthRate = 1
   private var eezoRecoveryRateNumberOfLevelsBeforeIncrement = 1
+  private var eezoRecoveryRatePenaltyInReserve = 0 //This is to keep track of when the actual eezo recovery rate would go negative.
 
   def recoverEezo: Unit = eezoCurrent = (eezoCurrent + eezoRecoveryRateCurrent) min eezoMax
 
@@ -64,7 +65,7 @@ class StatTracker {
 
   def getEezoRecoveryRateCurrent: Int = eezoRecoveryRateCurrent
 
-  def isAlive: Boolean = this.hpCurrent <= 0
+  def isAlive: Boolean = this.hpCurrent > 0
 
   def getHpCurrent: Int = hpCurrent
 
@@ -115,6 +116,22 @@ class StatTracker {
   def loseEezo(amount: Int): Unit = {
     this.eezoCurrent -= amount
     this.eezoCurrent = this.eezoCurrent max 0
+  }
+
+  def takeEezoRechargePenalty(amount: Int): Unit = {
+    val newRate = eezoRecoveryRateCurrent - amount
+    if(newRate < 1) eezoRecoveryRatePenaltyInReserve -= (1 - newRate)
+    eezoRecoveryRateCurrent = newRate max 1
+  }
+
+  def removeEezoRechargePenalty(amount: Int): Unit = {
+    eezoRecoveryRateCurrent = (eezoRecoveryRateCurrent + amount) min eezoRecoveryRateMax
+    if(eezoRecoveryRatePenaltyInReserve < 0){
+      val amountThatCanBeTaken = eezoRecoveryRateCurrent - 1
+      val amountThatWillBeTaken = amountThatCanBeTaken min -eezoRecoveryRatePenaltyInReserve
+      eezoRecoveryRateCurrent -= amountThatWillBeTaken
+      eezoRecoveryRatePenaltyInReserve += amountThatWillBeTaken
+    }
   }
 
   def canUseEezo(amount: Int): Boolean = eezoCurrent >= amount

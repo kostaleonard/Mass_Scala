@@ -79,6 +79,12 @@ class Controller {
   def doTurn: Unit = {
     doPlayerTurn
     doEnemyTurn
+    recoverMovesAndActions
+  }
+
+  def recoverMovesAndActions: Unit = {
+    //Allow Fighters to recover moves and actions so that they can use them next turn.
+    model.recoverMovesAndActions
   }
 
   def doPlayerTurn: Unit = {
@@ -171,6 +177,7 @@ class Controller {
   }
 
   def doEnemyTurn: Unit = {
+    //TODO give this to an AI handler class
     def doRandomMove(fighter: Fighter): Unit = {
       val moveChoices = scala.util.Random.shuffle(model.getCurrentBoard.get.availableMoveLocations(fighter).toList)
       if(!moveChoices.isEmpty) model.getCurrentBoard.get.moveFighterTo(fighter, moveChoices.head)

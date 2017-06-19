@@ -80,7 +80,30 @@ class Board {
   }
 
   def doFighterAction(action: Action): Unit = {
+    //Do the action and check for any changes to the board (i.e. dead people)
     action.doAction
+    //Check for dead people
+    (playerParty.getFighters ++ enemyParty.getFighters).filter(!_.isAlive).foreach{ deadFighter =>
+      removeFighterFromBoard(deadFighter)
+      removeFighterFromParty(deadFighter)
+    }
+  }
+
+  def removeFighterFromBoard(fighter: Fighter): Unit = {
+    if(fighter.getLocation.inBounds(tiles)) {
+      val oldLoc = fighter.getLocation
+      //Check to make sure that the fighter on the tile is the one requested.
+      if (!tiles(oldLoc.row)(oldLoc.col).getFighter.contains(fighter))
+        throw new UnsupportedOperationException("The fighter on the tile is not the specified Fighter")
+      tiles(oldLoc.row)(oldLoc.col).setFighter(None)
+    }
+  }
+
+  def removeFighterFromParty(fighter: Fighter): Unit = {
+    //Party membership is mandatory!
+    if(playerParty.getFighters(fighter)) playerParty.removeFighter(fighter)
+    else if(enemyParty.getFighters(fighter)) enemyParty.removeFighter(fighter)
+    else throw new UnsupportedOperationException("Cannot remove Fighter from the Party because the fighter does not belong to a Party.")
   }
 
   def placePlayerPartyOnBoard(party: Party): Unit = {
@@ -112,7 +135,15 @@ class Board {
 
   def getTiles: Array[Array[Tile]] = tiles
 
-  def isActive: Boolean = enemyParty.getFighters.nonEmpty
+  //TODO add extra logic to isActive so that the board can have various objectives (seize, clear, survive)
+  def isActive: Boolean = playerParty.getFighters.nonEmpty && enemyParty.getFighters.nonEmpty
+
+  def getWinner: Option[Party] = {
+    //TODO add extra logic to the getWinner function once objectives are incorporated
+    if(isActive) None
+    else if(playerParty.getFighters.nonEmpty) Some(playerParty)
+    else Some(enemyParty)
+  }
 
   def availableMoveLocations(fighter: Fighter): scala.collection.immutable.Set[Location] = {
     //Returns the Set of all available move locations for this fighter on this board.

@@ -84,6 +84,16 @@ class Fighter(level: Int) {
     statTracker.setCurrentStatsToMax
   }
 
+  def getEezoCurrent: Int = statTracker.getEezoCurrent
+
+  def loseEezo(amount: Int): Unit = statTracker.loseEezo(amount)
+
+  def canUseEezo(amount: Int): Boolean = statTracker.canUseEezo(amount)
+
+  def takeEezoRechargePenalty(amount: Int): Unit = statTracker.takeEezoRechargePenalty(amount)
+
+  def removeEezoRechargePenalty(amount: Int): Unit = statTracker.removeEezoRechargePenalty(amount)
+
   def setEezoRecoveryRateCurrent(rate: Int): Unit = statTracker.setEezoRecoveryRateCurrent(rate)
 
   def getEezoRecoveryRateCurrent: Int = statTracker.getEezoRecoveryRateCurrent
@@ -183,6 +193,12 @@ class Fighter(level: Int) {
     setCanFighterMove(false)
   }
 
+  def recoverMovesAndActions: Unit = {
+    //Allow Fighters to recover moves and actions so that they can use them next turn.
+    setCanFighterAttack(true)
+    setCanFighterMove(true)
+  }
+
   def gainEXP(amount: Int): Unit = {
     this.expTracker.gainEXP(amount)
     if(this.expTracker.canLevelUp){
@@ -199,6 +215,12 @@ class Fighter(level: Int) {
     if(this.armor.nonEmpty && this.armor.get.isShieldActive) this.armor.get.takeShieldDamage(amount)
     else this.statTracker.takeHpDamage(amount)
   }
+
+  def getHpCurrent: Int = statTracker.getHpCurrent
+
+  def getHpMax: Int = statTracker.getHpMax
+
+  def isAlive: Boolean = statTracker.isAlive
 
   def getMovementCurrent: Int = statTracker.getMovementCurrent
 
