@@ -218,8 +218,8 @@ class Fighter(level: Int) {
     //TODO Fighter toString
     var s = name
     s += "(" + skillClass.toString + "): "
-    s += "\t"
     s += "HP=" + statTracker.getHpCurrent + "/" + statTracker.getHpMax
+    if(armor.nonEmpty) s += "(SH:" + armor.get.getShieldCurrent + "/" + armor.get.getShieldMax + ")"
     s += "\t"
     s += "E0=" + statTracker.getEezoCurrent + "/" + statTracker.getEezoMax
     s

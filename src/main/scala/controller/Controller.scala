@@ -158,12 +158,12 @@ class Controller {
     }
     def doRandomAction(fighter: Fighter): Unit = {
       val actionChoices = scala.util.Random.shuffle(model.getCurrentBoard.get.availableActions(fighter).toList)
-      if(!actionChoices.isEmpty) model.getCurrentBoard.get.doFighterAction(actionChoices.head)
-      //TODO remove print debugging:
-      System.out.println("===== Available Actions =====")
-      actionChoices.foreach(System.out.println)
-      System.out.println("===== Chosen Action =====")
-      System.out.println(actionChoices.head)
+      view.showAvailableActions(fighter, actionChoices.toSet)
+      if(!actionChoices.isEmpty){
+        view.showChosenAction(fighter, actionChoices.head)
+        model.getCurrentBoard.get.doFighterAction(actionChoices.head)
+      }
+
     }
     model.getCurrentBoard.get.getEnemyParty.getFighters.foreach{ f =>
       while(f.canMove) doRandomMove(f)

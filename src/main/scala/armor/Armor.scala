@@ -19,6 +19,12 @@ abstract class Armor {
   protected var turnsUntilShieldRecovery = 0
   protected val defaultTurnsUntilShieldRecovery = 3
 
+  def getArmorRating: Int = armorRating
+
+  def getShieldCurrent: Int = shieldCurrent
+
+  def getShieldMax: Int = shieldMax
+
   def armorProtectionModifier: Float = {
     //Returns the percent damage deflected by armor based on armor rating (from 0 to 1.0)
     val horizontalAsymptote = 100 //Cannot reach 100% damage

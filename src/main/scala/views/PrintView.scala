@@ -1,6 +1,8 @@
 package views
 
-import board.{Tile,GrassPlains, Mountains, Location}
+import actions.Action
+import board.{GrassPlains, Location, Mountains, Tile}
+import fighter.Fighter
 import model.Model
 
 /**
@@ -128,6 +130,16 @@ class PrintView(model: Model) extends View(model) {
         System.out.println
       case None => ;
     }
+  }
+
+  override def showAvailableActions(fighter: Fighter, actions: Set[Action]): Unit = {
+    System.out.println("===== Available Actions for " + fighter.toString + " =====")
+    actions.foreach(System.out.println)
+  }
+
+  override def showChosenAction(fighter: Fighter, action: Action): Unit = {
+    System.out.println("===== Chosen Action for " + fighter.toString + " =====")
+    System.out.println(action)
   }
 
   override def render: Unit = {
