@@ -135,6 +135,8 @@ class Board {
 
   def getTiles: Array[Array[Tile]] = tiles
 
+  def isClearOfEnemies: Boolean = enemyParty.getFighters.isEmpty
+
   //TODO add extra logic to isActive so that the board can have various objectives (seize, clear, survive)
   def isActive: Boolean = playerParty.getFighters.nonEmpty && enemyParty.getFighters.nonEmpty
 
