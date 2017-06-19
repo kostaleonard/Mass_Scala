@@ -11,5 +11,5 @@ class FragGrenade extends Grenade {
   ammunitionMax = 3
   ammunitionCurrent = ammunitionMax
 
-  override def toString: String = "M18 Fragmentation weapons.Grenade"
+  override def toString: String = "M18 Fragmentation Grenade"
 }
