@@ -218,7 +218,10 @@ class Fighter(level: Int) {
     //If there are no shields remaining, send damage to health.
     if(this.armor.nonEmpty && this.armor.get.isShieldActive) this.armor.get.takeShieldDamage(amount)
     else this.statTracker.takeHpDamage(amount)
+    delayShieldRecovery
   }
+
+  def delayShieldRecovery: Unit = if(armor.nonEmpty) armor.get.delayShieldRecovery
 
   def getHpCurrent: Int = statTracker.getHpCurrent
 
@@ -241,6 +244,12 @@ class Fighter(level: Int) {
   def moveTo(loc: Location): Unit = {
     setLocation(loc)
     setCanFighterMove(false)
+  }
+
+  def doTurnlyActions: Unit = {
+    //Allow Fighters to recover HP/shields, EEZO, and do any turnly effects.
+    statTracker.doTurnlyActions
+    if(armor.nonEmpty) armor.get.doTurnlyActions
   }
 
   override def toString: String = {

@@ -51,6 +51,10 @@ abstract class Armor {
 
   def getTurnsUntilShieldRecovery: Int = turnsUntilShieldRecovery
 
+  def delayShieldRecovery: Unit = setTurnsUntilShieldRecovery(defaultTurnsUntilShieldRecovery)
+
+  def approachShieldRecovery: Unit = if(getTurnsUntilShieldRecovery > 0) setTurnsUntilShieldRecovery(getTurnsUntilShieldRecovery - 1)
+
   def recoverShields: Unit = {
     //Assume that this was called because either:
     //1.canRecoverShields returns true (the Fighter has been undamaged for several turns).
@@ -58,6 +62,12 @@ abstract class Armor {
     //Does NOT set the turns to recovery to 0, by default.
     shieldCurrent += shieldRecoveryRateCurrent
     shieldCurrent = shieldCurrent min shieldMax
+  }
+
+  def doTurnlyActions: Unit = {
+    //Allow Fighters to recover HP/shields, EEZO, and do any turnly effects.
+    if(canRecoverShields) recoverShields
+    else approachShieldRecovery
   }
 
   //Abstract methods

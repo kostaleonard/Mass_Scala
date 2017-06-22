@@ -5,8 +5,10 @@ package armor
   */
 class N7Armor extends LightArmor {
   armorRating = 25
-  shieldCurrent = 30
   shieldMax = 30
+  shieldCurrent = shieldMax
+  shieldRecoveryRateStandard = 5
+  shieldRecoveryRateCurrent = shieldRecoveryRateStandard
 
-  override def toString: String = "N7 armor.Armor"
+  override def toString: String = "N7 Armor"
 }

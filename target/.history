@@ -149,3 +149,12 @@ run
 e
 run
 e
+clean
+compile
+run
+clean
+compile
+run
+clean
+compile
+run

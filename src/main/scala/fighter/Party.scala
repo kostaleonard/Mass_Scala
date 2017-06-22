@@ -29,4 +29,9 @@ class Party {
     //Allow Fighters to recover moves and actions so that they can use them next turn.
     fighters.foreach(_.recoverMovesAndActions)
   }
+
+  def doTurnlyActions: Unit = {
+    //Allow Fighters to recover HP/shields, EEZO, and do any turnly effects.
+    fighters.foreach(_.doTurnlyActions)
+  }
 }

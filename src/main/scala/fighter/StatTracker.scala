@@ -134,6 +134,11 @@ class StatTracker {
     }
   }
 
+  def doTurnlyActions: Unit = {
+    //Allow Fighters to recover HP/shields, EEZO, and do any turnly effects.
+    recoverEezo
+  }
+
   def canUseEezo(amount: Int): Boolean = eezoCurrent >= amount
 
   def calculateStats(level: Int, skillClass: SkillClass, powers: scala.collection.mutable.Set[Power]): Unit = {

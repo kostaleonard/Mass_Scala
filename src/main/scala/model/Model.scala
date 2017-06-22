@@ -82,6 +82,13 @@ class Model(profileName: String) {
     currentBoard.get.getEnemyParty.recoverMovesAndActions
   }
 
+  def doTurnlyEffects: Unit = {
+    //Allow Fighters to recover HP/shields, EEZO, and do any turnly effects.
+    if(currentBoard.isEmpty) throw new UnsupportedOperationException("Cannot do turnly actions on an empty board")
+    playerParty.doTurnlyActions
+    currentBoard.get.getEnemyParty.doTurnlyActions
+  }
+
   def copyBoard(boardName: String): Unit = {
     //TODO Load a default board and store it in this object.
   }

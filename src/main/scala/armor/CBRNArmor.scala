@@ -5,8 +5,10 @@ package armor
   */
 class CBRNArmor extends HeavyArmor {
   armorRating = 50
-  shieldCurrent = 50
   shieldMax = 50
+  shieldCurrent = shieldMax
+  shieldRecoveryRateStandard = 10
+  shieldRecoveryRateCurrent = shieldRecoveryRateStandard
 
-  override def toString: String = "CBRN armor.Armor"
+  override def toString: String = "CBRN Armor"
 }
