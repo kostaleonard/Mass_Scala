@@ -51,7 +51,7 @@ class Model(profileName: String) {
     if(currentBoard.isEmpty) throw new UnsupportedOperationException("Cannot get Fighter on empty board")
     currentBoard.get.fighterAt(from) match{
       case Some(fighter) => currentBoard.get.moveFighterTo(fighter, to)
-      case None => throw new UnsupportedOperationException("There is no fighter at the requested location")
+      case None => throw new UnsupportedOperationException("There is no fighter at the requested location: " + from.toString)
     }
   }
 

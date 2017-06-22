@@ -179,13 +179,17 @@ class Controller {
   def doEnemyTurn: Unit = {
     //TODO give this to an AI handler class
     def doRandomMove(fighter: Fighter): Unit = {
-      val moveChoices = scala.util.Random.shuffle(model.getCurrentBoard.get.availableMoveLocations(fighter).toList)
-      if(!moveChoices.isEmpty) model.getCurrentBoard.get.moveFighterTo(fighter, moveChoices.head)
+      val moveChoices = scala.util.Random.shuffle(model.getAvailableMoves(fighter).toList)
+      //if(moveChoices.nonEmpty) model.moveFighter(fighter.getLocation, moveChoices.head)
+      if(moveChoices.nonEmpty){
+        System.out.println(fighter.toString + " MOVED FROM " + fighter.getLocation + " TO " + moveChoices.head)
+        model.moveFighter(fighter.getLocation, moveChoices.head)
+      }
     }
     def doRandomAction(fighter: Fighter): Unit = {
-      val actionChoices = scala.util.Random.shuffle(model.getCurrentBoard.get.availableActions(fighter).toList)
+      val actionChoices = scala.util.Random.shuffle(model.getAvailableActions(fighter).toList)
       view.showAvailableActions(fighter, actionChoices.toSet)
-      if(!actionChoices.isEmpty){
+      if(actionChoices.nonEmpty){
         view.showChosenAction(fighter, actionChoices.head)
         model.doFighterAction(actionChoices.head)
       }

@@ -7,13 +7,6 @@ import fighter.Fighter
   * Created by Leonard on 6/4/2017.
   */
 abstract class ActivatedPower extends Power {
-  protected var damage = 0
-  protected var minRange = 0
-  protected var maxRange = 0
-
-  def getMinRange: Int = minRange
-  def getMaxRange: Int = maxRange
-
   def usePower(attacker: Fighter, targetOption: Option[Fighter], board: Board): Unit = {
     //Subclasses MUST override
     val e0 = getEezoCost
@@ -21,10 +14,10 @@ abstract class ActivatedPower extends Power {
     attacker.loseEezo(e0)
   }
 
-  //Does this power need a target?
-  def isTargeted: Boolean
-
   override def isPassive: Boolean = false
   override def isActivated: Boolean = true
   override def isSustained: Boolean = false
+
+  //Abstract methods:
+  def isTargeted: Boolean
 }

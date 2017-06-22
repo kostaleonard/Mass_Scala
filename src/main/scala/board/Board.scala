@@ -2,7 +2,8 @@ package board
 
 import actions._
 import fighter.{Fighter, Party}
-import powers.{ActivatedPower, PassivePower, SustainedPower}
+import interfaces.Ranged
+import powers._
 import weapons.{Grenade, Gun, MeleeWeapon}
 
 /**
@@ -71,7 +72,7 @@ class Board {
       val oldLoc = fighter.getLocation
       //Check to make sure that the fighter on the tile is the one requested.
       if(!tiles(oldLoc.row)(oldLoc.col).getFighter.contains(fighter))
-        throw new UnsupportedOperationException("The fighter on the tile is not the specified Fighter")
+        throw new UnsupportedOperationException("The fighter on the tile is not the specified Fighter. Expected " + fighter.toString + " but found " + tiles(oldLoc.row)(oldLoc.col).getFighter)
       tiles(oldLoc.row)(oldLoc.col).setFighter(None)
       tiles(newLoc.row)(newLoc.col).setFighter(Some(fighter))
       fighter.moveTo(newLoc)
@@ -152,7 +153,10 @@ class Board {
     if(!fighter.canMove) return scala.collection.immutable.Set.empty[Location]
     var result = scala.collection.immutable.Set.empty[Location]
     def addAvailableMoveLocations(loc: Location, distance: Int): Unit = {
-      if(distance >= 0 && loc.inBounds(tiles) && fighter.canCross(tiles(loc.row)(loc.col).getClass)){
+      if(distance >= 0 &&
+        loc.inBounds(tiles) &&
+        fighter.canCross(tiles(loc.row)(loc.col).getClass) &&
+        (tiles(loc.row)(loc.col).getFighter.isEmpty || tiles(loc.row)(loc.col).getFighter.get == fighter)){
         //If you can cross this tile, add it to the available move locations
         result += loc
         val movementCost = tiles(loc.row)(loc.col).getMovementCost
@@ -187,8 +191,9 @@ class Board {
         case sus: SustainedPower =>
           if(sus.isInUse) result += DiscontinueSustainedPower(sus, fighter)
           else result += UseSustainedPower(sus, fighter)
-        case act: ActivatedPower =>
-          if(!act.isTargeted) result += UseActivatedPower(act, fighter, None, this)
+        case unt: UntargetedActivatedPower =>
+          result += UseActivatedPower(unt, fighter, None, this)
+        case tar: TargetedActivatedPower => ;
         case _ => throw new UnsupportedOperationException("Unrecognized Power.")
       })
     }
@@ -203,16 +208,19 @@ class Board {
         //Add possible actions for this Tile
         val crowFliesDistance = fighter.getLocation.crowFliesDistance(loc)
         val targetOption = tiles(loc.row)(loc.col).getFighter
-        if(targetOption != None && onOppositeTeams(fighter, targetOption.get)) {
+        if(targetOption.nonEmpty && onOppositeTeams(fighter, targetOption.get)) {
           //Weapon Actions:
           usableWeapons
-            .filter(w => crowFliesDistance >= w.getMinRange && crowFliesDistance <= w.getMaxRange)
+            .filter(_.inRange(crowFliesDistance))
             .foreach(result += UseWeapon(_, fighter, targetOption.get, this))
           //Power Actions:
           usablePowers.foreach( p => p match{
-            case act: ActivatedPower =>
-              if(act.isTargeted && crowFliesDistance >= act.getMinRange && crowFliesDistance <= act.getMaxRange)
-                result += UseActivatedPower(act, fighter, targetOption, this)
+            case act: TargetedActivatedPower => act match{
+              case r: Ranged =>
+                if(r.inRange(crowFliesDistance))
+                  result += UseActivatedPower(act, fighter, targetOption, this)
+              case _ => result += UseActivatedPower(act, fighter, targetOption, this)
+            }
             case _ => ;
           })
         }
@@ -227,7 +235,7 @@ class Board {
     addWeaponReloadActions
     val maxWeaponRange = (scala.collection.immutable.Set(0) ++ fighter.getWeapons.map(_.getMaxRange)).max
     val maxPowerRange = (scala.collection.immutable.Set(0) ++ fighter.getPowers.map(_ match {
-      case act: ActivatedPower => if(act.isTargeted) act.getMaxRange else 0
+      case r: Ranged => r.getMaxRange
       case _ => 0
     })).max
     val maxRange = maxWeaponRange max maxPowerRange

@@ -1,13 +1,14 @@
 package powers
 import board.Board
+import interfaces.{Damager, Ranged}
 import fighter.Fighter
 
 /**
   * Created by Leonard on 6/4/2017.
   */
-class Inferno extends ActivatedPower {
+class Inferno extends TargetedActivatedPower with Damager with Ranged {
   eezoCost = 1
-  damage = 40
+  baseDamage = 40
   minRange = 1
   maxRange = 5
   protected var damageMultiplierToShielded = 0.5f
@@ -17,11 +18,10 @@ class Inferno extends ActivatedPower {
   protected var frozenTargetDamageBonus = 1.0f
 
   override def usePower(attacker: Fighter, targetOption: Option[Fighter], board: Board): Unit = {
+    if(targetOption.isEmpty) throw new UnsupportedOperationException("Inferno must be targeted.")
     super.usePower(attacker, targetOption, board)
-    ??? //TODO Inferno usePower implementation
+    doAttack(attacker, targetOption.get, board)
   }
-
-  override def isTargeted: Boolean = true
 
   override def toString: String = "Inferno"
 
@@ -56,7 +56,7 @@ class Inferno extends ActivatedPower {
   override def addChoiceEffect(choice: Int): Unit = choice match {
     case Power.LVL_1 => ; //unlocks power
     case Power.LVL_2 => eezoCost = (eezoCost * 0.7f).toInt
-    case Power.LVL_3 => damage = (damage * 1.3f).toInt
+    case Power.LVL_3 => baseDamage = (baseDamage * 1.3f).toInt
     case Power.LVL_4A => damageMultiplierToShielded = 1.0f
     case Power.LVL_4B => blastRadius += 1
     case Power.LVL_5A => lastingBurnDamage = 0.1f
