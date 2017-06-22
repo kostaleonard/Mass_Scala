@@ -17,7 +17,7 @@ abstract class ActivatedPower extends Power {
   def usePower(attacker: Fighter, targetOption: Option[Fighter], board: Board): Unit = {
     //Subclasses MUST override
     val e0 = getEezoCost
-    if(attacker.canUseEezo(e0)) throw new UnsupportedOperationException("Fighter cannot use that much Eezo.")
+    if(!attacker.canUseEezo(e0)) throw new UnsupportedOperationException("Fighter cannot use " + e0 + " Eezo.")
     attacker.loseEezo(e0)
   }
 

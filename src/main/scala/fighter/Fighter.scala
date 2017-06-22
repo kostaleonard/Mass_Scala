@@ -126,8 +126,8 @@ class Fighter(level: Int) {
   def canAttack: Boolean = this.statTracker.getCanFighterAttack
 
   def canUsePower(power: Power): Boolean = power.canUse && (power match {
-    case act: ActivatedPower => statTracker.canUseEezo(act.getEezoCost)
-    case sus: SustainedPower => if(sus.isInUse) true else statTracker.canUseEezo(sus.getEezoCost)
+    case act: ActivatedPower => canUseEezo(act.getEezoCost)
+    case sus: SustainedPower => if(sus.isInUse) true else canUseEezo(sus.getEezoCost)
     case pas: PassivePower => false
     case _ => throw new UnsupportedOperationException("Unrecognized Power type.")
   })

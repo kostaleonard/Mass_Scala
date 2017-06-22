@@ -36,6 +36,7 @@ abstract class Power {
   }
   def clearBonuses: Unit = bonuses.clear
   def levelUp(choice: Int): Unit = {
+    level += 1
     levelUpChoices.add(choice)
     addChoiceEffect(choice)
   }
