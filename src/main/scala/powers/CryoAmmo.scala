@@ -7,7 +7,12 @@ import interfaces.Freezer
   */
 class CryoAmmo extends AmmoPower with Freezer {
   eezoRechargePenalty = 5
-
+  chillChance = 10.0f
+  armorRatingPenalty = 20
+  movementPenalty = 1
+  enemyEezoRecoveryPenalty = 3
+  freezeDuration = 3
+  
   override def toString: String = "Cryo Ammo"
 
   override def getDescription: String = "Slow down and freeze enemies while crippling armor"
