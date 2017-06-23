@@ -253,7 +253,6 @@ class Fighter(level: Int) {
   }
 
   override def toString: String = {
-    //TODO Fighter toString
     var s = name
     s += "(" + skillClass.toString + "): "
     s += "HP=" + statTracker.getHpCurrent + "/" + statTracker.getHpMax

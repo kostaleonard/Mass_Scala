@@ -1,24 +1,24 @@
 package powers
 import board.Board
-import interfaces.{Damager, Ranged}
+import interfaces.{AreaOfEffect, Burner, Damager, Ranged}
 import fighter.Fighter
 
 /**
   * Created by Leonard on 6/4/2017.
   */
-class Inferno extends TargetedActivatedPower with Damager with Ranged {
+class Inferno extends TargetedActivatedPower with Damager with Ranged with Burner with AreaOfEffect {
   eezoCost = 1
   baseDamage = 40
   minRange = 1
   maxRange = 5
-  protected var damageMultiplierToShielded = 0.5f
-  protected var armorRatingPenalty = 50
-  protected var blastRadius = 1 //TODO add an AreaOfEffect interface so that you can call its useAoEPower implementation.
-  protected var lastingBurnDamage = 0.0f //TODO add Burn interface to add lasting burn effect
-  protected var frozenTargetDamageBonus = 1.0f
+  damageMultiplierToShields = 0.5f
+  burnChance = 1.0f
+  armorRatingPenalty = 50
+  burnDamagePerTurn = 0
+  burnDuration = 4
+  frozenTargetDamageBonus = 1.0f
 
   override def usePower(attacker: Fighter, targetOption: Option[Fighter], board: Board): Unit = {
-    if(targetOption.isEmpty) throw new UnsupportedOperationException("Inferno must be targeted.")
     super.usePower(attacker, targetOption, board)
     doAttack(attacker, targetOption.get, board)
   }
@@ -57,9 +57,9 @@ class Inferno extends TargetedActivatedPower with Damager with Ranged {
     case Power.LVL_1 => ; //unlocks power
     case Power.LVL_2 => eezoCost = (eezoCost * 0.7f).toInt
     case Power.LVL_3 => baseDamage = (baseDamage * 1.3f).toInt
-    case Power.LVL_4A => damageMultiplierToShielded = 1.0f
+    case Power.LVL_4A => damageMultiplierToShields = 1.0f
     case Power.LVL_4B => blastRadius += 1
-    case Power.LVL_5A => lastingBurnDamage = 0.1f
+    case Power.LVL_5A => burnDamagePerTurn = (baseDamage * 0.1f).toInt
     case Power.LVL_5B => eezoCost = (eezoCost * 0.4f).toInt
     case Power.LVL_6A => frozenTargetDamageBonus *= 2
     case Power.LVL_6B => armorRatingPenalty = (armorRatingPenalty * 1.5f).toInt

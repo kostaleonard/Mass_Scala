@@ -1,13 +1,12 @@
 package powers
 import fighter.Fighter
+import interfaces.Freezer
 
 /**
   * Created by Leonard on 6/4/2017.
   */
-class CryoAmmo extends AmmoPower {
+class CryoAmmo extends AmmoPower with Freezer {
   eezoRechargePenalty = 5
-  protected var chilledMovementPenalty = 1
-  protected var armorPenalty = 20
 
   override def toString: String = "Cryo Ammo"
 

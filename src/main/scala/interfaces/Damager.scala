@@ -9,6 +9,8 @@ import fighter.Fighter
 trait Damager {
   protected var baseDamage: Int = 0
   protected var accuracy: Float = 1.0f
+  protected var damageMultiplierToShields = 1.0f
+  protected var damageMultiplierToHp = 1.0f
 
   protected def accuracyCheck(attacker: Fighter, target: Fighter): Boolean = {
     //Returns true if the attack hit, based on accuracy.
@@ -22,9 +24,12 @@ trait Damager {
   def doAttack(attacker: Fighter, target: Fighter, board: Board): Unit = {
     //Default implementation may be overriden by subclasses for further functionality.
     //For example, subclasses may add effects to the attack, either to self or enemy.
-    val distance = attacker.crowFliesDistance(target)
+    def tryAreaOfEffect: Unit = this match{
+      case areaOfEffect: AreaOfEffect => ??? //TODO add area of effect to damage calculation
+    }
     if(accuracyCheck(attacker, target)) {
       target.takeDamage(this.getAttackDamage(attacker, target, board))
+      tryAreaOfEffect
     }
   }
 
@@ -37,11 +42,33 @@ trait Damager {
     //TODO update weapon attack damage as necessary
     var rollingDamageCalculation = 0
 
+    def tryBurner: Unit = this match{
+      case burner: Burner => ??? //TODO add burn damage to damage calculation
+    }
+    def tryElectrocuter: Unit = this match{
+      case electrocuter: Electrocuter => ??? //TODO add electrocuter to damage calculation
+    }
+    def tryFreezer: Unit = this match{
+      case freezer: Freezer => ??? //TODO add freezer to damage calculation
+    }
+    def tryBioticDetonator: Unit = this match{
+      case bioticDetonator: BioticDetonator => ??? //TODO add biotic detonation to damage calculation
+    }
+    def tryBioticInitiator: Unit = this match{
+      case bioticInitiator: BioticInitiator => ??? //TODO add biotic initiator to damage calculation
+    }
+
     //Armor
     target.getArmor match {
       case Some(armor) => rollingDamageCalculation = (baseDamage * (1.0f - armor.armorProtectionModifier)).toInt
       case None => rollingDamageCalculation = baseDamage
     }
+
+    //Shield/HP modifier
+    if(target.getArmor.nonEmpty && target.getArmor.get.getShieldCurrent > 0)
+      rollingDamageCalculation = (rollingDamageCalculation * damageMultiplierToShields).toInt
+    else
+      rollingDamageCalculation = (rollingDamageCalculation * damageMultiplierToHp).toInt
 
     //Tile modifiers
     rollingDamageCalculation =
@@ -49,7 +76,14 @@ trait Damager {
     rollingDamageCalculation =
       (rollingDamageCalculation / board.getTiles(target.getLocation.row)(target.getLocation.col).getDefenseModifier).toInt
 
-    //Other bonuses
+    //Interfaces
+    tryBurner
+    tryElectrocuter
+    tryFreezer
+    tryBioticDetonator
+    tryBioticInitiator
+
+    //Bonuses
     //TODO update weapon attack damage with bonuses
 
     rollingDamageCalculation max 1
