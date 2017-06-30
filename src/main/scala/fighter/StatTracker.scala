@@ -197,10 +197,12 @@ class StatTracker {
         }
       )
     }
+    def calculateStatsByEffects: Unit = {} //TODO calculateStatsByEffects
 
     calculateStatsBySkillClass
     calculateStatsByLevel
     calculateStatsByPowers
+    calculateStatsByEffects
   }
 
   def levelUp(currentLevel: Int): Unit = {

@@ -11,7 +11,9 @@ abstract class Armor {
   //More powerful armor should simply have a higher shield rating.
   //Armor rating determines the extent to which health/shield damage is blocked.
   //It should be used in the Weapon class's damage calculation.
-  protected var armorRating = 0
+  protected var armorRatingCurrent = 0
+  protected var armorRatingMax = 0
+  protected var armorRatingPenaltyInReserve = 0
   protected var shieldCurrent = 0
   protected var shieldMax = 0
   protected var shieldRecoveryRateCurrent = 0
@@ -19,7 +21,9 @@ abstract class Armor {
   protected var turnsUntilShieldRecovery = 0
   protected val defaultTurnsUntilShieldRecovery = 3
 
-  def getArmorRating: Int = armorRating
+  def getArmorRatingCurrent: Int = armorRatingCurrent
+
+  def getArmorRatingMax: Int = armorRatingMax
 
   def getShieldCurrent: Int = shieldCurrent
 
@@ -32,7 +36,7 @@ abstract class Armor {
     val protectionRateExponent = -0.008f //Must be negative. As this increases in magnitude, armorRating has more bang for the buck.
     val protectionRateBase = 2 //Increasing this makes lower armor rating more effective when compared to higher armor rating.
     val normalizer = 100.0f //Used to ensure that the return value falls between 0.0 and 1.0
-    ((horizontalAsymptote + yInterceptController * math.pow(protectionRateBase, protectionRateExponent * armorRating))/normalizer).toFloat
+    ((horizontalAsymptote + yInterceptController * math.pow(protectionRateBase, protectionRateExponent * armorRatingCurrent))/normalizer).toFloat
   }
 
   def isShieldActive: Boolean = this.shieldCurrent > 0
@@ -68,6 +72,22 @@ abstract class Armor {
     //Allow Fighters to recover HP/shields, EEZO, and do any turnly effects.
     if(canRecoverShields) recoverShields
     else approachShieldRecovery
+  }
+
+  def takeArmorRatingPenalty(amount: Int): Unit = {
+    val newRating = armorRatingCurrent - amount
+    if(newRating < 0) armorRatingPenaltyInReserve += newRating
+    armorRatingCurrent = newRating max 0
+  }
+
+  def removeArmorRatingPenalty(amount: Int): Unit = {
+    armorRatingCurrent = (armorRatingCurrent + amount) min armorRatingMax
+    if(armorRatingPenaltyInReserve < 0){
+      val amountThatCanBeTaken = armorRatingCurrent
+      val amountThatWillBeTaken = amountThatCanBeTaken min -armorRatingPenaltyInReserve
+      armorRatingCurrent -= amountThatWillBeTaken
+      armorRatingPenaltyInReserve += amountThatWillBeTaken
+    }
   }
 
   //Abstract methods

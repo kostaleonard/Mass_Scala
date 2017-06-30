@@ -5,6 +5,7 @@ import skillclasses.{Engineer, SkillClass, Soldier}
 import weapons._
 import powers.{ActivatedPower, PassivePower, Power, SustainedPower}
 import board.{Board, Location, Tile}
+import effects.Effect
 
 /**
   * Created by Leonard on 6/3/2017.
@@ -63,6 +64,7 @@ class Fighter(level: Int) {
   protected val expTracker: EXPTracker = EXPTracker.create(level)
   protected val statTracker = new StatTracker
   protected val powerTracker = new PowerTracker
+  protected val effectTracker = new EffectTracker
   protected var skillClass: SkillClass = new Soldier
   protected val weapons = scala.collection.mutable.Set.empty[Weapon]
   protected var armor: Option[Armor] = None: Option[Armor]
@@ -251,6 +253,16 @@ class Fighter(level: Int) {
     statTracker.doTurnlyActions
     if(armor.nonEmpty) armor.get.doTurnlyActions
   }
+
+  def addEffect(effect: Effect): Boolean = effectTracker.addEffect(effect)
+
+  def removeEffect(effect: Effect): Boolean = effectTracker.removeEffect(effect)
+
+  def takeArmorRatingPenalty(amount: Int) = if(armor.nonEmpty) armor.get.takeArmorRatingPenalty(amount)
+
+  def removeArmorRatingPenalty(amount: Int) = if(armor.nonEmpty) armor.get.removeArmorRatingPenalty(amount)
+
+  def getActiveEffects: scala.collection.mutable.Set[Effect] = effectTracker.getActiveEffects
 
   override def toString: String = {
     var s = name

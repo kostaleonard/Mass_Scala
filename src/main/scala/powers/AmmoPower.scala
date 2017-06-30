@@ -6,4 +6,5 @@ package powers
 abstract class AmmoPower extends SustainedPower {
   //Subclasses may override
   eezoRechargePenalty = 5
+  protected var damageBonus = 0
 }

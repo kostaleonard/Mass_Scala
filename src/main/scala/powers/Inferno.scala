@@ -7,16 +7,22 @@ import fighter.Fighter
   * Created by Leonard on 6/4/2017.
   */
 class Inferno extends TargetedActivatedPower with Damager with Ranged with Burner with AreaOfEffect {
+  //Power
   eezoCost = 1
+  //Damager
   baseDamage = 40
+  damageMultiplierToShields = 0.5f
+  //Ranged
   minRange = 1
   maxRange = 5
-  damageMultiplierToShields = 0.5f
+  //Burner
   burnChance = 1.0f
   armorRatingPenalty = 50
   burnDamagePerTurn = 0
   burnDuration = 4
   frozenTargetDamageBonus = 1.0f
+  //AreaOfEffect
+  blastRadius = 0
 
   override def usePower(attacker: Fighter, targetOption: Option[Fighter], board: Board): Unit = {
     super.usePower(attacker, targetOption, board)

@@ -43,7 +43,9 @@ trait Damager {
     var rollingDamageCalculation = 0
 
     def tryBurner: Unit = this match{
-      case burner: Burner => ??? //TODO add burn damage to damage calculation
+      case burner: Burner =>
+        if(burner.burnCheck) burner.doBurn(attacker, target, board)
+        rollingDamageCalculation = (rollingDamageCalculation * burner.getFrozenTargetDamageBonus).toInt
     }
     def tryElectrocuter: Unit = this match{
       case electrocuter: Electrocuter => ??? //TODO add electrocuter to damage calculation

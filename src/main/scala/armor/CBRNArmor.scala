@@ -4,7 +4,8 @@ package armor
   * Created by Leonard on 6/4/2017.
   */
 class CBRNArmor extends HeavyArmor {
-  armorRating = 50
+  armorRatingMax = 50
+  armorRatingCurrent = armorRatingMax
   shieldMax = 50
   shieldCurrent = shieldMax
   shieldRecoveryRateStandard = 10
