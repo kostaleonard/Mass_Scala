@@ -20,6 +20,8 @@ class StatTracker {
   private var eezoMax = 1
   private var movementCurrent = 1
   private var movementMax = 1
+  private var eezoRecoveryRateCurrent = 1
+  private var eezoRecoveryRateMax = 1
   private var canMove = true
   private var canAttack = true
   private val crossableTiles = StatTracker.DEFAULT_CROSSABLE_TILES
@@ -30,12 +32,12 @@ class StatTracker {
   private var eezoNumberOfLevelsBeforeIncrement = 1
   private var movementGrowthRate = 1
   private var movementNumberOfLevelsBeforeIncrement = 1
-  //Per turn recovery rate
-  private var eezoRecoveryRateCurrent = 1
-  private var eezoRecoveryRateMax = 1
   private var eezoRecoveryRateGrowthRate = 1
   private var eezoRecoveryRateNumberOfLevelsBeforeIncrement = 1
-  private var eezoRecoveryRatePenaltyInReserve = 0 //This is to keep track of when the actual eezo recovery rate would go negative.
+  //Penalties in reserve
+  //These are to keep track of when the respective stats would go negative.
+  private var eezoRecoveryRatePenaltyInReserve = 0
+  private var movementPenaltyInReserve = 0
 
   def recoverEezo: Unit = eezoCurrent = (eezoCurrent + eezoRecoveryRateCurrent) min eezoMax
 
@@ -57,13 +59,19 @@ class StatTracker {
 
   def setMovementMax(mo: Int): Unit = movementMax = mo
 
+  def setMovementCurrent(mo: Int): Unit = movementCurrent = mo
+
   def setMovementGrowthRate(mgr: Int): Unit = movementGrowthRate = mgr
 
   def setMovementNumberOfLevelsBeforeIncrement(levels: Int): Unit = movementNumberOfLevelsBeforeIncrement = levels
 
   def setEezoRecoveryRateCurrent(rate: Int): Unit = eezoRecoveryRateCurrent = rate
 
+  def setEezoRecoveryRateMax(rate: Int): Unit = eezoRecoveryRateMax = rate
+
   def getEezoRecoveryRateCurrent: Int = eezoRecoveryRateCurrent
+
+  def getEezoRecoveryRateMax: Int = eezoRecoveryRateMax
 
   def isAlive: Boolean = this.hpCurrent > 0
 
@@ -97,15 +105,14 @@ class StatTracker {
 
   def setCurrentStatsToMax: Unit = {
     //Set the current stats of this fighter to their maxes
-    def setHpToMax: Unit = hpCurrent = hpMax
-    def setEezoToMax: Unit = eezoCurrent = eezoMax
-    def setMovementToMax: Unit = movementCurrent = movementMax
-
-    setHpToMax
-    setEezoToMax
-    setMovementToMax
+    hpCurrent = hpMax
+    eezoCurrent = eezoMax
+    movementCurrent = movementMax
+    eezoRecoveryRateCurrent = eezoRecoveryRateMax
     canMove = true
     canAttack = true
+    eezoRecoveryRatePenaltyInReserve = 0
+    movementPenaltyInReserve = 0
   }
 
   def takeHpDamage(amount: Int): Unit = {
@@ -134,6 +141,22 @@ class StatTracker {
     }
   }
 
+  def takeMovementPenalty(amount: Int): Unit = {
+    val newRate = movementCurrent - amount
+    if(newRate < 1) movementPenaltyInReserve -= (1 - newRate)
+    movementCurrent = newRate max 1
+  }
+
+  def removeMovementPenalty(amount: Int): Unit = {
+    movementCurrent = (movementCurrent + amount) min movementMax
+    if(movementPenaltyInReserve < 0){
+      val amountThatCanBeTaken = movementCurrent - 1
+      val amountThatWillBeTaken = amountThatCanBeTaken min -movementPenaltyInReserve
+      movementCurrent -= amountThatWillBeTaken
+      movementPenaltyInReserve += amountThatWillBeTaken
+    }
+  }
+
   def doTurnlyActions: Unit = {
     //Allow Fighters to recover HP/shields, EEZO, and do any turnly effects.
     recoverEezo
@@ -142,10 +165,13 @@ class StatTracker {
   def canUseEezo(amount: Int): Boolean = eezoCurrent >= amount
 
   def calculateStats(level: Int, skillClass: SkillClass, powers: scala.collection.mutable.Set[Power]): Unit = {
+    //TODO figure out if calculateStats is screwed up when I actually start using it
     //TODO incorporate race into this calculation
-    //Change stats to the appropriate amounts based on level, skillClass, race, and powers
-    //This should be recalculated any time one of the above parameters changes
+    //Change stats to the appropriate amounts based on level, skillClass, race, and powers.
+    //This should be recalculated any time one of the above parameters changes.
     //i.e. leveling up, change of skill class, change of race, change or leveling up of powers
+    //Could be initiated during battle, so may/should not modify current stats (only max stats).
+    //In general, this should not be done during battle--no need to keep recalculating these stats.
     def calculateStatsBySkillClass: Unit = {
       setHpMax(skillClass.getBaseHp)
       setHpGrowthRate(skillClass.getHpGrowthRate)
@@ -197,12 +223,10 @@ class StatTracker {
         }
       )
     }
-    def calculateStatsByEffects: Unit = {} //TODO calculateStatsByEffects
 
     calculateStatsBySkillClass
     calculateStatsByLevel
     calculateStatsByPowers
-    calculateStatsByEffects
   }
 
   def levelUp(currentLevel: Int): Unit = {
@@ -211,10 +235,19 @@ class StatTracker {
     def levelUpEezo: Unit =
       if(currentLevel % eezoNumberOfLevelsBeforeIncrement == 0) setEezoMax(getEezoMax + eezoGrowthRate)
     def levelUpMovement: Unit =
-      if(currentLevel % movementNumberOfLevelsBeforeIncrement == 0) setMovementMax(getMovementMax + movementGrowthRate)
+      if(currentLevel % movementNumberOfLevelsBeforeIncrement == 0) {
+        setMovementMax(getMovementMax + movementGrowthRate)
+        setMovementCurrent(getMovementCurrent + movementGrowthRate)
+      }
+    def levelUpEezoRecoveryRate: Unit =
+      if(currentLevel % eezoRecoveryRateNumberOfLevelsBeforeIncrement == 0) {
+        setEezoRecoveryRateMax(getEezoRecoveryRateMax + eezoRecoveryRateGrowthRate)
+        setEezoRecoveryRateCurrent(getEezoRecoveryRateCurrent + eezoRecoveryRateCurrent)
+      }
 
     levelUpHp
     levelUpEezo
     levelUpMovement
+    levelUpEezoRecoveryRate
   }
 }

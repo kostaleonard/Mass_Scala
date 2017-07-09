@@ -7,11 +7,11 @@ import interfaces.Freezer
   */
 class CryoAmmo extends AmmoPower with Freezer {
   //Power
-  eezoRechargePenalty = 5
+  eezoRechargePenalty = 2
   //AmmoPower
   damageBonus = 1
   //Freezer
-  chillChance = 10.0f
+  chillChance = 0.1f
   armorRatingPenalty = 20
   movementPenalty = 1
   enemyEezoRecoveryPenalty = 3

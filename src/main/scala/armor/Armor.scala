@@ -11,13 +11,14 @@ abstract class Armor {
   //More powerful armor should simply have a higher shield rating.
   //Armor rating determines the extent to which health/shield damage is blocked.
   //It should be used in the Weapon class's damage calculation.
+  protected var shieldCurrent = 0
+  protected var shieldMax = 0
   protected var armorRatingCurrent = 0
   protected var armorRatingMax = 0
   protected var armorRatingPenaltyInReserve = 0
-  protected var shieldCurrent = 0
-  protected var shieldMax = 0
   protected var shieldRecoveryRateCurrent = 0
   protected var shieldRecoveryRateStandard = 0
+  protected var shieldRecoveryRatePenaltyInReserve = 0
   protected var turnsUntilShieldRecovery = 0
   protected val defaultTurnsUntilShieldRecovery = 3
 
@@ -87,6 +88,22 @@ abstract class Armor {
       val amountThatWillBeTaken = amountThatCanBeTaken min -armorRatingPenaltyInReserve
       armorRatingCurrent -= amountThatWillBeTaken
       armorRatingPenaltyInReserve += amountThatWillBeTaken
+    }
+  }
+
+  def takeShieldRecoveryRatePenalty(amount: Int): Unit = {
+    val newRating = shieldRecoveryRateCurrent - amount
+    if(newRating < 0) shieldRecoveryRatePenaltyInReserve += newRating
+    shieldRecoveryRateCurrent = newRating max 0
+  }
+
+  def removeShieldRecoveryRatePenalty(amount: Int): Unit = {
+    shieldRecoveryRateCurrent = (shieldRecoveryRateCurrent + amount) min shieldRecoveryRateStandard
+    if(shieldRecoveryRatePenaltyInReserve < 0){
+      val amountThatCanBeTaken = shieldRecoveryRateCurrent
+      val amountThatWillBeTaken = amountThatCanBeTaken min -shieldRecoveryRatePenaltyInReserve
+      shieldRecoveryRateCurrent -= amountThatWillBeTaken
+      shieldRecoveryRatePenaltyInReserve += amountThatWillBeTaken
     }
   }
 

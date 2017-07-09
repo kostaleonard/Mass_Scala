@@ -24,13 +24,39 @@ trait Damager {
   def doAttack(attacker: Fighter, target: Fighter, board: Board): Unit = {
     //Default implementation may be overriden by subclasses for further functionality.
     //For example, subclasses may add effects to the attack, either to self or enemy.
-    def tryAreaOfEffect: Unit = this match{
-      case areaOfEffect: AreaOfEffect => ??? //TODO add area of effect to damage calculation
-    }
     if(accuracyCheck(attacker, target)) {
       target.takeDamage(this.getAttackDamage(attacker, target, board))
-      tryAreaOfEffect
+      tryAddEffects(attacker, target, board)
+      tryAreaOfEffect(attacker, target, board)
     }
+  }
+
+  protected def tryAddEffects(attacker: Fighter, target: Fighter, board: Board): Unit = {
+    def tryAddBurner: Unit = this match{
+      case burner: Burner => if(burner.burnCheck) burner.doBurn(attacker, target, board)
+    }
+    def tryAddElectrocuter: Unit = this match{
+      case electrocuter: Electrocuter => if(electrocuter.electrocuteCheck) electrocuter.doElectrocute(attacker, target, board)
+    }
+    def tryAddFreezer: Unit = this match{
+      case freezer: Freezer => if(freezer.chillCheck) freezer.doChill(attacker, target, board)
+    }
+    def tryAddBleeding: Unit = this match{
+      case bleeder: Bleeder => if(bleeder.bleedCheck) bleeder.doBleed(attacker, target, board)
+    }
+    def tryAddBioticInitiator: Unit = this match{
+      case bioticInitiator: BioticInitiator => bioticInitiator.doBioticInitiator(attacker, target, board)
+    }
+
+    tryAddBurner
+    tryAddElectrocuter
+    tryAddFreezer
+    tryAddBleeding
+    tryAddBioticInitiator
+  }
+
+  protected def tryAreaOfEffect(attacker: Fighter, target: Fighter, board: Board): Unit = this match{
+    case areaOfEffect: AreaOfEffect => ??? //TODO add area of effect to damager
   }
 
   def getAttackDamage(attacker: Fighter, target: Fighter, board: Board): Int = {
@@ -41,24 +67,6 @@ trait Damager {
     //If the target is not wearing any armor, this attack should do the base damage (plus Bonuses).
     //TODO update weapon attack damage as necessary
     var rollingDamageCalculation = 0
-
-    def tryBurner: Unit = this match{
-      case burner: Burner =>
-        if(burner.burnCheck) burner.doBurn(attacker, target, board)
-        rollingDamageCalculation = (rollingDamageCalculation * burner.getFrozenTargetDamageBonus).toInt
-    }
-    def tryElectrocuter: Unit = this match{
-      case electrocuter: Electrocuter => ??? //TODO add electrocuter to damage calculation
-    }
-    def tryFreezer: Unit = this match{
-      case freezer: Freezer => ??? //TODO add freezer to damage calculation
-    }
-    def tryBioticDetonator: Unit = this match{
-      case bioticDetonator: BioticDetonator => ??? //TODO add biotic detonation to damage calculation
-    }
-    def tryBioticInitiator: Unit = this match{
-      case bioticInitiator: BioticInitiator => ??? //TODO add biotic initiator to damage calculation
-    }
 
     //Armor
     target.getArmor match {
@@ -79,11 +87,24 @@ trait Damager {
       (rollingDamageCalculation / board.getTiles(target.getLocation.row)(target.getLocation.col).getDefenseModifier).toInt
 
     //Interfaces
-    tryBurner
-    tryElectrocuter
-    tryFreezer
-    tryBioticDetonator
-    tryBioticInitiator
+    def tryBurnFreezeCombo: Unit = this match {
+      case burner: Burner =>
+        if(target.isChilled) rollingDamageCalculation = (rollingDamageCalculation * burner.getFrozenTargetDamageBonus).toInt
+    }
+    def tryElectrocuteExplosionCombo: Unit = this match {
+      case electrocuter: Electrocuter =>
+        if(target.isBurned) rollingDamageCalculation += electrocuter.getTechExplosionDamage
+    }
+    def tryBioticDetonation: Unit = this match {
+      case detonator: BioticDetonator => if(detonator.comboCheck(target)){
+        rollingDamageCalculation += detonator.getBioticDetonationDamage(target)
+        target.clearBioticInitiators
+      }
+    }
+
+    tryBurnFreezeCombo
+    tryElectrocuteExplosionCombo
+    tryBioticDetonation
 
     //Bonuses
     //TODO update weapon attack damage with bonuses

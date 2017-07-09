@@ -5,7 +5,7 @@ import skillclasses.{Engineer, SkillClass, Soldier}
 import weapons._
 import powers.{ActivatedPower, PassivePower, Power, SustainedPower}
 import board.{Board, Location, Tile}
-import effects.Effect
+import effects.{BioticInitiatorEffect, Effect}
 
 /**
   * Created by Leonard on 6/3/2017.
@@ -97,6 +97,10 @@ class Fighter(level: Int) {
   def takeEezoRechargePenalty(amount: Int): Unit = statTracker.takeEezoRechargePenalty(amount)
 
   def removeEezoRechargePenalty(amount: Int): Unit = statTracker.removeEezoRechargePenalty(amount)
+
+  def takeMovementPenalty(amount: Int): Unit = statTracker.takeMovementPenalty(amount)
+
+  def removeMovementPenalty(amount: Int): Unit = statTracker.removeMovementPenalty(amount)
 
   def setEezoRecoveryRateCurrent(rate: Int): Unit = statTracker.setEezoRecoveryRateCurrent(rate)
 
@@ -258,11 +262,29 @@ class Fighter(level: Int) {
 
   def removeEffect(effect: Effect): Boolean = effectTracker.removeEffect(effect)
 
+  def clearBioticInitiators: Unit = effectTracker.clearBioticInitiators
+
+  def clearAllEffects: Unit = effectTracker.clearAllEffects
+
   def takeArmorRatingPenalty(amount: Int) = if(armor.nonEmpty) armor.get.takeArmorRatingPenalty(amount)
 
   def removeArmorRatingPenalty(amount: Int) = if(armor.nonEmpty) armor.get.removeArmorRatingPenalty(amount)
 
+  def takeShieldRecoveryRatePenalty(amount: Int): Unit = if(armor.nonEmpty) armor.get.takeShieldRecoveryRatePenalty(amount)
+
+  def removeShieldRecoveryRatePenalty(amount: Int): Unit = if(armor.nonEmpty) armor.get.removeShieldRecoveryRatePenalty(amount)
+
   def getActiveEffects: scala.collection.mutable.Set[Effect] = effectTracker.getActiveEffects
+
+  def isBurned: Boolean = effectTracker.isBurned
+
+  def isChilled: Boolean = effectTracker.isChilled
+
+  def isBleeding: Boolean = effectTracker.isBleeding
+
+  def isElectrocuted: Boolean = effectTracker.isElectrocuted
+
+  def getActiveBioticInitiators: scala.collection.mutable.Set[BioticInitiatorEffect] = effectTracker.getActiveBioticInitiators
 
   override def toString: String = {
     var s = name

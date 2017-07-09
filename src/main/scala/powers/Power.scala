@@ -40,6 +40,7 @@ abstract class Power {
     levelUpChoices.add(choice)
     addChoiceEffect(choice)
   }
+  def isSamePower(other: Power): Boolean = toString.equals(other.toString)
 
   //Abstract methods
   override def toString: String

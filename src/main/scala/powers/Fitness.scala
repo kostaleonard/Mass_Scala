@@ -12,11 +12,11 @@ class Fitness extends PassivePower {
     case Power.LVL_1 => "Fitness"
     case Power.LVL_2 => "Durability"
     case Power.LVL_3 => "Melee Damage"
-    case Power.LVL_4A => "CQB Mastery"
+    case Power.LVL_4A => "Melee Mastery"
     case Power.LVL_4B => "Endurance"
     case Power.LVL_5A => "Light Armor"
     case Power.LVL_5B => "Heavy Armor"
-    case Power.LVL_6A => "Martial Artist"
+    case Power.LVL_6A => "Striker"
     case Power.LVL_6B => "Tank"
     case _ => ???
   }

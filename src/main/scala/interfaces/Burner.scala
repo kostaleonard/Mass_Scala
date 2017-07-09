@@ -16,18 +16,12 @@ trait Burner {
 
   def getFrozenTargetDamageBonus: Float = frozenTargetDamageBonus
 
-  protected def isBurned(fighter: Fighter): Boolean = fighter.getActiveEffects.exists(effect => effect match{
-    case b: Burned => true
-    case _ => false
-  })
-
   def burnCheck: Boolean = math.random < burnChance
 
   def doBurn(attacker: Fighter, target: Fighter, board: Board): Unit = {
-    if(!isBurned(target)){
+    if(!target.isBurned){
       val burned = Burned(target, burnDuration, armorRatingPenalty, burnDamagePerTurn)
       target.addEffect(burned)
-      burned.doInitialAction
     }
   }
 }
