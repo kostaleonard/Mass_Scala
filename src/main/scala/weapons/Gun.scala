@@ -15,8 +15,26 @@ abstract class Gun extends Weapon {
 
   override def doAttack(attacker: Fighter, target: Fighter, board: Board): Unit = {
     if(!isLoaded) throw new UnsupportedOperationException("Cannot fire an unloaded gun.")
-    super.doAttack(attacker, target, board)
+    activeAmmoPower match {
+      case None => super.doAttack(attacker, target, board)
+      case Some(ammoPower) => doAttackWithAmmoPower(attacker, target, board)
+    }
     usesUntilReloadCurrent -= 1
+  }
+
+  protected def doAttackWithAmmoPower(attacker: Fighter, target: Fighter, board: Board): Unit = {
+    //Both this Gun and the activeAmmoPower are instances of Damager.
+    //So, both must do their damage and effects.
+    //We must do this carefully.
+    if(accuracyCheck(attacker, target)) {
+      val weaponDamage = this.getAttackDamage(attacker, target, board)
+      val ammoDamage = activeAmmoPower.map(_.getAttackDamage(attacker, target, board))
+      target.takeDamage(this.getAttackDamage(attacker, target, board))
+      tryAddEffects(attacker, target, board)
+      activeAmmoPower.map(_.tryAddEffects(attacker, target, board))
+      tryAreaOfEffect(attacker, target, board)
+      activeAmmoPower.map(_.tryAreaOfEffect(attacker, target, board))
+    }
   }
 
   def getUsesUntilReloadCurrent: Int = usesUntilReloadCurrent
@@ -26,6 +44,10 @@ abstract class Gun extends Weapon {
   def setUsesUntilReloadCurrent(turns: Int): Unit = usesUntilReloadCurrent = turns
 
   def setUsesUntilReloadMax(turns: Int): Unit = usesUntilReloadMax = turns
+
+  def getActiveAmmoPower: Option[AmmoPower] = activeAmmoPower
+
+  def setActiveAmmoPower(opt: Option[AmmoPower]): Unit = activeAmmoPower = opt
 
   def isLoaded: Boolean = {
     //Returns true if this weapon has ammunition that can be used right now.

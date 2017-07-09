@@ -8,8 +8,11 @@ import interfaces.Freezer
 class CryoAmmo extends AmmoPower with Freezer {
   //Power
   eezoRechargePenalty = 2
-  //AmmoPower
-  damageBonus = 1
+  //Damager
+  baseDamage = 2
+  accuracy = 1.0f //This should never change, because the ammo power will always hit
+  damageMultiplierToShields = 1.0f
+  damageMultiplierToHp = 1.0f
   //Freezer
   chillChance = 0.1f
   armorRatingPenalty = 20
@@ -58,16 +61,5 @@ class CryoAmmo extends AmmoPower with Freezer {
     case Power.LVL_6A => ???
     case Power.LVL_6B => ???
     case _ => ???
-  }
-
-  override def usePower(attacker: Fighter): Unit = {
-    //Other effects (actual damage changes/chill) will be handled by Weapon.
-    super.usePower(attacker)
-    //TODO add more logic here for using the CryoAmmo Power
-  }
-
-  override def discontinuePower(attacker: Fighter): Unit = {
-    super.discontinuePower(attacker)
-    //TODO add more logic here for using the CryoAmmo Power
   }
 }

@@ -19,6 +19,7 @@ abstract class SustainedPower extends Power {
 
   def usePower(attacker: Fighter): Unit = {
     //Subclasses MUST override
+    if(isInUse) throw new UnsupportedOperationException("Cannot reuse a SustainedPower when it is already in use.")
     val e0 = getEezoCost
     if(!attacker.canUseEezo(e0)) throw new UnsupportedOperationException("Fighter cannot use " + e0 + " Eezo.")
     inUse = true
@@ -28,6 +29,7 @@ abstract class SustainedPower extends Power {
 
   def discontinuePower(attacker: Fighter): Unit = {
     //Subclasses MUST override
+    if(!isInUse) throw new UnsupportedOperationException("Cannot discontinue a SustainedPower when it is not in use.")
     inUse = false
     attacker.removeEezoRechargePenalty(getEezoRechargePenalty)
   }

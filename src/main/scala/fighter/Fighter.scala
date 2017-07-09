@@ -3,7 +3,7 @@ package fighter
 import armor.{Armor, CBRNArmor, N7Armor}
 import skillclasses.{Engineer, SkillClass, Soldier}
 import weapons._
-import powers.{ActivatedPower, PassivePower, Power, SustainedPower}
+import powers._
 import board.{Board, Location, Tile}
 import effects.{BioticInitiatorEffect, Effect}
 
@@ -66,7 +66,7 @@ class Fighter(level: Int) {
   protected val powerTracker = new PowerTracker
   protected val effectTracker = new EffectTracker
   protected var skillClass: SkillClass = new Soldier
-  protected val weapons = scala.collection.mutable.Set.empty[Weapon]
+  protected val weapons = scala.collection.mutable.Set.empty[Weapon] //TODO make this into a WeaponTracker
   protected var armor: Option[Armor] = None: Option[Armor]
   protected var location = Location(0, 0)
   //TODO add race
@@ -109,6 +109,8 @@ class Fighter(level: Int) {
   def getArmor: Option[Armor] = armor
 
   def getPowers: scala.collection.mutable.Set[Power] = powerTracker.getPowers
+
+  def getSustainedPowersInUse: scala.collection.mutable.Set[SustainedPower] = powerTracker.getSustainedPowersInUse
 
   def learnPower(power: Power): Unit = powerTracker.learnPower(power)
 
@@ -285,6 +287,16 @@ class Fighter(level: Int) {
   def isElectrocuted: Boolean = effectTracker.isElectrocuted
 
   def getActiveBioticInitiators: scala.collection.mutable.Set[BioticInitiatorEffect] = effectTracker.getActiveBioticInitiators
+
+  def setActiveAmmoPower(ammoPower: Option[AmmoPower]): Unit = {
+    //All Guns in the inventory will get the same AmmoPower.
+    //However, a Gun may NOT get the same AmmoPower if it is added to the inventory ex post facto.
+    //This might be the case if the Gun is found during the mission somehow.
+    weapons.filter(_.isGun).foreach(weapon => weapon match {
+      case g: Gun => g.setActiveAmmoPower(ammoPower)
+      case _ => ???
+    })
+  }
 
   override def toString: String = {
     var s = name
