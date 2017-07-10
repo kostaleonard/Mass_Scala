@@ -28,6 +28,7 @@ trait Damager {
       target.takeDamage(this.getAttackDamage(attacker, target, board))
       tryAddEffects(attacker, target, board)
       tryAreaOfEffect(attacker, target, board)
+      if(!target.isAlive) attacker.gainEXP(target.expGivenToVictoriousFighter)
     }
   }
 

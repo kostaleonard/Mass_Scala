@@ -34,6 +34,7 @@ abstract class Gun extends Weapon {
       activeAmmoPower.map(_.tryAddEffects(attacker, target, board))
       tryAreaOfEffect(attacker, target, board)
       activeAmmoPower.map(_.tryAreaOfEffect(attacker, target, board))
+      if(!target.isAlive) attacker.gainEXP(target.expGivenToVictoriousFighter)
     }
   }
 

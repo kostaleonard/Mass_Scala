@@ -122,6 +122,9 @@ class Fighter(level: Int) {
 
   def setLocation(loc: Location): Unit = location = loc
 
+  //TODO calculate the damage given to the Fighter that kills you (also better name?)
+  def expGivenToVictoriousFighter: Int = 50
+
   def crowFliesDistance(other: Fighter): Int = {
     //Returns the distance as the crow flies from this to other.
     //Used to make sure that weapons are not firing outside of their designated range.
