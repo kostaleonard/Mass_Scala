@@ -18,7 +18,7 @@ class Inferno extends TargetedActivatedPower with Damager with Ranged with Burne
   //Burner
   burnChance = 1.0f
   armorRatingPenalty = 50
-  burnDamagePerTurn = 0
+  burnDamagePerTurn = 2
   burnDuration = 4
   frozenTargetDamageBonus = 1.0f
   //AreaOfEffect

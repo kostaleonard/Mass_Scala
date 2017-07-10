@@ -258,11 +258,12 @@ class Fighter(level: Int) {
     //Allow Fighters to recover HP/shields, EEZO, and do any turnly effects.
     statTracker.doTurnlyActions
     if(armor.nonEmpty) armor.get.doTurnlyActions
+    effectTracker.doTurnlyActions
   }
 
-  def addEffect(effect: Effect): Boolean = effectTracker.addEffect(effect)
+  def addEffect(effect: Effect): Boolean = effectTracker.addEffectDoAction(effect)
 
-  def removeEffect(effect: Effect): Boolean = effectTracker.removeEffect(effect)
+  def removeEffect(effect: Effect): Boolean = effectTracker.removeEffectDoAction(effect)
 
   def clearBioticInitiators: Unit = effectTracker.clearBioticInitiators
 
@@ -305,6 +306,8 @@ class Fighter(level: Int) {
     if(armor.nonEmpty) s += "(SH:" + armor.get.getShieldCurrent + "/" + armor.get.getShieldMax + ")"
     s += " "
     s += "E0=" + statTracker.getEezoCurrent + "/" + statTracker.getEezoMax
+    val effects = getActiveEffects
+    if(effects.nonEmpty) s += effects.mkString(" [", ",", "]")
     s
   }
 }

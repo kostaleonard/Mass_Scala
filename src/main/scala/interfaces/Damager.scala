@@ -31,21 +31,26 @@ trait Damager {
     }
   }
 
-  protected def tryAddEffects(attacker: Fighter, target: Fighter, board: Board): Unit = {
+  def tryAddEffects(attacker: Fighter, target: Fighter, board: Board): Unit = {
     def tryAddBurner: Unit = this match{
       case burner: Burner => if(burner.burnCheck) burner.doBurn(attacker, target, board)
+      case _ => ;
     }
     def tryAddElectrocuter: Unit = this match{
       case electrocuter: Electrocuter => if(electrocuter.electrocuteCheck) electrocuter.doElectrocute(attacker, target, board)
+      case _ => ;
     }
     def tryAddFreezer: Unit = this match{
       case freezer: Freezer => if(freezer.chillCheck) freezer.doChill(attacker, target, board)
+      case _ => ;
     }
     def tryAddBleeding: Unit = this match{
       case bleeder: Bleeder => if(bleeder.bleedCheck) bleeder.doBleed(attacker, target, board)
+      case _ => ;
     }
     def tryAddBioticInitiator: Unit = this match{
       case bioticInitiator: BioticInitiator => bioticInitiator.doBioticInitiator(attacker, target, board)
+      case _ => ;
     }
 
     tryAddBurner
@@ -55,8 +60,9 @@ trait Damager {
     tryAddBioticInitiator
   }
 
-  protected def tryAreaOfEffect(attacker: Fighter, target: Fighter, board: Board): Unit = this match{
-    case areaOfEffect: AreaOfEffect => ??? //TODO add area of effect to damager
+  def tryAreaOfEffect(attacker: Fighter, target: Fighter, board: Board): Unit = this match{
+    case areaOfEffect: AreaOfEffect => ; //TODO add area of effect to damager
+    case _ => ;
   }
 
   def getAttackDamage(attacker: Fighter, target: Fighter, board: Board): Int = {
@@ -90,16 +96,19 @@ trait Damager {
     def tryBurnFreezeCombo: Unit = this match {
       case burner: Burner =>
         if(target.isChilled) rollingDamageCalculation = (rollingDamageCalculation * burner.getFrozenTargetDamageBonus).toInt
+      case _ => ;
     }
     def tryElectrocuteExplosionCombo: Unit = this match {
       case electrocuter: Electrocuter =>
         if(target.isBurned) rollingDamageCalculation += electrocuter.getTechExplosionDamage
+      case _ => ;
     }
     def tryBioticDetonation: Unit = this match {
       case detonator: BioticDetonator => if(detonator.comboCheck(target)){
         rollingDamageCalculation += detonator.getBioticDetonationDamage(target)
         target.clearBioticInitiators
       }
+      case _ => ;
     }
 
     tryBurnFreezeCombo

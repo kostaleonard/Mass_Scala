@@ -10,14 +10,14 @@ class EffectTracker {
 
   def getActiveEffects: scala.collection.mutable.Set[Effect] = activeEffects
 
-  def addEffect(effect: Effect): Boolean = {
+  def addEffectDoAction(effect: Effect): Boolean = {
     if(!effect.canStack && activeEffects.exists(_.isSameEffect(effect)))
       throw new UnsupportedOperationException("Cannot add multiple instances of " + effect.toString)
     effect.doInitialAction
     activeEffects.add(effect)
   }
 
-  def removeEffect(effect: Effect): Boolean = {
+  def removeEffectDoAction(effect: Effect): Boolean = {
     effect.doRemovalAction
     activeEffects.remove(effect)
   }
@@ -61,5 +61,19 @@ class EffectTracker {
     activeEffects
       .filter(isBioticInitiator)
       .map[BioticInitiatorEffect, scala.collection.mutable.Set[BioticInitiatorEffect]](asBioticInitiator)
+  }
+
+  def doTurnlyActions: Unit = {
+    activeEffects.foreach{ effect =>
+      effect.doTurnAction
+      val newEffectOption = effect.decrementTurnsRemaining
+      newEffectOption match{
+        case Some(newEffect) =>
+          activeEffects.remove(effect)
+          activeEffects.add(newEffect)
+        case None =>
+          removeEffectDoAction(effect)
+      }
+    }
   }
 }
