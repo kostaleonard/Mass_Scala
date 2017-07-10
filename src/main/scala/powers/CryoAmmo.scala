@@ -28,38 +28,38 @@ class CryoAmmo extends AmmoPower with Freezer {
     case Power.LVL_1 => "Cryo Ammo"
     case Power.LVL_2 => "Slow"
     case Power.LVL_3 => "Anti-Armor"
-    case Power.LVL_4A => "Max Eezo Penalty"
-    case Power.LVL_4B => "Eezo Recharge Penalty"
-    case Power.LVL_5A => ???
-    case Power.LVL_5B => ???
-    case Power.LVL_6A => ???
-    case Power.LVL_6B => ???
+    case Power.LVL_4A => "Chill Chance"
+    case Power.LVL_4B => "Chill Duration"
+    case Power.LVL_5A => "Chill Chance"
+    case Power.LVL_5B => "Gun Damage Bonus"
+    case Power.LVL_6A => "Warhead"
+    case Power.LVL_6B => "Frostbite"
     case _ => ???
   }
 
   override def choiceDescription(choice: Int): String = choice match {
-    case Power.LVL_1 => "Burn unshielded opponents; weaken armor rating"
-    case Power.LVL_2 => "Eezo cost: -30%"
-    case Power.LVL_3 => "Inferno damage: +30%"
-    case Power.LVL_4A => "Deal full damage to shielded opponents"
-    case Power.LVL_4B => "Blast radius: +1"
-    case Power.LVL_5A => "Burn damage: 10% power damage per turn for 4 turns"
-    case Power.LVL_5B => "Eezo cost: -40%"
-    case Power.LVL_6A => "Damage to frozen/chilled targets: +100%"
-    case Power.LVL_6B => "Armor rating penalty: +50%"
+    case Power.LVL_1 => "Increases gun damage; chilled enemies take armor, movement, and eezo recharge penalty"
+    case Power.LVL_2 => "Movement penalty: +1"
+    case Power.LVL_3 => "Armor rating penalty: +25%"
+    case Power.LVL_4A => "Chill chance: +25%"
+    case Power.LVL_4B => "Chill duration: +2"
+    case Power.LVL_5A => "Chill chance: +50%"
+    case Power.LVL_5B => "Gun damage bonus: +100%"
+    case Power.LVL_6A => "Armor rating penalty: +60%"
+    case Power.LVL_6B => "Damage vs. unshielded enemies: +100%"
     case _ => ???
   }
 
   override def addChoiceEffect(choice: Int): Unit = choice match {
     case Power.LVL_1 => ; //unlocks power
-    case Power.LVL_2 => ???
-    case Power.LVL_3 => ???
-    case Power.LVL_4A => ???
-    case Power.LVL_4B => ???
-    case Power.LVL_5A => ???
-    case Power.LVL_5B => ???
-    case Power.LVL_6A => ???
-    case Power.LVL_6B => ???
+    case Power.LVL_2 => movementPenalty += 1
+    case Power.LVL_3 => armorRatingPenalty = (armorRatingPenalty * 1.25f).toInt
+    case Power.LVL_4A => chillChance *= 1.25f
+    case Power.LVL_4B => freezeDuration += 2
+    case Power.LVL_5A => chillChance *= 1.5f
+    case Power.LVL_5B => baseDamage *= 2
+    case Power.LVL_6A => armorRatingPenalty = (armorRatingPenalty * 1.6f).toInt
+    case Power.LVL_6B => damageMultiplierToHp *= 2
     case _ => ???
   }
 }

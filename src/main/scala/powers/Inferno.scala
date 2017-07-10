@@ -47,7 +47,7 @@ class Inferno extends TargetedActivatedPower with Damager with Ranged with Burne
   }
 
   override def choiceDescription(choice: Int): String = choice match {
-    case Power.LVL_1 => "Burn unshielded opponents; weaken armor rating"
+    case Power.LVL_1 => "Burn opponents; weaken armor rating"
     case Power.LVL_2 => "Eezo cost: -30%"
     case Power.LVL_3 => "Inferno damage: +30%"
     case Power.LVL_4A => "Deal full damage to shielded opponents"
