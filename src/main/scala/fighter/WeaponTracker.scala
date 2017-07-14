@@ -39,6 +39,13 @@ class WeaponTracker {
     }
   }
 
+  def canUseWeapon(weapon: Weapon): Boolean = weapons(weapon) && (weapon match {
+    case melee: MeleeWeapon => true //Can always use melee weapons
+    case grenade: Grenade => grenade.getAmmunitionCurrent > 0
+    case gun: Gun => gun.isLoaded
+    case _ => throw new UnsupportedOperationException("Unrecognized Weapon type.")
+  })
+
   def useWeapon(weapon: Weapon, attacker: Fighter, target: Fighter, board: Board): Unit = {
     //Make sure weapon is in this Fighter's inventory
     if(!weapons(weapon))

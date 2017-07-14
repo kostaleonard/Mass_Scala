@@ -78,6 +78,7 @@ class Fighter(level: Int) {
     reloadAllWeapons
     discontinueAllSustainedPowers
     clearAllEffects
+    recoverMovesAndActions
   }
 
   def reloadAllWeapons: Unit = weaponTracker.reloadAllWeapons
@@ -150,19 +151,9 @@ class Fighter(level: Int) {
 
   def canAttack: Boolean = this.statTracker.getCanFighterAttack
 
-  def canUsePower(power: Power): Boolean = power.canUse && (power match {
-    case act: ActivatedPower => canUseEezo(act.getEezoCost)
-    case sus: SustainedPower => if(sus.isInUse) true else canUseEezo(sus.getEezoCost)
-    case pas: PassivePower => false
-    case _ => throw new UnsupportedOperationException("Unrecognized Power type.")
-  })
+  def canUsePower(power: Power): Boolean = powerTracker.canUsePower(power, this)
 
-  def canUseWeapon(weapon: Weapon): Boolean = weapon match {
-    case melee: MeleeWeapon => true //Can always use melee weapons
-    case grenade: Grenade => grenade.getAmmunitionCurrent > 0
-    case gun: Gun => gun.isLoaded
-    case _ => throw new UnsupportedOperationException("Unrecognized Weapon type.")
-  }
+  def canUseWeapon(weapon: Weapon): Boolean = weaponTracker.canUseWeapon(weapon)
 
   def reload(weapon: Weapon): Unit = {
     weaponTracker.reload(weapon)
@@ -175,30 +166,17 @@ class Fighter(level: Int) {
   }
 
   def useActivatedPower(power: ActivatedPower, targetOption: Option[Fighter], board: Board): Unit = {
-    //Make sure power is in this Fighter's inventory
-    if(!getPowers(power))
-      throw new UnsupportedOperationException("Cannot use a power that is not in the inventory")
-    power.usePower(this, targetOption, board)
+    powerTracker.useActivatedPower(power, targetOption, board, this)
     waitOneTurn
   }
 
   def useSustainedPower(power: SustainedPower): Unit = {
-    //Make sure power is in this Fighter's inventory
-    if(!getPowers(power))
-      throw new UnsupportedOperationException("Cannot use a power that is not in the inventory")
-    if(power.isInUse)
-      throw new UnsupportedOperationException("Cannot use a power that is already in use")
-    power.usePower(this)
+    powerTracker.useSustainedPower(power, this)
     waitOneTurn
   }
 
   def discontinueSustainedPower(power: SustainedPower): Unit = {
-    //Make sure power is in this Fighter's inventory
-    if(!getPowers(power))
-      throw new UnsupportedOperationException("Cannot discontinue a power that is not in the inventory")
-    if(!power.isInUse)
-      throw new UnsupportedOperationException("Cannot discontinue a power that is not in use")
-    power.discontinuePower(this)
+    powerTracker.discontinueSustainedPower(power, this)
     waitOneTurn
   }
 
