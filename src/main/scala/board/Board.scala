@@ -14,7 +14,7 @@ import weapons.{Grenade, Gun, MeleeWeapon}
   */
 object Board{
   val BOARD_DIRECTORY = "boards"
-  val BOARD_SERIAL_UID = 101L
+  final val BOARD_SERIAL_UID = 101L
 
   def getSourcePath(boardName: String): String = Model.RESOURCE_ROOT_DIRECTORY + "/" + BOARD_DIRECTORY + "/" + boardName + ".brd"
 

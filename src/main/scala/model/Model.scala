@@ -12,7 +12,7 @@ import fighter.{Fighter, Party}
 object Model {
   val RESOURCE_ROOT_DIRECTORY = "C:/Users/Leonard/IdeaProjects/Mass_Scala/resources"
   val PROFILE_DIRECTORY = "profiles"
-  val MODEL_SERIAL_VERSION_UID = 100L
+  final val MODEL_SERIAL_VERSION_UID = 100L
 
   def getSourcePath(profileName: String): String = RESOURCE_ROOT_DIRECTORY + "/" + PROFILE_DIRECTORY + "/" + profileName + ".pro"
 
