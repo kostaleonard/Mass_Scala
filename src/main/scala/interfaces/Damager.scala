@@ -121,9 +121,6 @@ trait Damager {
     tryElectrocuteExplosionCombo
     tryBioticDetonation
 
-    //Bonuses
-    //TODO update weapon attack damage with bonuses
-
     rollingDamageCalculation max 1
   }
 }
