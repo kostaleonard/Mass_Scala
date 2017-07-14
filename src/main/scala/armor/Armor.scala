@@ -1,5 +1,7 @@
 package armor
 
+import powers._
+
 /**
   * Created by Leonard on 6/4/2017.
   */
@@ -29,6 +31,47 @@ abstract class Armor {
   def getShieldCurrent: Int = shieldCurrent
 
   def getShieldMax: Int = shieldMax
+
+  def calculateStats(powers: scala.collection.mutable.Set[Power]): Unit = {
+    //TODO this is going to make the armor stronger every time this method is called.
+    def calculateStatsByPowers: Unit = {
+      def addBonuses(power: Power): Unit = {
+        def addBonus(bonus: Bonus): Unit = bonus match {
+          case DoubleBonus(b1, b2) =>
+            addBonus(b1)
+            addBonus(b2)
+          case ShieldBonus(amount) => shieldMax = (shieldMax * (1.0f + amount)).toInt
+          case LightArmorShieldBonus(amount) => if(isLightArmor) shieldMax = (shieldMax * (1.0f + amount)).toInt
+          case HeavyArmorShieldBonus(amount) => if(isHeavyArmor) shieldMax = (shieldMax * (1.0f + amount)).toInt
+          case ShieldRecoveryRateBonus(amount) => shieldRecoveryRateStandard = (shieldRecoveryRateStandard * (1.0f + amount)).toInt
+          case ArmorRatingPercentBonus(amount) => armorRatingMax = (armorRatingMax * (1.0f + amount)).toInt
+          case LightArmorArmorRatingPercentBonus(amount) => if(isLightArmor) armorRatingMax = (armorRatingMax * (1.0f + amount)).toInt
+          case HeavyArmorArmorRatingPercentBonus(amount) => if(isHeavyArmor) armorRatingMax = (armorRatingMax * (1.0f + amount)).toInt
+          case _ => ; //Do nothing--this Bonus is handled elsewhere
+        }
+        power.getBonuses.foreach(addBonus)
+      }
+
+      powers.foreach(pow => pow match{
+        case act: ActivatedPower =>
+          //Pretty sure that we can safely do nothing here, barring anything crazy.
+          ;
+        case sus: SustainedPower =>
+          //Check to see if the power is in use.
+          //If it is, then we may need to do something to our stats.
+          //TODO sustained powers changing stats
+          if(sus.isInUse) addBonuses(sus)
+        case pas: PassivePower =>
+          //We will DEFINITELY need to change stats here.
+          //TODO passive powers changing stats
+          addBonuses(pas)
+        case _ =>
+          //This is an unrecognized kind of power.
+          ???
+      }
+      )
+    }
+  }
 
   def armorProtectionModifier: Float = {
     //Returns the percent damage deflected by armor based on armor rating (from 0 to 1.0)

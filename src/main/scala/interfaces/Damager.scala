@@ -7,10 +7,15 @@ import fighter.Fighter
   * Created by Leonard on 6/22/2017.
   */
 trait Damager {
-  protected var baseDamage: Int = 0
-  protected var accuracy: Float = 1.0f
+  protected var baseDamage = 0
+  protected var accuracy = 1.0f
   protected var damageMultiplierToShields = 1.0f
   protected var damageMultiplierToHp = 1.0f
+  //TODO critical hit support
+
+  def getBaseDamage: Int = baseDamage
+
+  def setBaseDamage(damage: Int): Unit = baseDamage = damage
 
   protected def accuracyCheck(attacker: Fighter, target: Fighter): Boolean = {
     //Returns true if the attack hit, based on accuracy.

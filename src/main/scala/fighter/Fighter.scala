@@ -27,17 +27,17 @@ object Fighter {
     else f.armor = None
 
     //Add weapons
-    f.weapons.add(new PredatorPistol)
+    f.addWeapon(new PredatorPistol)
     rand = Math.random
-    if(rand < 0.3) f.weapons.add(new AvengerAssaultRifle)
+    if(rand < 0.3) f.addWeapon(new AvengerAssaultRifle)
     rand = Math.random
-    if(rand < 0.2) f.weapons.add(new MantisSniperRifle)
+    if(rand < 0.2) f.addWeapon(new MantisSniperRifle)
     rand = Math.random
-    if(rand < 0.3) f.weapons.add(new CrusaderShotgun)
+    if(rand < 0.3) f.addWeapon(new CrusaderShotgun)
     rand = Math.random
-    if(rand < 0.3) f.weapons.add(new FragGrenade)
+    if(rand < 0.3) f.addWeapon(new FragGrenade)
     rand = Math.random
-    if(rand < 0.9) f.weapons.add(new OmniBlade)
+    if(rand < 0.9) f.addWeapon(new OmniBlade)
 
     //Add powers
     f.skillClass.getAvailablePowers.foreach(f.learnPower)
@@ -66,7 +66,7 @@ class Fighter(level: Int) {
   protected val powerTracker = new PowerTracker
   protected val effectTracker = new EffectTracker
   protected var skillClass: SkillClass = new Soldier
-  protected val weapons = scala.collection.mutable.Set.empty[Weapon] //TODO make this into a WeaponTracker
+  protected val weaponTracker = new WeaponTracker
   protected var armor: Option[Armor] = None: Option[Armor]
   protected var location = Location(0, 0)
   //TODO add race
@@ -80,6 +80,8 @@ class Fighter(level: Int) {
   def calculateStats: Unit = {
     //Change stats to the appropriate amounts based on level, skillClass, race, and powers
     statTracker.calculateStats(getLevel, skillClass, getPowers)
+    armor.map(_.calculateStats(getPowers))
+
     //TODO other items, like armor and weapons, will likely need to calculate their own stats too (to account for bonuses).
   }
 
@@ -114,13 +116,17 @@ class Fighter(level: Int) {
 
   def learnPower(power: Power): Unit = powerTracker.learnPower(power)
 
-  def getWeapons: scala.collection.mutable.Set[Weapon] = weapons
+  def getWeapons: scala.collection.mutable.Set[Weapon] = weaponTracker.getWeapons
 
   def getLevel: Int = expTracker.getLevel
 
   def getLocation: Location = location
 
   def setLocation(loc: Location): Unit = location = loc
+
+  def addWeapon(weapon: Weapon): Boolean = weaponTracker.addWeapon(weapon)
+
+  def removeWeapon(weapon: Weapon): Boolean = weaponTracker.removeWeapon(weapon)
 
   //TODO calculate the damage given to the Fighter that kills you (also better name?)
   def expGivenToVictoriousFighter: Int = 50
@@ -151,27 +157,12 @@ class Fighter(level: Int) {
   }
 
   def reload(weapon: Weapon): Unit = {
-    //Make sure weapon is in this Fighter's inventory
-    if(!weapons(weapon))
-      throw new UnsupportedOperationException("Cannot attack with a weapon that is not in the inventory")
-    weapon match {
-      case melee: MeleeWeapon =>
-        throw new UnsupportedOperationException("Cannot reload a melee weapon")
-      case grenade: Grenade =>
-        throw new UnsupportedOperationException("Cannot reload a grenade")
-      case gun: Gun =>
-        if(!gun.canReload) throw new UnsupportedOperationException("Cannot reload a fully loaded gun")
-        gun.reload
-        waitOneTurn
-      case _ => throw new UnsupportedOperationException("Unrecognized Weapon type.")
-    }
+    weaponTracker.reload(weapon)
+    waitOneTurn
   }
 
   def useWeapon(weapon: Weapon, target: Fighter, board: Board): Unit = {
-    //Make sure weapon is in this Fighter's inventory
-    if(!weapons(weapon))
-      throw new UnsupportedOperationException("Cannot attack with a weapon that is not in the inventory")
-    weapon.doAttack(this, target, board)
+    weaponTracker.useWeapon(weapon, this, target, board)
     waitOneTurn
   }
 
@@ -292,15 +283,7 @@ class Fighter(level: Int) {
 
   def getActiveBioticInitiators: scala.collection.mutable.Set[BioticInitiatorEffect] = effectTracker.getActiveBioticInitiators
 
-  def setActiveAmmoPower(ammoPower: Option[AmmoPower]): Unit = {
-    //All Guns in the inventory will get the same AmmoPower.
-    //However, a Gun may NOT get the same AmmoPower if it is added to the inventory ex post facto.
-    //This might be the case if the Gun is found during the mission somehow.
-    weapons.filter(_.isGun).foreach(weapon => weapon match {
-      case g: Gun => g.setActiveAmmoPower(ammoPower)
-      case _ => ???
-    })
-  }
+  def setActiveAmmoPower(ammoPower: Option[AmmoPower]): Unit = weaponTracker.setActiveAmmoPower(ammoPower)
 
   override def toString: String = {
     var s = name

@@ -42,17 +42,17 @@ class Fitness extends PassivePower {
       addBonus(HpPercentBonus(0.25f))
       addBonus(ShieldBonus(0.25f))
     case Power.LVL_3 =>
-      addBonus(MeleeDamageBonus(0.2f))
+      addBonus(MeleeDamagePercentBonus(0.2f))
     case Power.LVL_4A =>
-      addBonus(MeleeDamageBonus(0.4f))
+      addBonus(MeleeDamagePercentBonus(0.4f))
     case Power.LVL_4B =>
       addBonus(MovementBonus(2))
     case Power.LVL_5A =>
-      addBonus(LightArmorArmorRatingBonus(0.3f))
+      addBonus(LightArmorArmorRatingPercentBonus(0.3f))
     case Power.LVL_5B =>
-      addBonus(HeavyArmorArmorRatingBonus(0.3f))
+      addBonus(HeavyArmorArmorRatingPercentBonus(0.3f))
     case Power.LVL_6A =>
-      addBonus(MeleeDamageBonus(0.8f))
+      addBonus(MeleeDamagePercentBonus(0.8f))
     case Power.LVL_6B =>
       addBonus(HpPercentBonus(0.5f))
       addBonus(ShieldBonus(0.5f))

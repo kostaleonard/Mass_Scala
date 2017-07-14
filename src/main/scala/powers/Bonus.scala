@@ -9,22 +9,30 @@ sealed trait Bonus
 
 //This bonus is used to chain bonuses of the same value.
 //This is done automatically in Power.
+
+//StatTracker
 case class DoubleBonus(bonus1: Bonus, bonus2: Bonus) extends Bonus
 
 case class HpPercentBonus(amount: Float) extends Bonus
 
 case class EezoPercentBonus(amount: Float) extends Bonus
 
+case class EezoRecoveryRatePercentBonus(amount: Float) extends Bonus
+
 case class MovementBonus(amount: Int) extends Bonus
 
-case class WeaponDamageBonus(amount: Float) extends Bonus
+//WeaponTracker
+case class WeaponDamagePercentBonus(amount: Float) extends Bonus
 
-case class MeleeDamageBonus(amount: Float) extends Bonus
+case class MeleeDamagePercentBonus(amount: Float) extends Bonus
 
-case class GrenadeDamageBonus(amount: Float) extends Bonus
+case class GrenadeDamagePercentBonus(amount: Float) extends Bonus
 
-case class GunDamageBonus(amount: Float) extends Bonus
+case class GunDamagePercentBonus(amount: Float) extends Bonus
 
+case class CriticalHitPercentBonus(amount: Float) extends Bonus //TODO critical hit bonus
+
+//Armor
 case class ShieldBonus(amount: Float) extends Bonus
 
 case class LightArmorShieldBonus(amount: Float) extends Bonus
@@ -33,12 +41,11 @@ case class HeavyArmorShieldBonus(amount: Float) extends Bonus
 
 case class ShieldRecoveryRateBonus(amount: Float) extends Bonus
 
-case class LightArmorShieldRecoveryRateBonus(amount: Float) extends Bonus
+case class ArmorRatingPercentBonus(amount: Float) extends Bonus
 
-case class HeavyArmorShieldRecoveryRateBonus(amount: Float) extends Bonus
+case class LightArmorArmorRatingPercentBonus(amount: Float) extends Bonus
 
-case class ArmorRatingBonus(amount: Float) extends Bonus
+case class HeavyArmorArmorRatingPercentBonus(amount: Float) extends Bonus
 
-case class LightArmorArmorRatingBonus(amount: Float) extends Bonus
-
-case class HeavyArmorArmorRatingBonus(amount: Float) extends Bonus
+//PowerTracker
+case class PowerDamagePercentBonus(amount: Float) extends Bonus
