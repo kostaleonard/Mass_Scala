@@ -19,6 +19,11 @@ class PowerTracker {
 
   def learnPower(power: Power): Unit = learnedPowers.add(power)
 
+  def discontinueAllSustainedPowers(attacker: Fighter): Unit = learnedPowers.foreach(pow => pow match{
+    case sus: SustainedPower => if(sus.isInUse) sus.discontinuePower(attacker)
+    case _ => ;
+  })
+
   def getSustainedPowersInUse: scala.collection.mutable.Set[SustainedPower] = {
     learnedPowers
       .filter(_.isSustained)

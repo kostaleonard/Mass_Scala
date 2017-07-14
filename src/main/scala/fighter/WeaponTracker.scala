@@ -16,6 +16,13 @@ class WeaponTracker {
 
   def removeWeapon(weapon: Weapon): Boolean = weapons.remove(weapon)
 
+  def reloadAllWeapons: Unit = {
+    weapons.filter(_.isGun).foreach(weapon => weapon match {
+      case g: Gun => if(g.canReload) g.reload
+      case _ => ???
+    })
+  }
+
   def reload(weapon: Weapon): Unit = {
     //Make sure weapon is in this Fighter's inventory
     if(!weapons(weapon))
@@ -49,10 +56,12 @@ class WeaponTracker {
     })
   }
 
-  def calculateStats(powers: scala.collection.mutable.Set[Power]): Unit = {
-    //TODO this is going to make the weapons more powerful every time it is called.
-    //Instead should probably just have a field in Damager that specifically does this calculation.
-    def calculateStatsByPowers: Unit = {
+  def setMaxStats(powers: scala.collection.mutable.Set[Power]): Unit = {
+    def setMaxStatsByDefaults: Unit = {
+      weapons.foreach(w => w.setBaseDamage(w.getDefaultWeaponDamage))
+    }
+
+    def setMaxStatsByPowers: Unit = {
       def addBonuses(power: Power): Unit = {
         def addBonus(bonus: Bonus): Unit = bonus match {
           case DoubleBonus(b1, b2) =>
@@ -72,23 +81,13 @@ class WeaponTracker {
       }
 
       powers.foreach(pow => pow match{
-        case act: ActivatedPower =>
-          //Pretty sure that we can safely do nothing here, barring anything crazy.
-          ;
-        case sus: SustainedPower =>
-          //Check to see if the power is in use.
-          //If it is, then we may need to do something to our stats.
-          //TODO sustained powers changing stats
-          if(sus.isInUse) addBonuses(sus)
-        case pas: PassivePower =>
-          //We will DEFINITELY need to change stats here.
-          //TODO passive powers changing stats
-          addBonuses(pas)
-        case _ =>
-          //This is an unrecognized kind of power.
-          ???
+        case pas: PassivePower => addBonuses(pas)
+        case _ => ;
       }
       )
     }
+
+    setMaxStatsByDefaults
+    setMaxStatsByPowers
   }
 }

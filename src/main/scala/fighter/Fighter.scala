@@ -55,7 +55,7 @@ object Fighter {
     else if(rand < 0.9) f.name = "Blood Pack Chieftan"
     else f.name = "Blood Pack Tank"
 
-    f.instantiateFighter
+    f.resetFighter
     f
   }
 }
@@ -70,24 +70,32 @@ class Fighter(level: Int) {
   protected var armor: Option[Armor] = None: Option[Armor]
   protected var location = Location(0, 0)
   //TODO add race
-  instantiateFighter
+  resetFighter
 
-  def instantiateFighter: Unit = {
-    calculateStats
+  def resetFighter: Unit = {
+    setMaxStats
     setCurrentStatsToMax
+    reloadAllWeapons
+    discontinueAllSustainedPowers
+    clearAllEffects
   }
 
-  def calculateStats: Unit = {
-    //Change stats to the appropriate amounts based on level, skillClass, race, and powers
-    statTracker.calculateStats(getLevel, skillClass, getPowers)
-    armor.map(_.calculateStats(getPowers))
+  def reloadAllWeapons: Unit = weaponTracker.reloadAllWeapons
 
-    //TODO other items, like armor and weapons, will likely need to calculate their own stats too (to account for bonuses).
+  def discontinueAllSustainedPowers: Unit = powerTracker.discontinueAllSustainedPowers(this)
+
+  def setMaxStats: Unit = {
+    //Change stats to the appropriate amounts based on level, skillClass, race, and powers
+    //TODO add race
+    statTracker.setMaxStats(getLevel, skillClass, getPowers)
+    armor.map(_.setMaxStats(getPowers))
+    weaponTracker.setMaxStats(getPowers)
   }
 
   def setCurrentStatsToMax: Unit = {
     //Set the current stats of this fighter to their maxes
     statTracker.setCurrentStatsToMax
+    armor.map(_.setStatsToMax)
   }
 
   def getEezoCurrent: Int = statTracker.getEezoCurrent
@@ -211,7 +219,7 @@ class Fighter(level: Int) {
       this.expTracker.levelUp
       this.powerTracker.levelUp
       //StatTracker recalculates maximum stats
-      calculateStats
+      setMaxStats
     }
   }
 

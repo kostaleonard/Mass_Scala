@@ -6,4 +6,5 @@ package interfaces
 trait Berserker {
   protected var berserkChance = 0.0f
   protected var berserkDuration = 0
+  //TODO berserker logic
 }

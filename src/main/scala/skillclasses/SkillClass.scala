@@ -25,4 +25,7 @@ abstract class SkillClass {
   def getBaseMovement: Int
   def getMovementGrowthRate: Int
   def getMovementNumberOfLevelsBeforeIncrement: Int
+  def getBaseEezoRecoveryRate: Int
+  def getEezoRecoveryRateGrowthRate: Int
+  def getEezoRecoveryRateNumberOfLevelsBeforeIncrement: Int
 }

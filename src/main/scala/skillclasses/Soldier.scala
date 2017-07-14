@@ -29,4 +29,7 @@ class Soldier extends SkillClass{
   override def getBaseMovement: Int = 7
   override def getMovementGrowthRate: Int = 1
   override def getMovementNumberOfLevelsBeforeIncrement: Int = 5
+  override def getBaseEezoRecoveryRate: Int = 1
+  override def getEezoRecoveryRateGrowthRate: Int = 1
+  override def getEezoRecoveryRateNumberOfLevelsBeforeIncrement: Int = 3
 }

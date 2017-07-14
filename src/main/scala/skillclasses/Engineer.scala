@@ -25,4 +25,7 @@ class Engineer extends SkillClass {
   override def getBaseMovement: Int = 5
   override def getMovementGrowthRate: Int = 1
   override def getMovementNumberOfLevelsBeforeIncrement: Int = 5
+  override def getBaseEezoRecoveryRate: Int = 2
+  override def getEezoRecoveryRateGrowthRate: Int = 1
+  override def getEezoRecoveryRateNumberOfLevelsBeforeIncrement: Int = 2
 }

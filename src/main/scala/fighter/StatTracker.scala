@@ -69,6 +69,10 @@ class StatTracker {
 
   def setEezoRecoveryRateMax(rate: Int): Unit = eezoRecoveryRateMax = rate
 
+  def setEezoRecoveryRateGrowthRate(rate: Int): Unit = eezoRecoveryRateGrowthRate = rate
+
+  def setEezoRecoveryRateNumberOfLevelsBeforeIncrement(levels: Int): Unit = eezoRecoveryRateNumberOfLevelsBeforeIncrement = levels
+
   def getEezoRecoveryRateCurrent: Int = eezoRecoveryRateCurrent
 
   def getEezoRecoveryRateMax: Int = eezoRecoveryRateMax
@@ -164,15 +168,15 @@ class StatTracker {
 
   def canUseEezo(amount: Int): Boolean = eezoCurrent >= amount
 
-  def calculateStats(level: Int, skillClass: SkillClass, powers: scala.collection.mutable.Set[Power]): Unit = {
+  def setMaxStats(level: Int, skillClass: SkillClass, powers: scala.collection.mutable.Set[Power]): Unit = {
     //TODO figure out if calculateStats is screwed up when I actually start using it
     //TODO incorporate race into this calculation
     //Change stats to the appropriate amounts based on level, skillClass, race, and powers.
     //This should be recalculated any time one of the above parameters changes.
-    //i.e. leveling up, change of skill class, change of race, change or leveling up of powers
-    //Could be initiated during battle, so may/should not modify current stats (only max stats).
+    //i.e. leveling up, change of skill class, change of race, change or leveling up of passive powers
+    //Could be initiated during battle, so does not modify current stats (only max stats).
     //In general, this should not be done during battle--no need to keep recalculating these stats.
-    def calculateStatsBySkillClass: Unit = {
+    def setMaxStatsBySkillClass: Unit = {
       setHpMax(skillClass.getBaseHp)
       setHpGrowthRate(skillClass.getHpGrowthRate)
       setHpNumberOfLevelsBeforeIncrement(skillClass.getHpNumberOfLevelsBeforeIncrement)
@@ -182,14 +186,16 @@ class StatTracker {
       setMovementMax(skillClass.getBaseMovement)
       setMovementGrowthRate(skillClass.getMovementGrowthRate)
       setMovementNumberOfLevelsBeforeIncrement(skillClass.getMovementNumberOfLevelsBeforeIncrement)
-      //TODO add eezo recovery rate into skill class
+      setEezoRecoveryRateMax(skillClass.getBaseEezoRecoveryRate)
+      setEezoRecoveryRateGrowthRate(skillClass.getEezoRecoveryRateGrowthRate)
+      setEezoRecoveryRateNumberOfLevelsBeforeIncrement(skillClass.getEezoRecoveryRateNumberOfLevelsBeforeIncrement)
     }
-    def calculateStatsByLevel: Unit = {
+    def setMaxStatsByLevel: Unit = {
       for(i <- 2 to level){
         levelUp(i)
       }
     }
-    def calculateStatsByPowers: Unit = {
+    def setMaxStatsByPassivePowers: Unit = {
       def addBonuses(power: Power): Unit = {
         def addBonus(bonus: Bonus): Unit = bonus match {
           case DoubleBonus(b1, b2) =>
@@ -203,30 +209,16 @@ class StatTracker {
         }
         power.getBonuses.foreach(addBonus)
       }
-
       powers.foreach(pow => pow match{
-        case act: ActivatedPower =>
-          //Pretty sure that we can safely do nothing here, barring anything crazy.
-          ;
-        case sus: SustainedPower =>
-          //Check to see if the power is in use.
-          //If it is, then we may need to do something to our stats.
-          //TODO sustained powers changing stats
-          if(sus.isInUse) addBonuses(sus)
-        case pas: PassivePower =>
-          //We will DEFINITELY need to change stats here.
-          //TODO passive powers changing stats
-          addBonuses(pas)
-        case _ =>
-          //This is an unrecognized kind of power.
-          ???
+        case pas: PassivePower => addBonuses(pas)
+        case _ => ;
         }
       )
     }
 
-    calculateStatsBySkillClass
-    calculateStatsByLevel
-    calculateStatsByPowers
+    setMaxStatsBySkillClass
+    setMaxStatsByLevel
+    setMaxStatsByPassivePowers
   }
 
   def levelUp(currentLevel: Int): Unit = {

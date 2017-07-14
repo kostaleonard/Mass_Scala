@@ -15,4 +15,5 @@ abstract class Weapon extends Damager with Ranged {
   def isMelee: Boolean
   def isGrenade: Boolean
   def isGun: Boolean
+  def getDefaultWeaponDamage: Int
 }

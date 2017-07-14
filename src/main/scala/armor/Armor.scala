@@ -8,6 +8,7 @@ import powers._
 object Armor {
   //Theoretical value for the maximum armor rating achievable
   val THEORETICAL_MAX_ARMOR_RATING = 100
+  val DEFAULT_TURNS_UNTIL_SHIELD_RECOVERY = 3
 }
 abstract class Armor {
   //More powerful armor should simply have a higher shield rating.
@@ -22,7 +23,7 @@ abstract class Armor {
   protected var shieldRecoveryRateStandard = 0
   protected var shieldRecoveryRatePenaltyInReserve = 0
   protected var turnsUntilShieldRecovery = 0
-  protected val defaultTurnsUntilShieldRecovery = 3
+  protected val defaultTurnsUntilShieldRecovery = Armor.DEFAULT_TURNS_UNTIL_SHIELD_RECOVERY
 
   def getArmorRatingCurrent: Int = armorRatingCurrent
 
@@ -32,9 +33,23 @@ abstract class Armor {
 
   def getShieldMax: Int = shieldMax
 
-  def calculateStats(powers: scala.collection.mutable.Set[Power]): Unit = {
-    //TODO this is going to make the armor stronger every time this method is called.
-    def calculateStatsByPowers: Unit = {
+  def setStatsToMax: Unit = {
+    shieldCurrent = shieldMax
+    armorRatingCurrent = armorRatingMax
+    shieldRecoveryRateCurrent = shieldRecoveryRateStandard
+    armorRatingPenaltyInReserve = 0
+    shieldRecoveryRatePenaltyInReserve = 0
+    turnsUntilShieldRecovery = 0
+  }
+
+  def setMaxStats(powers: scala.collection.mutable.Set[Power]): Unit = {
+    def setMaxStatsByDefaults: Unit = {
+      armorRatingMax = getBaseArmorRating
+      shieldMax = getBaseShields
+      shieldRecoveryRateStandard = getBaseShieldRecoveryRate
+    }
+
+    def setMaxStatsByPowers: Unit = {
       def addBonuses(power: Power): Unit = {
         def addBonus(bonus: Bonus): Unit = bonus match {
           case DoubleBonus(b1, b2) =>
@@ -53,24 +68,14 @@ abstract class Armor {
       }
 
       powers.foreach(pow => pow match{
-        case act: ActivatedPower =>
-          //Pretty sure that we can safely do nothing here, barring anything crazy.
-          ;
-        case sus: SustainedPower =>
-          //Check to see if the power is in use.
-          //If it is, then we may need to do something to our stats.
-          //TODO sustained powers changing stats
-          if(sus.isInUse) addBonuses(sus)
-        case pas: PassivePower =>
-          //We will DEFINITELY need to change stats here.
-          //TODO passive powers changing stats
-          addBonuses(pas)
-        case _ =>
-          //This is an unrecognized kind of power.
-          ???
+        case pas: PassivePower => addBonuses(pas)
+        case _ => ;
       }
       )
     }
+
+    setMaxStatsByDefaults
+    setMaxStatsByPowers
   }
 
   def armorProtectionModifier: Float = {
@@ -154,4 +159,7 @@ abstract class Armor {
   override def toString: String
   def isHeavyArmor: Boolean
   def isLightArmor: Boolean
+  def getBaseArmorRating: Int
+  def getBaseShields: Int
+  def getBaseShieldRecoveryRate: Int
 }
