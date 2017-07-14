@@ -10,8 +10,6 @@ import model.Model
   */
 class PrintView(model: Model) extends View(model) {
 
-  //TODO this is a test, please remove
-
   override def showStartScreen: Unit = {
     System.out.println("======== MASS ========")
     System.out.println("Press any key to begin")
