@@ -90,7 +90,7 @@ class Controller {
 
   def doTurnlyEffects: Unit = {
     //Allow Fighters to recover HP/shields, EEZO, and do any turnly effects.
-    model.doTurnlyEffects
+    model.doTurnlyActions
   }
 
   def doPlayerTurn: Unit = {

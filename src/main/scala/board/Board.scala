@@ -1,8 +1,11 @@
 package board
 
+import java.io.{FileInputStream, FileOutputStream, ObjectInputStream, ObjectOutputStream}
+
 import actions._
 import fighter.{Fighter, Party}
 import interfaces.Ranged
+import model.Model
 import powers._
 import weapons.{Grenade, Gun, MeleeWeapon}
 
@@ -10,14 +13,19 @@ import weapons.{Grenade, Gun, MeleeWeapon}
   * Created by Leonard on 6/3/2017.
   */
 object Board{
+  val BOARD_DIRECTORY = "boards"
+  val BOARD_SERIAL_UID = 101L
+
+  def getSourcePath(boardName: String): String = Model.RESOURCE_ROOT_DIRECTORY + "/" + BOARD_DIRECTORY + "/" + boardName + ".brd"
+
   def getTestBoard: Board = {
     //TODO get rid of getTestBoard function
     //Fill Tiles
     val defaultRows = 10
     val defaultCols = 10
     val defaultEnemyPartySize = 3
-    val b = new Board
-    b.tiles = Array.fill[Array[Tile]](defaultRows)(Array.fill[Tile](defaultCols)(if(Math.random() > 0.5) new GrassPlains else new Mountains))
+    val b = new Board("testBoard")
+    b.tiles = Array.fill[Array[Tile]](defaultRows)(Array.fill[Tile](defaultCols)(if(Math.random > 0.5) new GrassPlains else new Mountains))
 
     //Add enemies, making sure that they have unique locations
     var enemyParty = Party.random(defaultEnemyPartySize)
@@ -37,15 +45,25 @@ object Board{
     b
   }
 
-  def loadDefaultBoardFromFile(filename: String): Board = {
-    //TODO implement loading Boards.
-    new Board
+  def load(boardName: String): Board = {
+    val sourcePath = getSourcePath(boardName)
+    val ois = new ObjectInputStream(new FileInputStream(sourcePath))
+    val board = ois.readObject.asInstanceOf[Board]
+    ois.close
+    board
   }
 }
-class Board {
+
+@SerialVersionUID(Board.BOARD_SERIAL_UID)
+class Board(name: String) extends Serializable {
+  private var boardName = name
   private var playerParty = Party.empty
   private var enemyParty = Party.empty
   private var tiles = Array.empty[Array[Tile]]
+
+  def getBoardName: String = boardName
+
+  def setBoardName(newName: String): Unit = boardName = newName
 
   def setTiles(t: Array[Array[Tile]]): Unit = tiles = t
 
@@ -241,5 +259,12 @@ class Board {
     val maxRange = maxWeaponRange max maxPowerRange
     addActionsOnTiles(fighter.getLocation, maxRange)
     result
+  }
+
+  def save: Unit = {
+    val destinationPath = Board.getSourcePath(boardName)
+    val oos = new ObjectOutputStream(new FileOutputStream(destinationPath))
+    oos.writeObject(this)
+    oos.close
   }
 }

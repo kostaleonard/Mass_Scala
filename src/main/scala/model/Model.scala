@@ -1,5 +1,7 @@
 package model
 
+import java.io._
+
 import actions.Action
 import board.{Board, Location}
 import fighter.{Fighter, Party}
@@ -8,16 +10,27 @@ import fighter.{Fighter, Party}
   * Created by Leonard on 6/3/2017.
   */
 object Model {
+  val RESOURCE_ROOT_DIRECTORY = "C:/Users/Leonard/IdeaProjects/Mass_Scala/resources"
+  val PROFILE_DIRECTORY = "profiles"
+  val MODEL_SERIAL_VERSION_UID = 100L
+
+  def getSourcePath(profileName: String): String = RESOURCE_ROOT_DIRECTORY + "/" + PROFILE_DIRECTORY + "/" + profileName + ".pro"
+
   def loadOrCreate(profileName: String): Model = {
     if(profileExists(profileName)) load(profileName) else create(profileName)
   }
 
   def profileExists(profileName: String): Boolean = {
-    false //TODO check if profile exists in the saved profiles
+    val sourcePath = getSourcePath(profileName)
+    new File(sourcePath).exists
   }
 
   def load(profileName: String): Model = {
-    ??? //TODO load profile
+    val sourcePath = getSourcePath(profileName)
+    val ois = new ObjectInputStream(new FileInputStream(sourcePath))
+    val model = ois.readObject.asInstanceOf[Model]
+    ois.close
+    model
   }
 
   def create(profileName: String): Model = {
@@ -26,7 +39,9 @@ object Model {
     model
   }
 }
-class Model(profileName: String) {
+
+@SerialVersionUID(Model.MODEL_SERIAL_VERSION_UID)
+class Model(profileName: String) extends Serializable {
   private val this.profileName = profileName
   private var playerParty = Party.empty
   private var currentBoard = None: Option[Board]
@@ -39,9 +54,7 @@ class Model(profileName: String) {
     }
   }
 
-  def setCurrentBoard(board: Option[Board]): Unit = {
-    currentBoard = board
-  }
+  def setCurrentBoard(board: Option[Board]): Unit = currentBoard = board
 
   def getCurrentBoard: Option[Board] = currentBoard
 
@@ -82,18 +95,19 @@ class Model(profileName: String) {
     currentBoard.get.getEnemyParty.recoverMovesAndActions
   }
 
-  def doTurnlyEffects: Unit = {
+  def doTurnlyActions: Unit = {
     //Allow Fighters to recover HP/shields, EEZO, and do any turnly effects.
     if(currentBoard.isEmpty) throw new UnsupportedOperationException("Cannot do turnly actions on an empty board")
     playerParty.doTurnlyActions
     currentBoard.get.getEnemyParty.doTurnlyActions
   }
 
-  def copyBoard(boardName: String): Unit = {
-    //TODO Load a default board and store it in this object.
-  }
+  def loadBoard(boardName: String): Board = Board.load(boardName)
 
   def save: Unit = {
-    //TODO Save the model.Model to ???
+    val destinationPath = Model.getSourcePath(profileName)
+    val oos = new ObjectOutputStream(new FileOutputStream(destinationPath))
+    oos.writeObject(this)
+    oos.close
   }
 }
