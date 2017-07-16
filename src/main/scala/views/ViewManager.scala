@@ -1,8 +1,7 @@
 package views
 
-import java.awt.Image
 import java.awt.image.BufferedImage
-import javax.swing.{ImageIcon, JFrame, JLabel}
+import javax.swing.JFrame
 
 import actions.Action
 import board.Location
@@ -16,28 +15,39 @@ import fighter.Fighter
   */
 object ViewManager{
   val UNSUPPORTED_VIEW_OPERATION_EXCEPTION_MESSAGE = "The current View is not designed to render this screen; you must switch the current View."
+  val DEFAULT_FRAME_WIDTH = 160 * 5
+  val DEFAULT_FRAME_HEIGHT = 90 * 5
 }
 class ViewManager(initialView: View) {
   var currentView: View = initialView
   val frame = new JFrame
+  val mainPanel = new ImageRenderPanel(frame)
   setupFrame
 
   def getCurrentView: View = currentView
 
   def setCurrentView(newView: View): Unit = currentView = newView
 
+  def repaint: Unit = currentView match{
+    case printView: PrintView => ;
+    case _ => mainPanel.repaint()
+  }
+
   private def renderImage(bufferedImage: BufferedImage): Unit = {
-    //frame.add(new JLabel(new ImageIcon(t.getImage())));
-    frame.removeAll
-    frame.add(new JLabel(new ImageIcon(bufferedImage.getScaledInstance(100, 100, Image.SCALE_DEFAULT))))
+    mainPanel.setCurrentImage(Some(bufferedImage))
+    mainPanel.repaint()
   }
 
   def setupFrame: Unit = currentView match{
     case printView: PrintView => frame.setVisible(false)
     case _ =>
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+      frame.setSize(ViewManager.DEFAULT_FRAME_WIDTH, ViewManager.DEFAULT_FRAME_HEIGHT) //In case the panel is restored.
       frame.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH)
+      //TODO frame decoration is throwing off graphics calculations slightly. Give user these buttons organically, then uncomment below.
+      //frame.setUndecorated(true)
       frame.setVisible(true)
+      frame.add(mainPanel)
   }
 
   def showMainMenu: Unit = currentView match{

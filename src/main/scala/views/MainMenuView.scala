@@ -1,5 +1,6 @@
 package views
 
+import java.awt.{Color, Graphics2D}
 import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
@@ -14,7 +15,7 @@ import model.Model
   */
 class MainMenuView(model: Model) extends View(model) {
   def getMainMenuImage: BufferedImage = {
-    val bufferedImage = ImageIO.read(new File(View.getSourcePath("testImage.jpg")))
-    bufferedImage
+    //getTestImage1
+    getTestImage2
   }
 }

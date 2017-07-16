@@ -1,8 +1,10 @@
 package views
 
-import actions.Action
-import board.Location
-import fighter.Fighter
+import java.awt.{Color, Font, Graphics2D}
+import java.awt.image.BufferedImage
+import java.io.File
+import javax.imageio.ImageIO
+
 import model.Model
 import model.Model.RESOURCE_ROOT_DIRECTORY
 
@@ -33,5 +35,24 @@ object View{
   def getSourcePath(imageFilename: String): String = RESOURCE_ROOT_DIRECTORY + "/" + IMAGES_DIRECTORY + "/" + imageFilename
 }
 abstract class View(model: Model) {
-  private var this.model: Model = model
+  protected var this.model: Model = model
+
+  protected def getTestImage1: BufferedImage = {
+    ImageIO.read(new File(View.getSourcePath("testImage.jpg")))
+  }
+
+  protected def getTestImage2: BufferedImage = {
+    val bufferedImage = new BufferedImage(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
+    val g2d = bufferedImage.getGraphics.asInstanceOf[Graphics2D]
+    g2d.setColor(Color.GRAY)
+    g2d.fillRect(0, 0, View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT)
+    g2d.setColor(Color.GREEN)
+    g2d.fillRect(100, 100, 200, 200)
+    g2d.setColor(Color.CYAN)
+    g2d.fillOval(1400, 600, 200, 300)
+    g2d.setColor(Color.RED.darker)
+    g2d.setFont(new Font(Font.MONOSPACED, Font.BOLD, 60))
+    g2d.drawString("TEST IMAGE", 600, 300)
+    bufferedImage
+  }
 }
