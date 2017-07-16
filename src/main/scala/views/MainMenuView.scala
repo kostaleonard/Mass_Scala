@@ -1,6 +1,6 @@
 package views
 
-import java.awt.{Color, Graphics2D}
+import java.awt.{Color, Font, Graphics2D}
 import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
@@ -15,7 +15,17 @@ import model.Model
   */
 class MainMenuView(model: Model) extends View(model) {
   def getMainMenuImage: BufferedImage = {
-    //getTestImage1
-    getTestImage2
+    val bufferedImage = new BufferedImage(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
+    val g2d = bufferedImage.getGraphics.asInstanceOf[Graphics2D]
+    g2d.setColor(Color.GRAY)
+    g2d.fillRect(0, 0, View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT)
+    g2d.setColor(Color.GREEN)
+    g2d.fillRect(100, 100, 200, 200)
+    g2d.setColor(Color.CYAN)
+    g2d.fillOval(1400, 600, 200, 300)
+    g2d.setColor(Color.RED.darker)
+    g2d.setFont(new Font(Font.MONOSPACED, Font.BOLD, 60))
+    g2d.drawString("TEST IMAGE", 600, 300)
+    bufferedImage
   }
 }

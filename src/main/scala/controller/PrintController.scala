@@ -1,15 +1,15 @@
 package controller
 
-import views.{MainMenuView, PrintView, ViewManager}
+import views.{PrintView, ViewManager}
 import model.Model
 import board.Board
 import board.Location
 import fighter.Fighter
 
 /**
-  * Created by Leonard on 6/3/2017.
+  * Created by Leonard on 7/16/2017.
   */
-object Controller {
+object PrintController {
   val ANY_INPUT = 0
 
   def main(args: Array[String]): Unit = {
@@ -24,7 +24,7 @@ object Controller {
   }
 }
 
-class Controller {
+class PrintController {
   private val model = Model.loadOrCreate(getProfileName)
   //private val viewManager = new ViewManager(new MainMenuView(model))
   private val view = new PrintView(model)

@@ -19,9 +19,10 @@ object ViewManager{
   val DEFAULT_FRAME_HEIGHT = 90 * 5
 }
 class ViewManager(initialView: View) {
-  var currentView: View = initialView
-  val frame = new JFrame
-  val mainPanel = new ImageRenderPanel(frame)
+  protected var currentView: View = initialView
+  protected val frame = new JFrame
+  protected val mainPanel = new ImageRenderPanel(frame)
+  protected var lastDrawFunction: ()=>Unit = {()=>;}
   setupFrame
 
   def getCurrentView: View = currentView
@@ -30,7 +31,7 @@ class ViewManager(initialView: View) {
 
   def repaint: Unit = currentView match{
     case printView: PrintView => ;
-    case _ => mainPanel.repaint()
+    case _ => lastDrawFunction()
   }
 
   private def renderImage(bufferedImage: BufferedImage): Unit = {
@@ -51,7 +52,9 @@ class ViewManager(initialView: View) {
   }
 
   def showMainMenu: Unit = currentView match{
-    case mainMenuView: MainMenuView => renderImage(mainMenuView.getMainMenuImage)
+    case mainMenuView: MainMenuView =>
+      lastDrawFunction = ()=>showMainMenu
+      renderImage(mainMenuView.getMainMenuImage)
     case printView: PrintView => ???
     case _ => throw new UnsupportedViewOperationException
   }
