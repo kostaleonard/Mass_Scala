@@ -13,7 +13,6 @@ object Controller {
   val ANY_INPUT = 0
 
   def main(args: Array[String]): Unit = {
-    //TODO make the project do something useful.
     val controller = new Controller
     controller.startGame
     controller.exitGame

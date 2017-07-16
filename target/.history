@@ -188,3 +188,5 @@ clean
 compile
 run
 e
+clean
+compile
