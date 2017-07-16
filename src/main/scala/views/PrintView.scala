@@ -10,18 +10,18 @@ import model.Model
   */
 class PrintView(model: Model) extends View(model) {
 
-  override def showStartScreen: Unit = {
+  def showStartScreen: Unit = {
     System.out.println("======== MASS ========")
     System.out.println("Press any key to begin")
   }
 
-  override def showMainMenu: Unit = {
+  def showMainMenu: Unit = {
     System.out.println("======== Main Menu ========")
     System.out.println("c: Customize party")
     System.out.println("r: Play random board")
   }
 
-  override def showBoard: Unit = {
+  def showBoard: Unit = {
     def showTile(t: Tile): Unit = {
       t match{
         case g: GrassPlains => System.out.print('_')
@@ -67,7 +67,7 @@ class PrintView(model: Model) extends View(model) {
     }
   }
 
-  override def showPlayerParty: Unit = {
+  def showPlayerParty: Unit = {
     System.out.println("======== Party ========")
     val party = model.getPlayerParty
     for(fighter <- party.getFighters){
@@ -75,7 +75,7 @@ class PrintView(model: Model) extends View(model) {
     }
   }
 
-  override def showBoardCommands: Unit = {
+  def showBoardCommands: Unit = {
     System.out.println("======== Commands ========")
     System.out.println("q: Quit")
     System.out.println("e: End turn")
@@ -83,7 +83,7 @@ class PrintView(model: Model) extends View(model) {
     System.out.println("a: Action")
   }
 
-  override def showAvailableMoves(moves: Set[Location]): Unit = {
+  def showAvailableMoves(moves: Set[Location]): Unit = {
     System.out.println("======== Moves ========")
     //moves.foreach(loc => System.out.print(loc + "\t"))
     def showTile(t: Tile): Unit = {
@@ -132,18 +132,13 @@ class PrintView(model: Model) extends View(model) {
     }
   }
 
-  override def showAvailableActions(fighter: Fighter, actions: Iterable[Action]): Unit = {
+  def showAvailableActions(fighter: Fighter, actions: Iterable[Action]): Unit = {
     System.out.println("===== Available Actions for " + fighter.toString + " =====")
     actions.foreach(System.out.println)
   }
 
-  override def showChosenAction(fighter: Fighter, action: Action): Unit = {
+  def showChosenAction(fighter: Fighter, action: Action): Unit = {
     System.out.println("===== Chosen Action for " + fighter.toString + " =====")
     System.out.println(action)
-  }
-
-  override def render: Unit = {
-    //TODO implement the views.PrintView class render function.
-    System.out.println("Rendering to stdout...")
   }
 }

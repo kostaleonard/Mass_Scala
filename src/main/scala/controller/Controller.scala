@@ -1,6 +1,6 @@
 package controller
 
-import views.PrintView
+import views.{MainMenuView, PrintView, ViewManager}
 import model.Model
 import board.Board
 import board.Location
@@ -14,14 +14,20 @@ object Controller {
 
   def main(args: Array[String]): Unit = {
     val controller = new Controller
-    controller.startGame
-    controller.exitGame
+
+    controller.viewManager.setCurrentView(new MainMenuView(controller.model))
+    controller.viewManager.setupFrame
+    controller.viewManager.showMainMenu
+
+    //controller.startGame
+    //controller.exitGame
   }
 }
 
 class Controller {
   private val model = Model.loadOrCreate(getProfileName)
   private val view = new PrintView(model)
+  private val viewManager = new ViewManager(view)
 
   def getProfileName: String = {
     //TODO get a profile name from the user (through the View--either saved or created).

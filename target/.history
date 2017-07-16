@@ -190,3 +190,11 @@ run
 e
 clean
 compile
+clean
+compile
+clean
+compile
+run
+clean
+compile
+run
