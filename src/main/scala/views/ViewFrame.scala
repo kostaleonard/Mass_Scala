@@ -1,26 +1,50 @@
 package views
 
-import java.awt.event.{ActionEvent, ActionListener, WindowEvent, WindowListener}
+import java.awt.event._
+import java.awt.image.BufferedImage
 import javax.swing.{JFrame, Timer, WindowConstants}
 
 /**
   * Created by Leonard on 7/17/2017.
   */
-class ViewFrame(viewManager: ViewManager, keyPressManager: KeyPressManager) extends JFrame with WindowListener {
-  val milisecondsPerSecond = 1000
-  val repaintTimer = new Timer(milisecondsPerSecond/ViewManager.FRAMES_PER_SECOND, new RepaintListener)
-  val keyHeldTimer = new Timer(milisecondsPerSecond/ViewManager.FRAMES_PER_SECOND, new KeyHeldListener)
+class ViewFrame(viewManager: ViewManager) extends JFrame with WindowListener with ComponentListener {
+  protected val keyPressManager = new KeyPressManager(viewManager)
+  protected val mainPanel = new ImageRenderPanel
+  protected val repaintTimer = new Timer(ViewManager.MILLISECONDS_PER_SECOND/ViewManager.FRAMES_PER_SECOND, new RepaintListener)
+  protected val keyHeldTimer = new Timer(ViewManager.MILLISECONDS_PER_SECOND/ViewManager.FRAMES_PER_SECOND, new KeyHeldListener)
+  setVisible(false)
 
-  def setupRepaintTimer: Unit = {
-    repaintTimer.start
+  def getKeyPressManager: KeyPressManager = keyPressManager
+
+  def setup: Unit = {
+    //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+    setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE)
+    addWindowListener(this)
+    addComponentListener(this)
+    setSize(ViewManager.DEFAULT_FRAME_WIDTH, ViewManager.DEFAULT_FRAME_HEIGHT) //In case the panel is restored.
+    //TODO maximize the frame by default once testing is completed.
+    //setExtendedState(java.awt.Frame.MAXIMIZED_BOTH)
+    mainPanel.setSize(getWidth, getHeight)
+    //TODO frame decoration is throwing off graphics calculations slightly. Give user these buttons organically, then uncomment below.
+    //setUndecorated(true)
+    setVisible(true)
+    setFocusable(true)
+    add(mainPanel)
+    addKeyListener(keyPressManager)
+    setupRepaintTimer
+    setupKeyHeldTimer
   }
 
-  def setupKeyHeldTimer: Unit = {
-    keyHeldTimer.start
+  def setupRepaintTimer: Unit = repaintTimer.start
+
+  def setupKeyHeldTimer: Unit = keyHeldTimer.start
+
+  def renderImage(bufferedImage: BufferedImage): Unit = {
+    mainPanel.setCurrentImage(Some(bufferedImage))
+    mainPanel.repaint()
   }
 
   override def windowClosed(e: WindowEvent): Unit = {
-    println("Window closed; killing threads")
     repaintTimer.stop
     keyHeldTimer.stop
     System.exit(0)
@@ -31,7 +55,6 @@ class ViewFrame(viewManager: ViewManager, keyPressManager: KeyPressManager) exte
   override def windowIconified(e: WindowEvent): Unit = {}
 
   override def windowClosing(e: WindowEvent): Unit = {
-    println("Window closing!")
     repaintTimer.stop
     keyHeldTimer.stop
     System.exit(0)
@@ -43,17 +66,26 @@ class ViewFrame(viewManager: ViewManager, keyPressManager: KeyPressManager) exte
 
   override def windowOpened(e: WindowEvent): Unit = {}
 
+  override def componentHidden(e: ComponentEvent): Unit = {}
+
+  override def componentMoved(e: ComponentEvent): Unit = {}
+
+  override def componentShown(e: ComponentEvent): Unit = {}
+
+  override def componentResized(e: ComponentEvent): Unit = {
+    mainPanel.setSize(getWidth, getHeight)
+    mainPanel.repaint()
+  }
+
   class RepaintListener extends ActionListener{
     override def actionPerformed(e: ActionEvent): Unit = {
       viewManager.repaint
-      println("Repainting")
     }
   }
 
   class KeyHeldListener extends ActionListener{
     override def actionPerformed(e: ActionEvent): Unit = {
       keyPressManager.checkForHeldKeys
-      println("Waiting for keys")
     }
   }
 }

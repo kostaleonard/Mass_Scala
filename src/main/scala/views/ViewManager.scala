@@ -1,8 +1,6 @@
 package views
 
-import java.awt.event.{ActionEvent, ActionListener}
 import java.awt.image.BufferedImage
-import javax.swing.{JFrame, Timer, WindowConstants}
 
 import actions.Action
 import board.Location
@@ -18,53 +16,35 @@ object ViewManager{
   val UNSUPPORTED_VIEW_OPERATION_EXCEPTION_MESSAGE = "The current View is not designed to render this screen; you must switch the current View."
   val DEFAULT_FRAME_WIDTH = 160 * 5
   val DEFAULT_FRAME_HEIGHT = 90 * 5
-  val FRAMES_PER_SECOND = 1
+  val FRAMES_PER_SECOND = 60
+  val MILLISECONDS_PER_SECOND = 1000
 }
 class ViewManager(initialView: View){
   protected var currentView: View = initialView
   protected var lastDrawFunction: ()=>Unit = {()=>;}
-  protected val keyPressManager = new KeyPressManager(this)
-  protected val frame = new ViewFrame(this, keyPressManager)
-  protected val mainPanel = new ImageRenderPanel(frame, this)
-  currentView.setKeyPressManager(Some(keyPressManager))
+  protected val frame = new ViewFrame(this)
+  setCurrentView(initialView)
   setupFrame
 
   def getCurrentView: View = currentView
 
   protected def setCurrentView(newView: View): Unit = {
     currentView = newView
-    currentView.setKeyPressManager(Some(keyPressManager))
+    currentView.setKeyPressManager(Some(frame.getKeyPressManager))
   }
 
+  //Gets a NEW image from the currentView.
+  //Frame's panel will then repaint (only if it has to due to resizing) the LAST GIVEN image at the correct scale.
   def repaint: Unit = currentView match{
     case printView: PrintView => ;
     case _ => lastDrawFunction()
   }
 
-  protected def renderImage(bufferedImage: BufferedImage): Unit = {
-    mainPanel.setCurrentImage(Some(bufferedImage))
-    mainPanel.repaint()
-  }
+  protected def renderImage(bufferedImage: BufferedImage): Unit = frame.renderImage(bufferedImage)
 
-  //TODO move all of this logic to ViewFrame!
   protected def setupFrame: Unit = currentView match{
-    case printView: PrintView =>
-      frame.setVisible(false)
-    case _ =>
-      //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
-      frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE)
-      frame.addWindowListener(frame)
-      frame.setSize(ViewManager.DEFAULT_FRAME_WIDTH, ViewManager.DEFAULT_FRAME_HEIGHT) //In case the panel is restored.
-      //TODO maximize the frame by default once testing is completed.
-      //frame.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH)
-      //TODO frame decoration is throwing off graphics calculations slightly. Give user these buttons organically, then uncomment below.
-      //frame.setUndecorated(true)
-      frame.setVisible(true)
-      frame.setFocusable(true)
-      frame.add(mainPanel)
-      frame.addKeyListener(keyPressManager)
-      frame.setupRepaintTimer
-      frame.setupKeyHeldTimer
+    case printView: PrintView => ;
+    case _ => frame.setup
   }
 
   def showMainMenu: Unit = currentView match{
