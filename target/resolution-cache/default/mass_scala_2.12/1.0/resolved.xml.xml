@@ -4,7 +4,7 @@
 		module="mass_scala_2.12"
 		revision="1.0"
 		status="integration"
-		publication="20170716135644"
+		publication="20170716202444"
 	>
 		<description>
 		Mass_Scala
@@ -36,5 +36,6 @@
 		<dependency org="org.scala-lang" name="scala-library" rev="2.12.2" conf="scala-tool->default,optional(default);compile->default(compile)"/>
 		<dependency org="org.scalactic" name="scalactic_2.12" rev="3.0.1" conf="compile->default(compile)"/>
 		<dependency org="org.scalatest" name="scalatest_2.12" rev="3.0.1" conf="test->default(compile)"/>
+		<dependency org="org.scala-lang.modules" name="scala-swing_2.12" rev="2.0.0-M2" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>

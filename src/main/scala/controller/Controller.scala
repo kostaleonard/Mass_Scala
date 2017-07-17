@@ -14,59 +14,22 @@ object Controller {
 
   def main(args: Array[String]): Unit = {
     val controller = new Controller
-
-    //controller.viewManager.setCurrentView(new MainMenuView(controller.model))
-    //controller.viewManager.setupFrame
-    //controller.viewManager.showMainMenu
-
-    controller.startGame
-    controller.exitGame
+    controller.playGame
   }
 }
 
 class Controller {
   private val model = Model.loadOrCreate(getProfileName)
-  //private val viewManager = new ViewManager(new MainMenuView(model))
-  private val view = new PrintView(model)
-  private val viewManager = new ViewManager(view)
+  private val viewManager = new ViewManager(new MainMenuView(model))
 
   def getProfileName: String = {
     //TODO get a profile name from the user (through the View--either saved or created).
     "Leo"
   }
 
-  def waitForCharInput: Option[Char] = {
-    try {
-      Some(scala.io.StdIn.readChar())
-    } catch{ case e: java.lang.StringIndexOutOfBoundsException => None }
-  }
+  def playGame: Unit = runMainMenu
 
-  def waitForStringInput: Option[String] = {
-    try {
-      Some(scala.io.StdIn.readLine())
-    } catch{ case e: java.lang.StringIndexOutOfBoundsException => None }
-  }
-
-  def startGame: Unit = {
-    view.showStartScreen
-    this.waitForCharInput
-    this.runMainMenu
-  }
-
-  def runMainMenu: Unit = {
-    view.showMainMenu
-    val command = this.waitForCharInput
-    command match{
-      case Some('c') => customizeParty
-      case Some('r') => playRandomBoard
-      case _ => System.out.println("Unrecognized command")
-    }
-  }
-
-  def customizeParty: Unit = {
-    //TODO customizeParty function
-    ???
-  }
+  def runMainMenu: Unit = viewManager.showMainMenu
 
   def playRandomBoard: Unit = {
     //TODO remove playRandomBoard function
@@ -74,7 +37,6 @@ class Controller {
     val fighterArray = model.getPlayerParty.getFighters.toArray
     fighterArray.indices.foreach { i =>
       fighterArray(i).setLocation(Location(i, i))
-      //model.getCurrentBoard.get.placeFighterOnBoard(fighterArray(i))
     }
     model.getCurrentBoard.get.placePlayerPartyOnBoard(model.getPlayerParty)
     while(model.isBoardActive){
@@ -100,6 +62,7 @@ class Controller {
   }
 
   def doPlayerTurn: Unit = {
+    /*
     var endTurn = false
     while(!endTurn) {
       view.showBoard
@@ -118,30 +81,11 @@ class Controller {
         case _ => System.out.println("Unrecognized command")
       }
     }
-  }
-
-  private def getNumFromInput(in: Option[String]): Option[Int] = in match {
-    case Some(str) =>
-      if(str.matches("[0-9]+")) Some(str.toInt)
-      else {
-        System.out.println("Unrecognized number.")
-        None
-      }
-    case _ =>
-      System.out.println("Unrecognized number.")
-      None
-  }
-
-  private def getFighterFromInput: Option[Fighter] = {
-    System.out.println("Enter from row: ")
-    val fromRow = getNumFromInput(this.waitForStringInput)
-    System.out.println("Enter from col: ")
-    val fromCol = getNumFromInput(this.waitForStringInput)
-    if (fromRow.isEmpty || fromCol.isEmpty) None
-    else model.fighterAt(Location(fromRow.get, fromCol.get))
+    */
   }
 
   def doPlayerAction: Unit = {
+  /*
     val fighter = getFighterFromInput
     if(fighter == None){
       System.out.println("No fighter at that location.")
@@ -157,9 +101,11 @@ class Controller {
     val choice = getNumFromInput(this.waitForStringInput)
     if(choice.isEmpty || choice.get < 0 || choice.get >= actionsArray.length) System.out.println("Unrecognized choice")
     else model.doFighterAction(actionsArray(choice.get))
+    */
   }
 
   def movePlayerFighter: Unit = {
+    /*
     def getEndLocation: Option[Location] = {
       System.out.println("Enter to row: ")
       val toRow = getNumFromInput(this.waitForStringInput)
@@ -186,9 +132,11 @@ class Controller {
     }
     if(!moves(endLocation.get)) System.out.println("The Fighter cannot move to that location.")
     else model.moveFighter(fighter.get.getLocation, endLocation.get)
+    */
   }
 
   def doEnemyTurn: Unit = {
+    /*
     //TODO give this to an AI handler class
     def doRandomMove(fighter: Fighter): Unit = {
       val moveChoices = scala.util.Random.shuffle(model.getAvailableMoves(fighter).toList)
@@ -207,6 +155,7 @@ class Controller {
       while(f.canMove) doRandomMove(f)
       while(f.canAttack) doRandomAction(f)
     }
+    */
   }
 
   def exitGame: Unit = {

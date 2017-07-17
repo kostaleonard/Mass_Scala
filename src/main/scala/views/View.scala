@@ -1,5 +1,6 @@
 package views
 
+import java.awt.event.KeyEvent
 import java.awt.{Color, Font, Graphics2D}
 import java.awt.image.BufferedImage
 import java.io.File
@@ -55,4 +56,9 @@ abstract class View(model: Model) {
     g2d.drawString("TEST IMAGE", 600, 300)
     bufferedImage
   }
+
+  //Key Event Methods:
+  def keyPressed(e: KeyEvent): Unit = {}
+  def keyReleased(e: KeyEvent): Unit = {}
+  def keyTyped(e: KeyEvent): Unit = {}
 }

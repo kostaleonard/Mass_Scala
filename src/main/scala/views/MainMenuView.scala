@@ -1,13 +1,9 @@
 package views
 
+import java.awt.event.KeyEvent
 import java.awt.{Color, Font, Graphics2D}
 import java.awt.image.BufferedImage
-import java.io.File
-import javax.imageio.ImageIO
 
-import actions.Action
-import board.Location
-import fighter.Fighter
 import model.Model
 
 /**
@@ -25,7 +21,13 @@ class MainMenuView(model: Model) extends View(model) {
     g2d.fillOval(1400, 600, 200, 300)
     g2d.setColor(Color.RED.darker)
     g2d.setFont(new Font(Font.MONOSPACED, Font.BOLD, 60))
-    g2d.drawString("TEST IMAGE", 600, 300)
+    g2d.drawString("MAIN MENU", 600, 300)
     bufferedImage
   }
+
+  override def keyPressed(e: KeyEvent): Unit = println(e.getKeyChar + " pressed")
+
+  override def keyReleased(e: KeyEvent): Unit = println(e.getKeyChar + " released")
+
+  override def keyTyped(e: KeyEvent): Unit = println(e.getKeyChar + " typed")
 }

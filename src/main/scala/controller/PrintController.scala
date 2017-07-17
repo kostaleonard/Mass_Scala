@@ -19,7 +19,7 @@ object PrintController {
     //controller.viewManager.setupFrame
     //controller.viewManager.showMainMenu
 
-    controller.startGame
+    controller.playGame
     controller.exitGame
   }
 }

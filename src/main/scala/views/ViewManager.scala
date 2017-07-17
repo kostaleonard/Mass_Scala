@@ -1,11 +1,14 @@
 package views
 
+import java.awt.Dimension
 import java.awt.image.BufferedImage
 import javax.swing.JFrame
 
 import actions.Action
 import board.Location
 import fighter.Fighter
+
+import scala.swing.{Frame, Label, MainFrame}
 
 /**
   * Created by Leonard on 7/16/2017.
@@ -18,10 +21,10 @@ object ViewManager{
   val DEFAULT_FRAME_WIDTH = 160 * 5
   val DEFAULT_FRAME_HEIGHT = 90 * 5
 }
-class ViewManager(initialView: View) {
+class ViewManager(initialView: View){
   protected var currentView: View = initialView
-  protected val frame = new JFrame
-  protected val mainPanel = new ImageRenderPanel(frame)
+  protected val frame = new MainFrame
+  protected val mainPanel = new ImageRenderPanel(frame, this)
   protected var lastDrawFunction: ()=>Unit = {()=>;}
   setupFrame
 
@@ -40,8 +43,11 @@ class ViewManager(initialView: View) {
   }
 
   def setupFrame: Unit = currentView match{
-    case printView: PrintView => frame.setVisible(false)
+    case printView: PrintView =>
+      //frame.setVisible(false)
+      frame.visible = false
     case _ =>
+      /*
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
       frame.setSize(ViewManager.DEFAULT_FRAME_WIDTH, ViewManager.DEFAULT_FRAME_HEIGHT) //In case the panel is restored.
       frame.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH)
@@ -49,6 +55,11 @@ class ViewManager(initialView: View) {
       //frame.setUndecorated(true)
       frame.setVisible(true)
       frame.add(mainPanel)
+      */
+      frame.preferredSize = new Dimension(ViewManager.DEFAULT_FRAME_WIDTH, ViewManager.DEFAULT_FRAME_HEIGHT)
+      frame.maximize()
+      frame.visible = true
+      frame.contents = mainPanel
   }
 
   def showMainMenu: Unit = currentView match{
