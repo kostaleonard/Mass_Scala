@@ -36,7 +36,9 @@ object View{
   def getSourcePath(imageFilename: String): String = RESOURCE_ROOT_DIRECTORY + "/" + IMAGES_DIRECTORY + "/" + imageFilename
 }
 abstract class View(model: Model) {
-  protected var this.model: Model = model
+  protected var keyPressManager: Option[KeyPressManager] = None
+
+  def setKeyPressManager(opt: Option[KeyPressManager]): Unit = keyPressManager = opt
 
   protected def getTestImage1: BufferedImage = {
     ImageIO.read(new File(View.getSourcePath("testImage.jpg")))
@@ -57,8 +59,9 @@ abstract class View(model: Model) {
     bufferedImage
   }
 
-  //Key Event Methods:
-  def keyPressed(e: KeyEvent): Unit = {}
-  def keyReleased(e: KeyEvent): Unit = {}
-  def keyTyped(e: KeyEvent): Unit = {}
+  //Key methods:
+  def keyPressed(keyCode: Int): Unit = {}
+  def keyReleased(keyCode: Int): Unit = {}
+  def keyTyped(keyCode: Int): Unit = {}
+  def keyHeld(keyCode: Int): Unit = {}
 }

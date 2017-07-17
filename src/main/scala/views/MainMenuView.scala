@@ -25,9 +25,18 @@ class MainMenuView(model: Model) extends View(model) {
     bufferedImage
   }
 
-  override def keyPressed(e: KeyEvent): Unit = println(e.getKeyChar + " pressed")
+  override def keyPressed(keyCode: Int): Unit = {
+    val text = KeyEvent.getKeyText(keyCode)
+    println(text + " pressed")
+  }
 
-  override def keyReleased(e: KeyEvent): Unit = println(e.getKeyChar + " released")
+  override def keyReleased(keyCode: Int): Unit = {
+    val text = KeyEvent.getKeyText(keyCode)
+    println(text + " released")
+  }
 
-  override def keyTyped(e: KeyEvent): Unit = println(e.getKeyChar + " typed")
+  override def keyHeld(keyCode: Int): Unit = {
+    val text = KeyEvent.getKeyText(keyCode)
+    println(text + " held")
+  }
 }
