@@ -1,7 +1,7 @@
 package views
 
 import java.awt.event.{ActionEvent, ActionListener, WindowEvent, WindowListener}
-import javax.swing.{JFrame, Timer}
+import javax.swing.{JFrame, Timer, WindowConstants}
 
 /**
   * Created by Leonard on 7/17/2017.
@@ -20,15 +20,22 @@ class ViewFrame(viewManager: ViewManager, keyPressManager: KeyPressManager) exte
   }
 
   override def windowClosed(e: WindowEvent): Unit = {
+    println("Window closed; killing threads")
     repaintTimer.stop
     keyHeldTimer.stop
+    System.exit(0)
   }
 
   override def windowActivated(e: WindowEvent): Unit = {}
 
   override def windowIconified(e: WindowEvent): Unit = {}
 
-  override def windowClosing(e: WindowEvent): Unit = {}
+  override def windowClosing(e: WindowEvent): Unit = {
+    println("Window closing!")
+    repaintTimer.stop
+    keyHeldTimer.stop
+    System.exit(0)
+  }
 
   override def windowDeactivated(e: WindowEvent): Unit = {}
 
@@ -37,10 +44,16 @@ class ViewFrame(viewManager: ViewManager, keyPressManager: KeyPressManager) exte
   override def windowOpened(e: WindowEvent): Unit = {}
 
   class RepaintListener extends ActionListener{
-    override def actionPerformed(e: ActionEvent): Unit = viewManager.repaint
+    override def actionPerformed(e: ActionEvent): Unit = {
+      viewManager.repaint
+      println("Repainting")
+    }
   }
 
   class KeyHeldListener extends ActionListener{
-    override def actionPerformed(e: ActionEvent): Unit = keyPressManager.checkForHeldKeys
+    override def actionPerformed(e: ActionEvent): Unit = {
+      keyPressManager.checkForHeldKeys
+      println("Waiting for keys")
+    }
   }
 }
