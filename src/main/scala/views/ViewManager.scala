@@ -1,14 +1,11 @@
 package views
 
-import java.awt.Dimension
 import java.awt.image.BufferedImage
 import javax.swing.JFrame
 
 import actions.Action
 import board.Location
 import fighter.Fighter
-
-import scala.swing.{Frame, Label, MainFrame}
 
 /**
   * Created by Leonard on 7/16/2017.
@@ -23,7 +20,7 @@ object ViewManager{
 }
 class ViewManager(initialView: View){
   protected var currentView: View = initialView
-  protected val frame = new MainFrame
+  protected val frame = new JFrame
   protected val mainPanel = new ImageRenderPanel(frame, this)
   protected var lastDrawFunction: ()=>Unit = {()=>;}
   setupFrame
@@ -44,22 +41,17 @@ class ViewManager(initialView: View){
 
   def setupFrame: Unit = currentView match{
     case printView: PrintView =>
-      //frame.setVisible(false)
-      frame.visible = false
+      frame.setVisible(false)
     case _ =>
-      /*
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
       frame.setSize(ViewManager.DEFAULT_FRAME_WIDTH, ViewManager.DEFAULT_FRAME_HEIGHT) //In case the panel is restored.
       frame.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH)
       //TODO frame decoration is throwing off graphics calculations slightly. Give user these buttons organically, then uncomment below.
       //frame.setUndecorated(true)
       frame.setVisible(true)
+      frame.setFocusable(true)
       frame.add(mainPanel)
-      */
-      frame.preferredSize = new Dimension(ViewManager.DEFAULT_FRAME_WIDTH, ViewManager.DEFAULT_FRAME_HEIGHT)
-      frame.maximize()
-      frame.visible = true
-      frame.contents = mainPanel
+      frame.addKeyListener(new KeyPressManager(this))
   }
 
   def showMainMenu: Unit = currentView match{
