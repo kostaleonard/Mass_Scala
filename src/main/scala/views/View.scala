@@ -56,6 +56,7 @@ abstract class View(model: Model) {
     g2d.setColor(Color.RED.darker)
     g2d.setFont(new Font(Font.MONOSPACED, Font.BOLD, 60))
     g2d.drawString("TEST IMAGE", 600, 300)
+    g2d.dispose()
     bufferedImage
   }
 

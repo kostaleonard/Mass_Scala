@@ -8,10 +8,8 @@ import fighter.Fighter
 
 /**
   * Created by Leonard on 7/16/2017.
-  *
-  * ViewManager should be the sole owner of any JFrames.
-  * This will keep transitions between Views smooth.
   */
+//TODO investigate Java Swing performace improvement strategies. Animations are flickering.
 object ViewManager{
   val UNSUPPORTED_VIEW_OPERATION_EXCEPTION_MESSAGE = "The current View is not designed to render this screen; you must switch the current View."
   val DEFAULT_FRAME_WIDTH = 160 * 5

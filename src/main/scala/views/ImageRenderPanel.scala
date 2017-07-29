@@ -11,6 +11,7 @@ class ImageRenderPanel extends JPanel {
   protected var currentImage: Option[BufferedImage] = None
   protected var backgroundColor = Color.RED.darker //TODO change background color. It is dark red for testing.
   setFocusable(true)
+  setDoubleBuffered(true)
 
   def getCurrentImage: Option[BufferedImage] = currentImage
 
