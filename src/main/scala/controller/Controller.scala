@@ -11,6 +11,7 @@ import fighter.Fighter
   */
 object Controller {
   val ANY_INPUT = 0
+  val GAME_TITLE = "Far Outpost"
 
   def main(args: Array[String]): Unit = {
     val controller = new Controller

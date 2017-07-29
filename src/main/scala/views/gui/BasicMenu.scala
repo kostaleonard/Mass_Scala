@@ -13,9 +13,9 @@ import scala.collection.mutable.ArrayBuffer
 object BasicMenu{
   val DEFAULT_WIDTH = 300
   val DEFAULT_HEIGHT = 300
-  val DEFAULT_TITLE_FONT = new Font(Font.MONOSPACED, Font.BOLD, 70)
+  val DEFAULT_TITLE_FONT = new Font(Font.MONOSPACED, Font.BOLD, 50)
   val DEFAULT_TITLE_FONT_COLOR = Color.BLACK
-  val DEFAULT_MENUITEM_FONT = new Font(Font.MONOSPACED, Font.BOLD, 20)
+  val DEFAULT_MENUITEM_FONT = new Font(Font.MONOSPACED, Font.BOLD, 30)
   val DEFAULT_MENUITEM_FONT_COLOR = Color.BLACK
   val DEFAULT_MENU_BACKGROUND_COLOR = new Color(100, 100, 100, 200) //Grayish and slightly transparent
   val DEFAULT_HIGHLIGHT_COLOR = Color.YELLOW
@@ -38,23 +38,19 @@ class BasicMenu {
   protected var borderColor = BasicMenu.DEFAULT_BORDER_COLOR
   protected var borderThickness = BasicMenu.DEFAULT_BORDER_THICKNESS
   protected var titleSeparatorThickness = BasicMenu.DEFAULT_TITLE_SEPARATOR_THICKNESS
-  protected var titleDisplayed = true
+  //protected var titleDisplayed = true
   protected var wrapContentHeight = true //Will supersede this.height
-  protected var wrapContentWidth = true //Will supersede this.width
+  protected var wrapContentWidth = false //Will supersede this.width
   protected var titleString = "MENU"
-
-  //TODO remove test code:
-  appendMenuItem(MenuItem("Mitem 1", null, true))
-  appendMenuItem(MenuItem("Mitem 2", null, true))
-  appendMenuItem(MenuItem("Mitem 3", null, false))
-  appendMenuItem(MenuItem("Mitem 4", null, true))
-  appendMenuItem(MenuItem("Mitem 5", null, true))
+  protected var selectedMenuItem = 0
 
   def getMenuItems: ArrayBuffer[MenuItem] = menuItems
 
   def appendMenuItem(menuItem: MenuItem): Unit = menuItems.append(menuItem)
 
   def removeMenuItem(index: Int): MenuItem = menuItems.remove(index)
+
+  def setTitleString(title: String): Unit = titleString = title
 
   def getWidth: Int = if(wrapContentWidth) getWrappedWidth else width
 
@@ -97,7 +93,7 @@ class BasicMenu {
     menuItems.indices.foreach{ i =>
       val menuItem = menuItems(i)
       val heightStartThisMenuItem = heightStartMenuItems + menuItemHeight * i
-      if(menuItem.isSelected){
+      if(selectedMenuItem == i){
         g2d.setColor(highlightColor)
         if(i == 0)
           g2d.fillRect(borderThickness, heightStartThisMenuItem + borderThickness, getWidth - 2 * borderThickness, menuItemHeight - borderThickness)
