@@ -28,7 +28,7 @@ class PrintController {
   private val model = Model.loadOrCreate(getProfileName)
   //private val viewManager = new ViewManager(new MainMenuView(model))
   private val view = new PrintView(model)
-  private val viewManager = new ViewManager(view)
+  //private val viewManager = new ViewManager(view)
 
   def getProfileName: String = {
     //TODO get a profile name from the user (through the View--either saved or created).

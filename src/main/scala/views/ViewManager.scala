@@ -2,9 +2,7 @@ package views
 
 import java.awt.image.BufferedImage
 
-import actions.Action
-import board.Location
-import fighter.Fighter
+import controller.Controller
 
 /**
   * Created by Leonard on 7/16/2017.
@@ -17,16 +15,16 @@ object ViewManager{
   val FRAMES_PER_SECOND = 60
   val MILLISECONDS_PER_SECOND = 1000
 }
-class ViewManager(initialView: View){
+class ViewManager(initialView: View, controller: Controller){
   protected var currentView: View = initialView
-  protected var lastDrawFunction: ()=>Unit = {()=>;}
-  protected val frame = new ViewFrame(this)
+  //protected var lastDrawFunction: ()=>Unit = {()=>;}
+  protected val frame = new ViewFrame(this, controller)
   setCurrentView(initialView)
   setupFrame
 
   def getCurrentView: View = currentView
 
-  protected def setCurrentView(newView: View): Unit = {
+  def setCurrentView(newView: View): Unit = {
     currentView = newView
     currentView.setKeyPressManager(Some(frame.getKeyPressManager))
   }
@@ -35,7 +33,9 @@ class ViewManager(initialView: View){
   //Frame's panel will then repaint (only if it has to due to resizing) the LAST GIVEN image at the correct scale.
   def repaint: Unit = currentView match{
     case printView: PrintView => ;
-    case _ => lastDrawFunction()
+    case _ =>
+      //lastDrawFunction()
+      showView
   }
 
   protected def renderImage(bufferedImage: BufferedImage): Unit = frame.renderImage(bufferedImage)
@@ -45,6 +45,12 @@ class ViewManager(initialView: View){
     case _ => frame.setup
   }
 
+  def showView: Unit = currentView match{
+    case printView: PrintView => printView.showMainMenu
+    case _ => renderImage(currentView.getImage)
+  }
+
+  /*
   def showMainMenu: Unit = currentView match{
     case mainMenuView: MainMenuView =>
       lastDrawFunction = ()=>showMainMenu
@@ -52,7 +58,6 @@ class ViewManager(initialView: View){
     case printView: PrintView => printView.showMainMenu
     case _ => throw new UnsupportedViewOperationException
   }
-
   def showStartScreen: Unit = ???
   def showBoard: Unit = ???
   def showPlayerParty: Unit = ???
@@ -60,6 +65,7 @@ class ViewManager(initialView: View){
   def showAvailableMoves(moves: Set[Location]): Unit = ???
   def showAvailableActions(fighter: Fighter, actions: Iterable[Action]): Unit = ???
   def showChosenAction(fighter: Fighter, action: Action): Unit = ???
+  */
 }
 
 case class UnsupportedViewOperationException(private val message: String = ViewManager.UNSUPPORTED_VIEW_OPERATION_EXCEPTION_MESSAGE, private val cause: Throwable = None.orNull)

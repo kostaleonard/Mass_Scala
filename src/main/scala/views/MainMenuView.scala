@@ -12,6 +12,8 @@ import model.Model
   * Created by Leonard on 7/16/2017.
   */
 class MainMenuView(model: Model) extends View(model) {
+  override def getImage: BufferedImage = getMainMenuImage
+
   def getMainMenuImage: BufferedImage = {
     val backgroundImage = ImageIO.read(new File(View.getSourcePath("titleScreen.jpg")))
       .getScaledInstance(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
@@ -30,6 +32,7 @@ class MainMenuView(model: Model) extends View(model) {
   override def keyPressed(keyCode: Int): Unit = {
     val text = KeyEvent.getKeyText(keyCode)
     println(text + " pressed")
+    if(text.equals("A")) nextView = Some(new BoardView(model))
   }
 
   override def keyReleased(keyCode: Int): Unit = {

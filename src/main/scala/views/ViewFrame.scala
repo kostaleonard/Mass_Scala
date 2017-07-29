@@ -4,11 +4,13 @@ import java.awt.event._
 import java.awt.image.BufferedImage
 import javax.swing.{JFrame, Timer, WindowConstants}
 
+import controller.Controller
+
 /**
   * Created by Leonard on 7/17/2017.
   */
-class ViewFrame(viewManager: ViewManager) extends JFrame with WindowListener with ComponentListener {
-  protected val keyPressManager = new KeyPressManager(viewManager)
+class ViewFrame(viewManager: ViewManager, controller: Controller) extends JFrame with WindowListener with ComponentListener {
+  protected val keyPressManager = new KeyPressManager(controller)
   protected val mainPanel = new ImageRenderPanel
   protected val repaintTimer = new Timer(ViewManager.MILLISECONDS_PER_SECOND/ViewManager.FRAMES_PER_SECOND, new RepaintListener)
   protected val keyHeldTimer = new Timer(ViewManager.MILLISECONDS_PER_SECOND/ViewManager.FRAMES_PER_SECOND, new KeyHeldListener)

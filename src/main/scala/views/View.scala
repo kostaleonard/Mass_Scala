@@ -37,8 +37,11 @@ object View{
 }
 abstract class View(model: Model) {
   protected var keyPressManager: Option[KeyPressManager] = None
+  protected var nextView: Option[View] = None
 
   def setKeyPressManager(opt: Option[KeyPressManager]): Unit = keyPressManager = opt
+
+  def getNextView = nextView
 
   protected def getTestImage1: BufferedImage = {
     ImageIO.read(new File(View.getSourcePath("testImage.jpg")))
@@ -65,4 +68,7 @@ abstract class View(model: Model) {
   def keyReleased(keyCode: Int): Unit = {}
   def keyTyped(keyCode: Int): Unit = {}
   def keyHeld(keyCode: Int): Unit = {}
+
+  //Abstract methods:
+  def getImage: BufferedImage
 }

@@ -1,5 +1,7 @@
 package views
 
+import java.awt.image.BufferedImage
+
 import actions.Action
 import board.{GrassPlains, Location, Mountains, Tile}
 import fighter.Fighter
@@ -141,4 +143,6 @@ class PrintView(model: Model) extends View(model) {
     System.out.println("===== Chosen Action for " + fighter.toString + " =====")
     System.out.println(action)
   }
+
+  override def getImage: BufferedImage = getTestImage2
 }

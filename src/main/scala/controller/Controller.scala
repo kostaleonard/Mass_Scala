@@ -20,7 +20,7 @@ object Controller {
 
 class Controller {
   private val model = Model.loadOrCreate(getProfileName)
-  private val viewManager = new ViewManager(new MainMenuView(model))
+  private val viewManager = new ViewManager(new MainMenuView(model), this)
 
   def getProfileName: String = {
     //TODO get a profile name from the user (through the View--either saved or created).
@@ -29,7 +29,7 @@ class Controller {
 
   def playGame: Unit = runMainMenu
 
-  def runMainMenu: Unit = viewManager.showMainMenu
+  def runMainMenu: Unit = viewManager.setCurrentView(new MainMenuView(model))
 
   def playRandomBoard: Unit = {
     //TODO remove playRandomBoard function
@@ -156,6 +156,26 @@ class Controller {
       while(f.canAttack) doRandomAction(f)
     }
     */
+  }
+
+
+
+  //Key methods:
+  def keyPressed(keyCode: Int): Unit = {
+    viewManager.getCurrentView.keyPressed(keyCode)
+    viewManager.getCurrentView.getNextView.map(nextView => viewManager.setCurrentView(nextView))
+  }
+  def keyReleased(keyCode: Int): Unit = {
+    viewManager.getCurrentView.keyReleased(keyCode)
+    viewManager.getCurrentView.getNextView.map(nextView => viewManager.setCurrentView(nextView))
+  }
+  def keyTyped(keyCode: Int): Unit = {
+    viewManager.getCurrentView.keyTyped(keyCode)
+    viewManager.getCurrentView.getNextView.map(nextView => viewManager.setCurrentView(nextView))
+  }
+  def keyHeld(keyCode: Int): Unit = {
+    viewManager.getCurrentView.keyHeld(keyCode)
+    viewManager.getCurrentView.getNextView.map(nextView => viewManager.setCurrentView(nextView))
   }
 
   def exitGame: Unit = {
