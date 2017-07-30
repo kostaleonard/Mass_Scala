@@ -17,7 +17,12 @@ class MainMenuView(model: Model) extends View(model) {
   val mainMenu = new BasicMenu
   setupMainMenu
 
-  override def getImage: BufferedImage = getMainMenuImage
+  //TODO make image display go faster.
+  //If you swap out getMainMenuImage for getTestImage2,
+  //you will see that graphics processing is very expensive.
+  //A simple image like testImage2 can be displayed without lag,
+  //while even a modestly complex image like mainMenuImage causes lag.
+  override def getImage: BufferedImage = getMainMenuImage //getTestImage2
 
   def getMainMenuImage: BufferedImage = {
     val backgroundImage = ImageIO.read(new File(View.getSourcePath("titleScreen.jpg")))
