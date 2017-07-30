@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
 
-import controller.Controller
+import controller.{Controller, KeyMappings}
 import model.Model
 import views.gui.{BasicMenu, GuiAction, MenuItem}
 
@@ -45,23 +45,16 @@ class MainMenuView(model: Model) extends View(model) {
   }
 
   override def keyPressed(keyCode: Int): Unit = {
-    val text = KeyEvent.getKeyText(keyCode)
-    println(text + " pressed")
-    if(text.equals("A")) mainMenu.makeSelection
-    else if(text.equals("Up")) mainMenu.scrollUp
-    else if(text.equals("Down")) mainMenu.scrollDown
+    if(keyCode == KeyMappings.A_KEY) mainMenu.makeSelection
+    else if(keyCode == KeyMappings.UP_KEY) mainMenu.scrollUp
+    else if(keyCode == KeyMappings.DOWN_KEY) mainMenu.scrollDown
   }
 
-  override def keyReleased(keyCode: Int): Unit = {
-    val text = KeyEvent.getKeyText(keyCode)
-    println(text + " released")
-  }
+  override def keyReleased(keyCode: Int): Unit = {}
 
   override def keyHeld(keyCode: Int): Unit = {
-    val text = KeyEvent.getKeyText(keyCode)
-    println(text + " held")
-    if(text.equals("A")) mainMenu.makeSelection
-    else if(text.equals("Up")) mainMenu.scrollUp
-    else if(text.equals("Down")) mainMenu.scrollDown
+    if(keyCode == KeyMappings.A_KEY) mainMenu.makeSelection
+    else if(keyCode == KeyMappings.UP_KEY) mainMenu.scrollUp
+    else if(keyCode == KeyMappings.DOWN_KEY) mainMenu.scrollDown
   }
 }

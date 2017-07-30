@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
 
+import controller.KeyMappings
 import model.Model
 
 /**
@@ -26,18 +27,9 @@ class BoardView(model: Model) extends View(model) {
     bufferedImage
   }
 
-  override def keyPressed(keyCode: Int): Unit = {
-    val text = KeyEvent.getKeyText(keyCode)
-    println(text + " pressed")
-  }
+  override def keyPressed(keyCode: Int): Unit = {}
 
-  override def keyReleased(keyCode: Int): Unit = {
-    val text = KeyEvent.getKeyText(keyCode)
-    println(text + " released")
-  }
+  override def keyReleased(keyCode: Int): Unit = {}
 
-  override def keyHeld(keyCode: Int): Unit = {
-    val text = KeyEvent.getKeyText(keyCode)
-    println(text + " held")
-  }
+  override def keyHeld(keyCode: Int): Unit = {}
 }
