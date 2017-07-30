@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
 
+import board.Board
 import controller.{Controller, KeyMappings}
 import model.Model
 import views.gui.{BasicMenu, GuiAction, MenuItem}
@@ -36,7 +37,10 @@ class MainMenuView(model: Model) extends View(model) {
 
   def setupMainMenu: Unit = {
     mainMenu.setTitleString("MAIN MENU")
-    mainMenu.appendMenuItem(MenuItem("CAMPAIGN", GuiAction(() => nextView = Some(new BoardView(model)))))
+    mainMenu.appendMenuItem(MenuItem("CAMPAIGN", GuiAction{() =>
+      //TODO do not use test board
+      model.setCurrentBoard(Some(Board.getTestBoard))
+      nextView = Some(new BoardView(model))}))
     mainMenu.appendMenuItem(MenuItem("MULTIPLAYER", GuiAction()))
     mainMenu.appendMenuItem(MenuItem("INVASION", GuiAction(), false))
     mainMenu.appendMenuItem(MenuItem("SETTINGS", GuiAction()))
@@ -46,15 +50,15 @@ class MainMenuView(model: Model) extends View(model) {
 
   override def keyPressed(keyCode: Int): Unit = {
     if(keyCode == KeyMappings.A_KEY) mainMenu.makeSelection
-    else if(keyCode == KeyMappings.UP_KEY) mainMenu.scrollUp
-    else if(keyCode == KeyMappings.DOWN_KEY) mainMenu.scrollDown
+    //Scrolling should only be done in the keyHeld function.
+    //else if(keyCode == KeyMappings.UP_KEY) mainMenu.scrollUp
+    //else if(keyCode == KeyMappings.DOWN_KEY) mainMenu.scrollDown
   }
 
   override def keyReleased(keyCode: Int): Unit = {}
 
   override def keyHeld(keyCode: Int): Unit = {
-    if(keyCode == KeyMappings.A_KEY) mainMenu.makeSelection
-    else if(keyCode == KeyMappings.UP_KEY) mainMenu.scrollUp
+    if(keyCode == KeyMappings.UP_KEY) mainMenu.scrollUp
     else if(keyCode == KeyMappings.DOWN_KEY) mainMenu.scrollDown
   }
 }
