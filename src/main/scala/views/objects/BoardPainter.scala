@@ -23,6 +23,7 @@ class BoardPainter(board: Board) {
 
   def getImage: BufferedImage = {
     val g2d = bufferedImage.getGraphics.asInstanceOf[Graphics2D]
+    //Draw board:
     board.getTiles.indices.foreach{ r =>
       board.getTiles(r).indices.foreach{ c =>
         val tile = board.getTiles(r)(c)
@@ -33,6 +34,21 @@ class BoardPainter(board: Board) {
         }
         g2d.fillRect(c * tileSize, r * tileSize, tileSize, tileSize)
       }
+    }
+    //Draw fighters:
+    board.getPlayerParty.getFighters.foreach{fighter =>
+      val fighterAvatar = new FighterAvatar(fighter)
+      val fighterImage = fighterAvatar.getFriendlyImage
+      g2d.drawImage(fighterImage,
+        fighter.getLocation.col * tileSize, fighter.getLocation.row * tileSize,
+        tileSize, tileSize, null)
+    }
+    board.getEnemyParty.getFighters.foreach{fighter =>
+      val fighterAvatar = new FighterAvatar(fighter)
+      val fighterImage = fighterAvatar.getEnemyImage
+      g2d.drawImage(fighterImage,
+        fighter.getLocation.col * tileSize, fighter.getLocation.row * tileSize,
+        tileSize, tileSize, null)
     }
     g2d.dispose()
     bufferedImage

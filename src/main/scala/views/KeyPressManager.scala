@@ -8,6 +8,7 @@ import controller.{Controller, KeyMappings}
 /**
   * Created by Leonard on 7/16/2017.
   */
+//TODO make key input smoother
 class KeyPressManager(controller: Controller) extends KeyListener{
   protected val keyCodeMap: scala.collection.mutable.Map[Int, Boolean] = scala.collection.mutable.Map.empty[Int, Boolean]
   protected var lastHeldKeys: scala.collection.immutable.Set[Int] = scala.collection.immutable.Set.empty[Int]

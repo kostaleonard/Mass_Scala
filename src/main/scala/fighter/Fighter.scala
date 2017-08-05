@@ -137,6 +137,8 @@ class Fighter(level: Int) {
 
   def removeWeapon(weapon: Weapon): Boolean = weaponTracker.removeWeapon(weapon)
 
+  def getSkillClass: SkillClass = skillClass
+
   //TODO calculate the damage given to the Fighter that kills you (also better name?)
   def expGivenToVictoriousFighter: Int = 50
 

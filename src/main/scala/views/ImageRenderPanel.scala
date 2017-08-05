@@ -20,7 +20,7 @@ class ImageRenderPanel extends JPanel {
   def renderImage(g: Graphics): Unit = {
     g.setColor(backgroundColor)
     g.fillRect(0, 0, getWidth, getHeight)
-    //TODO this currently does not preserve the 16:9 aspect ratio. Consider changing.
+    //TODO this currently does not force the 16:9 aspect ratio. Consider changing.
     currentImage match{
       case Some(bufferedImage) => g.drawImage(bufferedImage,
         0, 0, getWidth, getHeight,
