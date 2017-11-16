@@ -13,7 +13,7 @@ class ViewFrame(viewManager: ViewManager, controller: Controller) extends JFrame
   protected val keyPressManager = new KeyPressManager(controller)
   protected val mainPanel = new ImageRenderPanel
   protected val repaintTimer = new Timer(ViewManager.MILLISECONDS_PER_SECOND/ViewManager.FRAMES_PER_SECOND, new RepaintListener)
-  protected val keyHeldTimer = new Timer(ViewManager.MILLISECONDS_PER_SECOND/ViewManager.HELD_KEY_EVENTS_PER_SECOND, new KeyHeldListener)
+  protected val keyHeldTimer = new Timer(ViewManager.MILLISECONDS_PER_SECOND/ViewManager.KEY_EVENTS_PER_SECOND, new KeyHeldListener)
   setVisible(false)
 
   def getKeyPressManager: KeyPressManager = keyPressManager
@@ -87,7 +87,7 @@ class ViewFrame(viewManager: ViewManager, controller: Controller) extends JFrame
 
   class KeyHeldListener extends ActionListener{
     override def actionPerformed(e: ActionEvent): Unit = {
-      keyPressManager.checkForHeldKeys
+      keyPressManager.startNextKeyInterval
     }
   }
 }

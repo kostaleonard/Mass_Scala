@@ -5,44 +5,58 @@ import javax.swing.Timer
 
 import controller.{Controller, KeyMappings}
 
+import scala.collection.mutable.ListBuffer
+
 /**
   * Created by Leonard on 7/16/2017.
   */
 //TODO make key input smoother
 class KeyPressManager(controller: Controller) extends KeyListener{
-  protected val keyCodeMap: scala.collection.mutable.Map[Int, Boolean] = scala.collection.mutable.Map.empty[Int, Boolean]
-  protected var lastHeldKeys: scala.collection.immutable.Set[Int] = scala.collection.immutable.Set.empty[Int]
+  protected val keyCodeMap: scala.collection.mutable.Map[Int, ListBuffer[Boolean]] = scala.collection.mutable.Map.empty[Int, ListBuffer[Boolean]]
+  protected val keysPressedOverLastInterval = scala.collection.mutable.Set.empty[Int]
   protected val keyMappings = new KeyMappings
 
   def translateKeyCode(keyCode: Int): Int = keyMappings.getKeyMapping(keyCode)
 
   override def keyPressed(e: KeyEvent): Unit = {
     val keyCode = translateKeyCode(e.getKeyCode)
-    keyCodeMap += keyCode -> true
-    controller.keyPressed(keyCode)
+    keysPressedOverLastInterval += keyCode
     //viewManager.getCurrentView.keyPressed(keyCode)
   }
 
   override def keyReleased(e: KeyEvent): Unit = {
     val keyCode = translateKeyCode(e.getKeyCode)
-    keyCodeMap += keyCode -> false
-    controller.keyReleased(keyCode)
+    keysPressedOverLastInterval -= keyCode
     //viewManager.getCurrentView.keyReleased(keyCode)
   }
 
   override def keyTyped(e: KeyEvent): Unit = {
     val keyCode = translateKeyCode(e.getKeyCode)
-    controller.keyTyped(keyCode)
+    keysPressedOverLastInterval += keyCode
     //viewManager.getCurrentView.keyTyped(keyCode)
   }
 
-  def isPressed(keyCode: Int): Boolean = keyCodeMap.getOrElse(keyCode, false)
+  def startNextKeyInterval: Unit = {
+    (keyCodeMap.keySet union keysPressedOverLastInterval).foreach{ keyCode =>
+      val newMapping = keysPressedOverLastInterval(keyCode) +: keyCodeMap
+        .getOrElse(keyCode, ListBuffer.fill(ViewManager.HELD_KEY_EVENTS_PER_KEY_ACTION)(false))
+        .dropRight(1)
+      keyCodeMap += keyCode -> newMapping
+    }
 
-  def checkForHeldKeys: Unit = {
-    val nextHeldKeys: scala.collection.immutable.Set[Int] =
-      keyCodeMap.keySet.filter(k => keyCodeMap(k)).asInstanceOf[scala.collection.immutable.Set[Int]]
-    (nextHeldKeys union lastHeldKeys).foreach(k => controller.keyHeld(k))
-    //(nextHeldKeys union lastHeldKeys).foreach(k => viewManager.getCurrentView.keyHeld(k))
-    lastHeldKeys = nextHeldKeys
+    keyCodeMap.keys.foreach{ keyCode =>
+      keyCodeMap(keyCode) match {
+        case events if events.forall(pressed => pressed) =>
+          controller.keyHeld(keyCode)
+          keyCodeMap += keyCode -> ListBuffer.fill(ViewManager.HELD_KEY_EVENTS_PER_KEY_ACTION)(false)
+        case events if !events.head && events.tail.forall(pressed => pressed) =>
+          controller.keyReleased(keyCode)
+          keyCodeMap += keyCode -> ListBuffer.fill(ViewManager.HELD_KEY_EVENTS_PER_KEY_ACTION)(false)
+        case false +: middle :+ false if middle.exists(pressed => pressed)  =>
+          controller.keyPressed(keyCode)
+          keyCodeMap += keyCode -> ListBuffer.fill(ViewManager.HELD_KEY_EVENTS_PER_KEY_ACTION)(false)
+        case _ => ;
+      }
+    }
   }
 }

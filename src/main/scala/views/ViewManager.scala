@@ -13,7 +13,8 @@ object ViewManager{
   val DEFAULT_FRAME_WIDTH = 160 * 5
   val DEFAULT_FRAME_HEIGHT = 90 * 5
   val FRAMES_PER_SECOND = 60
-  val HELD_KEY_EVENTS_PER_SECOND = 10
+  val KEY_EVENTS_PER_SECOND = 1000
+  val HELD_KEY_EVENTS_PER_KEY_ACTION = 50
   val MILLISECONDS_PER_SECOND = 1000
 }
 class ViewManager(initialView: View, controller: Controller){

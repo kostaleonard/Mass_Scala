@@ -63,7 +63,7 @@ class MainMenuView(model: Model) extends View(model) {
   override def keyReleased(keyCode: Int): Unit = {}
 
   override def keyHeld(keyCode: Int): Unit = {
-    //if(keyCode == KeyMappings.UP_KEY) mainMenu.scrollUp
-    //else if(keyCode == KeyMappings.DOWN_KEY) mainMenu.scrollDown
+    if(keyCode == KeyMappings.UP_KEY) mainMenu.scrollUp
+    else if(keyCode == KeyMappings.DOWN_KEY) mainMenu.scrollDown
   }
 }
