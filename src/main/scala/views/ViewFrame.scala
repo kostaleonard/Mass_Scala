@@ -2,6 +2,7 @@ package views
 
 import java.awt.event._
 import java.awt.image.BufferedImage
+import java.util.concurrent.{ScheduledThreadPoolExecutor, TimeUnit}
 import javax.swing.{JFrame, Timer, WindowConstants}
 
 import controller.Controller
@@ -9,11 +10,16 @@ import controller.Controller
 /**
   * Created by Leonard on 7/17/2017.
   */
+object ViewFrame{
+  val SCHEDULED_THREAD_POOL_EXECUTOR_NUM_THREADS = 3
+  val SCHEDULED_THREAD_POOL_EXECUTOR_INITIAL_DELAY = 0
+}
+
 class ViewFrame(viewManager: ViewManager, controller: Controller) extends JFrame with WindowListener with ComponentListener {
   protected val keyPressManager = new KeyPressManager(controller)
   protected val mainPanel = new ImageRenderPanel
   protected val repaintTimer = new Timer(ViewManager.MILLISECONDS_PER_SECOND/ViewManager.FRAMES_PER_SECOND, new RepaintListener)
-  protected val keyHeldTimer = new Timer(ViewManager.MILLISECONDS_PER_SECOND/ViewManager.KEY_EVENTS_PER_SECOND, new KeyHeldListener)
+  protected val keyHeldExecutor = new ScheduledThreadPoolExecutor(ViewFrame.SCHEDULED_THREAD_POOL_EXECUTOR_NUM_THREADS)
   setVisible(false)
 
   def getKeyPressManager: KeyPressManager = keyPressManager
@@ -39,7 +45,12 @@ class ViewFrame(viewManager: ViewManager, controller: Controller) extends JFrame
 
   def setupRepaintTimer: Unit = repaintTimer.start
 
-  def setupKeyHeldTimer: Unit = keyHeldTimer.start
+  def setupKeyHeldTimer: Unit = keyHeldExecutor.scheduleAtFixedRate(
+    new KeyPressRunnable,
+    ViewFrame.SCHEDULED_THREAD_POOL_EXECUTOR_INITIAL_DELAY,
+    ViewManager.MILLISECONDS_PER_SECOND/ViewManager.KEY_EVENTS_PER_SECOND,
+    TimeUnit.MILLISECONDS
+  )
 
   def renderImage(bufferedImage: BufferedImage): Unit = {
     mainPanel.setCurrentImage(Some(bufferedImage))
@@ -48,7 +59,7 @@ class ViewFrame(viewManager: ViewManager, controller: Controller) extends JFrame
 
   override def windowClosed(e: WindowEvent): Unit = {
     repaintTimer.stop
-    keyHeldTimer.stop
+    keyHeldExecutor.shutdown()
     System.exit(0)
   }
 
@@ -58,7 +69,7 @@ class ViewFrame(viewManager: ViewManager, controller: Controller) extends JFrame
 
   override def windowClosing(e: WindowEvent): Unit = {
     repaintTimer.stop
-    keyHeldTimer.stop
+    keyHeldExecutor.shutdown()
     System.exit(0)
   }
 
@@ -85,8 +96,8 @@ class ViewFrame(viewManager: ViewManager, controller: Controller) extends JFrame
     }
   }
 
-  class KeyHeldListener extends ActionListener{
-    override def actionPerformed(e: ActionEvent): Unit = {
+  class KeyPressRunnable extends Runnable{
+    override def run: Unit = {
       keyPressManager.startNextKeyInterval
     }
   }

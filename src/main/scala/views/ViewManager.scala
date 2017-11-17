@@ -10,11 +10,11 @@ import controller.Controller
 //TODO investigate Java Swing performace improvement strategies. Animations are flickering.
 object ViewManager{
   val UNSUPPORTED_VIEW_OPERATION_EXCEPTION_MESSAGE = "The current View is not designed to render this screen; you must switch the current View."
-  val DEFAULT_FRAME_WIDTH = 160 * 5
-  val DEFAULT_FRAME_HEIGHT = 90 * 5
+  val DEFAULT_FRAME_WIDTH = 800
+  val DEFAULT_FRAME_HEIGHT = 450
   val FRAMES_PER_SECOND = 60
-  val KEY_EVENTS_PER_SECOND = 1000
-  val HELD_KEY_EVENTS_PER_KEY_ACTION = 50
+  val KEY_EVENTS_PER_SECOND = 100
+  val HELD_KEY_EVENTS_PER_KEY_ACTION = 10
   val MILLISECONDS_PER_SECOND = 1000
 }
 class ViewManager(initialView: View, controller: Controller){
