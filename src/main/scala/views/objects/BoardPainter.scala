@@ -3,7 +3,7 @@ package views.objects
 import java.awt.{Color, Graphics2D}
 import java.awt.image.BufferedImage
 
-import board.{Board, GrassPlains, Mountains, Tile}
+import board._
 import views.View
 
 /**
@@ -20,6 +20,11 @@ class BoardPainter(board: Board) {
     tileSize * board.getTiles(0).length,
     tileSize * board.getTiles.length,
     BufferedImage.TYPE_INT_RGB)
+  protected var cursorLocOption: Option[Location] = None
+
+  def getCursorLocOption: Option[Location] = cursorLocOption
+
+  def setCursorLocOption(opt: Option[Location]): Unit = cursorLocOption = opt
 
   def getImage: BufferedImage = {
     val g2d = bufferedImage.getGraphics.asInstanceOf[Graphics2D]
@@ -49,6 +54,11 @@ class BoardPainter(board: Board) {
       g2d.drawImage(fighterImage,
         fighter.getLocation.col * tileSize, fighter.getLocation.row * tileSize,
         tileSize, tileSize, null)
+    }
+    //Draw cursor:
+    cursorLocOption.map{ loc =>
+      val cursorPainter = new CursorPainter
+      g2d.drawImage(cursorPainter.getImage, loc.col * tileSize, loc.row * tileSize, tileSize, tileSize, null)
     }
     g2d.dispose()
     bufferedImage

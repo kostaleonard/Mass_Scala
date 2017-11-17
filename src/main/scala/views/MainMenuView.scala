@@ -53,17 +53,18 @@ class MainMenuView(model: Model) extends View(model) {
     mainMenu.appendMenuItem(MenuItem("EXIT GAME", GuiAction(), false))
   }
 
-  override def keyPressed(keyCode: Int): Unit = {
-    if(keyCode == KeyMappings.A_KEY) mainMenu.makeSelection
-    //Scrolling behavior will be slightly different here than in keyHeld
-    else if(keyCode == KeyMappings.UP_KEY) mainMenu.scrollUp
-    else if(keyCode == KeyMappings.DOWN_KEY) mainMenu.scrollDown
+  override def keyPressed(keyCode: Int): Unit = keyCode match{
+    case KeyMappings.A_KEY => mainMenu.makeSelection
+    case KeyMappings.UP_KEY => mainMenu.scrollUp
+    case KeyMappings.DOWN_KEY => mainMenu.scrollDown
+    case _ => ;
   }
 
   override def keyReleased(keyCode: Int): Unit = {}
 
-  override def keyHeld(keyCode: Int): Unit = {
-    if(keyCode == KeyMappings.UP_KEY) mainMenu.scrollUp
-    else if(keyCode == KeyMappings.DOWN_KEY) mainMenu.scrollDown
+  override def keyHeld(keyCode: Int): Unit = keyCode match {
+    case KeyMappings.UP_KEY => mainMenu.scrollUp
+    case KeyMappings.DOWN_KEY => mainMenu.scrollDown
+    case _ => ;
   }
 }
