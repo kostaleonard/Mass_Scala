@@ -261,6 +261,71 @@ class Board(name: String) extends Serializable {
     result
   }
 
+  def availableActionsLocationMap(fighter: Fighter): scala.collection.immutable.Map[Location, scala.collection.immutable.Set[Action]] = {
+    if(!fighter.canAttack) return scala.collection.immutable.Map.empty[Location, Set[Action]]
+    var result = scala.collection.immutable.Map.empty[Location, Set[Action]]
+    val usableWeapons = fighter.getWeapons.filter(fighter.canUseWeapon)
+    val usablePowers = fighter.getPowers.filter(fighter.canUsePower)
+    //You can always wait!
+    result += fighter.getLocation -> (result.getOrElse(fighter.getLocation, Set.empty) union Set(Wait(fighter)))
+    def addLocationIndependentPowerActions: Unit = {
+      usablePowers.foreach(_ match {
+        case pas: PassivePower => ;
+        case sus: SustainedPower =>
+          if(sus.isInUse) result += fighter.getLocation -> (result.getOrElse(fighter.getLocation, Set.empty) union Set(DiscontinueSustainedPower(sus, fighter)))
+          else result += fighter.getLocation -> (result.getOrElse(fighter.getLocation, Set.empty) union Set(UseSustainedPower(sus, fighter)))
+        case unt: UntargetedActivatedPower =>
+          result += fighter.getLocation -> (result.getOrElse(fighter.getLocation, Set.empty) union Set(UseActivatedPower(unt, fighter, None, this)))
+        case tar: TargetedActivatedPower => ;
+        case _ => throw new UnsupportedOperationException("Unrecognized Power.")
+      })
+    }
+    def addWeaponReloadActions: Unit = {
+      fighter.getWeapons.filter(_ match {
+        case gun: Gun => gun.canReload
+        case _ => false
+      }).foreach(w => result += fighter.getLocation -> (result.getOrElse(fighter.getLocation, Set.empty) union Set(ReloadWeapon(w, fighter))))
+    }
+    def addActionsOnTiles(loc: Location, distance: Int): Unit = {
+      if(distance >= 0 && loc.inBounds(tiles)){
+        //Add possible actions for this Tile
+        val crowFliesDistance = fighter.getLocation.crowFliesDistance(loc)
+        val targetOption = tiles(loc.row)(loc.col).getFighter
+        if(targetOption.nonEmpty && onOppositeTeams(fighter, targetOption.get)) {
+          //Weapon Actions:
+          usableWeapons
+            .filter(_.inRange(crowFliesDistance))
+            .foreach(w => result += loc -> (result.getOrElse(loc, Set.empty) union Set(UseWeapon(w, fighter, targetOption.get, this))))
+          //Power Actions:
+          usablePowers.foreach( p => p match{
+            case act: TargetedActivatedPower => act match{
+              case r: Ranged =>
+                if(r.inRange(crowFliesDistance))
+                  result += loc -> (result.getOrElse(loc, Set.empty) union Set(UseActivatedPower(act, fighter, targetOption, this)))
+              case _ => result += loc -> (result.getOrElse(loc, Set.empty) union Set(UseActivatedPower(act, fighter, targetOption, this)))
+            }
+            case _ => ;
+          })
+        }
+        //Check surrounding Tiles
+        addActionsOnTiles(Location(loc.row + 1, loc.col), distance - 1)
+        addActionsOnTiles(Location(loc.row - 1, loc.col), distance - 1)
+        addActionsOnTiles(Location(loc.row, loc.col + 1), distance - 1)
+        addActionsOnTiles(Location(loc.row, loc.col - 1), distance - 1)
+      }
+    }
+    addLocationIndependentPowerActions
+    addWeaponReloadActions
+    val maxWeaponRange = (scala.collection.immutable.Set(0) ++ fighter.getWeapons.map(_.getMaxRange)).max
+    val maxPowerRange = (scala.collection.immutable.Set(0) ++ fighter.getPowers.map(_ match {
+      case r: Ranged => r.getMaxRange
+      case _ => 0
+    })).max
+    val maxRange = maxWeaponRange max maxPowerRange
+    addActionsOnTiles(fighter.getLocation, maxRange)
+    result
+  }
+
   def save: Unit = {
     val destinationPath = Board.getSourcePath(boardName)
     val oos = new ObjectOutputStream(new FileOutputStream(destinationPath))

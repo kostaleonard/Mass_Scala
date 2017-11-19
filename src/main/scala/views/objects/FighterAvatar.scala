@@ -15,9 +15,9 @@ import views.View
 object FighterAvatar {
   val DEFAULT_HEIGHT = 150
   val DEFAULT_WIDTH = 150
-  val SOLDIER_AVATAR = ImageIO.read(new File(View.getSourcePath("testFighter.png")))
+  val SOLDIER_AVATAR = ImageIO.read(new File(View.getSourcePath("testFriendlyFighter.png")))
     .getScaledInstance(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
-  val ENGINEER_AVATAR = ImageIO.read(new File(View.getSourcePath("testFighter.png")))
+  val ENGINEER_AVATAR = ImageIO.read(new File(View.getSourcePath("testFriendlyFighter.png")))
     .getScaledInstance(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
 
   protected def getFriendlySoldierAvatar: Image = {
@@ -44,9 +44,19 @@ class FighterAvatar(fighter: Fighter) {
     case _ => ???
   }
 
-  //TODO tint the friendly image blue
-  def getFriendlyImage: Image = getBaseImage
+  def getFriendlyImage: Image = fighter.getSkillClass match {
+    case soldier: Soldier => ImageIO.read(new File(View.getSourcePath("testFriendlyFighter.png")))
+      .getScaledInstance(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
+    case engineer: Engineer => ImageIO.read(new File(View.getSourcePath("testFriendlyFighter.png")))
+      .getScaledInstance(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
+    case _ => ???
+  }
 
-  //TODO tint the enemy image red
-  def getEnemyImage: Image = getBaseImage
+  def getEnemyImage: Image = fighter.getSkillClass match {
+    case soldier: Soldier => ImageIO.read(new File(View.getSourcePath("testEnemyFighter.png")))
+      .getScaledInstance(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
+    case engineer: Engineer => ImageIO.read(new File(View.getSourcePath("testEnemyFighter.png")))
+      .getScaledInstance(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
+    case _ => ???
+  }
 }

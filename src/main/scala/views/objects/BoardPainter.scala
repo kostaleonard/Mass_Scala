@@ -3,6 +3,7 @@ package views.objects
 import java.awt.{Color, Graphics2D}
 import java.awt.image.BufferedImage
 
+import actions.Action
 import board._
 import views.View
 
@@ -20,11 +21,26 @@ class BoardPainter(board: Board) {
     tileSize * board.getTiles(0).length,
     tileSize * board.getTiles.length,
     BufferedImage.TYPE_INT_RGB)
-  protected var cursorLocOption: Option[Location] = None
+  protected var cursorLocOpt: Option[Location] = None
+  protected var selectedLocOpt: Option[Location] = None
+  protected var moveLocations = scala.collection.immutable.Set.empty[Location]
+  protected var actionLocationsMap = scala.collection.immutable.Map.empty[Location, scala.collection.immutable.Set[Action]]
 
-  def getCursorLocOption: Option[Location] = cursorLocOption
+  def getCursorLocOpt: Option[Location] = cursorLocOpt
 
-  def setCursorLocOption(opt: Option[Location]): Unit = cursorLocOption = opt
+  def setCursorLocOpt(opt: Option[Location]): Unit = cursorLocOpt = opt
+
+  def getSelectedLocOpt: Option[Location] = selectedLocOpt
+
+  def setSelectedLocOpt(opt: Option[Location]) = selectedLocOpt = opt
+
+  def getMoveLocations: scala.collection.immutable.Set[Location] = moveLocations
+
+  def setMoveLocations(locations: Set[Location]): Unit = moveLocations = locations
+
+  def getActionLocationsMap: Map[Location, Set[Action]] = actionLocationsMap
+
+  def setActionLocationsMap(map: Map[Location, Set[Action]]): Unit = actionLocationsMap = map
 
   def getImage: BufferedImage = {
     val g2d = bufferedImage.getGraphics.asInstanceOf[Graphics2D]
@@ -37,6 +53,8 @@ class BoardPainter(board: Board) {
           case mountinas: Mountains => g2d.setColor(Color.ORANGE.darker())
           case _ => g2d.setColor(Color.BLACK)
         }
+        if(moveLocations(Location(r, c))) g2d.setColor(Color.BLUE) //TODO make this less obstructive.
+        else if(actionLocationsMap.contains(Location(r, c))) g2d.setColor(Color.RED) //TODO make this less obstructive.
         g2d.fillRect(c * tileSize, r * tileSize, tileSize, tileSize)
       }
     }
@@ -56,7 +74,7 @@ class BoardPainter(board: Board) {
         tileSize, tileSize, null)
     }
     //Draw cursor:
-    cursorLocOption.map{ loc =>
+    cursorLocOpt.map{ loc =>
       val cursorPainter = new CursorPainter
       g2d.drawImage(cursorPainter.getImage, loc.col * tileSize, loc.row * tileSize, tileSize, tileSize, null)
     }
