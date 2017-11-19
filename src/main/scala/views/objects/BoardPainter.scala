@@ -2,6 +2,7 @@ package views.objects
 
 import java.awt.{Color, Graphics2D}
 import java.awt.image.BufferedImage
+import java.awt.AlphaComposite
 
 import actions.Action
 import board._
@@ -25,6 +26,7 @@ class BoardPainter(board: Board) {
   protected var selectedLocOpt: Option[Location] = None
   protected var moveLocations = scala.collection.immutable.Set.empty[Location]
   protected var actionLocationsMap = scala.collection.immutable.Map.empty[Location, scala.collection.immutable.Set[Action]]
+  protected val cursorPainter = new CursorPainter
 
   def getCursorLocOpt: Option[Location] = cursorLocOpt
 
@@ -75,7 +77,7 @@ class BoardPainter(board: Board) {
     }
     //Draw cursor:
     cursorLocOpt.map{ loc =>
-      val cursorPainter = new CursorPainter
+      g2d.setComposite(AlphaComposite.Src)
       g2d.drawImage(cursorPainter.getImage, loc.col * tileSize, loc.row * tileSize, tileSize, tileSize, null)
     }
     g2d.dispose()

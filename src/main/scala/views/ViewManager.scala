@@ -8,13 +8,14 @@ import controller.Controller
   * Created by Leonard on 7/16/2017.
   */
 //TODO investigate Java Swing performace improvement strategies. Animations are flickering.
+//TODO maybe just use default keyboard input behavior?
 object ViewManager{
   val UNSUPPORTED_VIEW_OPERATION_EXCEPTION_MESSAGE = "The current View is not designed to render this screen; you must switch the current View."
   val DEFAULT_FRAME_WIDTH = 800
   val DEFAULT_FRAME_HEIGHT = 450
   val FRAMES_PER_SECOND = 60
-  val KEY_EVENTS_PER_SECOND = 250
-  val HELD_KEY_EVENTS_PER_KEY_ACTION = 25
+  val KEY_EVENTS_PER_SECOND = 100
+  val HELD_KEY_EVENTS_PER_KEY_ACTION = 10
   val MILLISECONDS_PER_SECOND = 1000
 }
 class ViewManager(initialView: View, controller: Controller){
