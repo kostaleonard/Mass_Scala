@@ -40,17 +40,9 @@ class ViewFrame(viewManager: ViewManager, controller: Controller) extends JFrame
     add(mainPanel)
     addKeyListener(keyPressManager)
     setupRepaintTimer
-    setupKeyHeldTimer
   }
 
   def setupRepaintTimer: Unit = repaintTimer.start
-
-  def setupKeyHeldTimer: Unit = keyHeldExecutor.scheduleAtFixedRate(
-    new KeyPressRunnable,
-    ViewFrame.SCHEDULED_THREAD_POOL_EXECUTOR_INITIAL_DELAY,
-    ViewManager.MILLISECONDS_PER_SECOND/ViewManager.KEY_EVENTS_PER_SECOND,
-    TimeUnit.MILLISECONDS
-  )
 
   def renderImage(bufferedImage: BufferedImage): Unit = {
     mainPanel.setCurrentImage(Some(bufferedImage))
@@ -93,12 +85,6 @@ class ViewFrame(viewManager: ViewManager, controller: Controller) extends JFrame
   class RepaintListener extends ActionListener{
     override def actionPerformed(e: ActionEvent): Unit = {
       viewManager.repaint
-    }
-  }
-
-  class KeyPressRunnable extends Runnable{
-    override def run: Unit = {
-      keyPressManager.startNextKeyInterval
     }
   }
 }
