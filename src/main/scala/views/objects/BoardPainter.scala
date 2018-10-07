@@ -77,7 +77,6 @@ class BoardPainter(board: Board) {
     }
     //Draw cursor:
     cursorLocOpt.map{ loc =>
-      g2d.setComposite(AlphaComposite.Src)
       g2d.drawImage(cursorPainter.getImage, loc.col * tileSize, loc.row * tileSize, tileSize, tileSize, null)
     }
     g2d.dispose()
