@@ -7,8 +7,8 @@ import java.io.File
 import javax.imageio.ImageIO
 
 import actions.Action
-import board.Location
-import controller.{KeyMappings, SwitchViews}
+import board.{Board, Location}
+import controller._
 import fighter.Fighter
 import model.Model
 import views.objects.BoardPainter
@@ -101,9 +101,9 @@ class BoardView(model: Model) extends View(model) {
     selectedLocOpt match{
       case Some(selectedLoc) =>
         if(moveLocations(cursorLoc)){
-          board.moveFighterTo(board.fighterAt(selectedLoc).get, cursorLoc)
+          sendControllerMessage(MoveFighter(board, board.fighterAt(selectedLoc).get, cursorLoc))
           cursorDeselect
-          cursorSelect
+          sendControllerMessage(SendKeyPress(KeyMappings.A_KEY))
         }
         else if(actionLocationsMap.contains(cursorLoc)){
           sendControllerMessage(SwitchViews(new BoardActionMenuView(model, this)))

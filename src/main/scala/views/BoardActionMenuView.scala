@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
 
-import controller.{EndTurn, KeyMappings, SwitchViews}
+import controller.{DoAction, EndTurn, KeyMappings, SwitchViews}
 import model.Model
 import views.gui._
 
@@ -22,7 +22,6 @@ object BoardActionMenuView{
 }
 class BoardActionMenuView(model: Model, boardView: BoardView) extends View(model){
   protected val bufferedImage = new BufferedImage(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
-  //protected val actionMenu = new BasicMenu
   protected val actionMenu = new ImageMenu
   protected val entryWidth = BoardActionMenuView.DEFAULT_ENTRY_WIDTH
   protected val entryHeight = BoardActionMenuView.DEFAULT_ENTRY_HEIGHT
@@ -50,7 +49,7 @@ class BoardActionMenuView(model: Model, boardView: BoardView) extends View(model
       case Some(actions) => actions.foreach { act =>
         val image = ImageIO.read(new File(View.getActionSourcePath(act)))
         actionMenu.appendMenuItem(new ImageItem(image, entryWidth, entryHeight, GuiAction{() =>
-          act.doAction
+          sendControllerMessage(DoAction(act))
           exitActionMenu
         }))
       }

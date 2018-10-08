@@ -73,12 +73,16 @@ class Controller {
   def clearControllerMessages: Unit = viewManager.getCurrentView.clearControllerMessages
 
   def checkControllerMessages: Unit = {
-    viewManager.getCurrentView.getControllerMessages.foreach(m => m match{
+    val messages = viewManager.getCurrentView.getControllerMessages
+    clearControllerMessages
+    messages.foreach(m => m match{
       case SwitchViews(nextView) => changeViews(nextView)
+      case DoAction(action) => action.doAction
+      case MoveFighter(board, fighter, location) => board.moveFighterTo(fighter, location)
       case EndTurn => doEnemyPhase
+      case SendKeyPress(keyCode) => keyPressed(keyCode)
       case _ => throw new UnsupportedOperationException("Unrecognized Controller Message: " + m)
     })
-    clearControllerMessages
   }
 
   def changeViews(nextView: View): Unit = viewManager.setCurrentView(nextView)

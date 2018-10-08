@@ -13,6 +13,8 @@ import model.Model.RESOURCE_ROOT_DIRECTORY
 import powers.Power
 import weapons.Weapon
 
+import scala.collection.mutable.ListBuffer
+
 /**
   * Created by Leonard on 6/3/2017.
   *
@@ -60,15 +62,15 @@ object View{
 }
 abstract class View(model: Model) {
   protected var keyPressManager: Option[KeyPressManager] = None
-  protected val controllerMessages: scala.collection.mutable.Set[ControllerMessage] = scala.collection.mutable.Set.empty
+  protected val controllerMessages: ListBuffer[ControllerMessage] = ListBuffer.empty
 
   def setKeyPressManager(opt: Option[KeyPressManager]): Unit = keyPressManager = opt
 
-  def sendControllerMessage(message: ControllerMessage): Unit = controllerMessages.add(message)
+  def sendControllerMessage(message: ControllerMessage): Unit = controllerMessages.append(message)
 
   def clearControllerMessages: Unit = controllerMessages.clear
 
-  def getControllerMessages: scala.collection.mutable.Set[ControllerMessage] = controllerMessages
+  def getControllerMessages: List[ControllerMessage] = controllerMessages.toList
 
   protected def getTestImage1: BufferedImage = {
     ImageIO.read(new File(View.getSourcePath("testImage.jpg")))
