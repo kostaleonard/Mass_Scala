@@ -18,6 +18,7 @@ object BoardActionMenuView{
   val MENU_START_Y = 50
   val DEFAULT_ENTRY_WIDTH = 200
   val DEFAULT_ENTRY_HEIGHT = 100
+  val END_TURN_FILENAME = "end_turn.png"
 }
 class BoardActionMenuView(model: Model, boardView: BoardView) extends View(model){
   protected val bufferedImage = new BufferedImage(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
@@ -41,31 +42,26 @@ class BoardActionMenuView(model: Model, boardView: BoardView) extends View(model
     bufferedImage
   }
 
-  /*
   def setupActionMenu: Unit = {
     actionMenu.setTitleString("ACTIONS")
     actionMenu.setWrapContentWidth(true)
-    val actionsOnTargetLocation = boardView.getActionLocationMap(boardView.getCursorLoc)
-    actionsOnTargetLocation.foreach { act =>
-      actionMenu.appendMenuItem(new MenuItem(act.toString, GuiAction{() =>
-        act.doAction
-        exitActionMenu
-      }))
+    val actionsOnTargetLocation = boardView.getActionLocationMap.get(boardView.getCursorLoc)
+    actionsOnTargetLocation match{
+      case Some(actions) => actions.foreach { act =>
+        val image = ImageIO.read(new File(View.getActionSourcePath(act)))
+        actionMenu.appendMenuItem(new ImageItem(image, entryWidth, entryHeight, GuiAction{() =>
+          act.doAction
+          exitActionMenu
+        }))
+      }
+      case None =>
+        val image = ImageIO.read(new File(View.getSourcePath(BoardActionMenuView.END_TURN_FILENAME)))
+        actionMenu.appendMenuItem(new ImageItem(image, entryWidth, entryHeight, GuiAction{() =>
+          //TODO end turn
+          exitActionMenu
+        }))
     }
-  }
-  */
 
-  def setupActionMenu: Unit = {
-    actionMenu.setTitleString("ACTIONS")
-    actionMenu.setWrapContentWidth(true)
-    val actionsOnTargetLocation = boardView.getActionLocationMap(boardView.getCursorLoc)
-    actionsOnTargetLocation.foreach { act =>
-      val image = ImageIO.read(new File(View.getActionSourcePath(act)))
-      actionMenu.appendMenuItem(new ImageItem(image, entryWidth, entryHeight, GuiAction{() =>
-        act.doAction
-        exitActionMenu
-      }))
-    }
   }
 
   def exitActionMenu: Unit = {

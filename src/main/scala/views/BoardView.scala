@@ -113,10 +113,21 @@ class BoardView(model: Model) extends View(model) {
           cursorSelect
         }
       case None =>
-        setSelectedLocationOpt(Some(cursorLoc))
-        board.fighterAt(cursorLoc).map{ fighter =>
-          setMoveLocations(board.availableMoveLocations(fighter))
-          setActionLocationsMap(board.availableActionsLocationMap(fighter))
+        //No fighter on this tile; bring up menu to end turn.
+        if(board.fighterAt(cursorLoc).isEmpty){
+          setNextView(Some(new BoardActionMenuView(model, this)))
+        }
+        //Player fighter on this tile; select this tile.
+        else if(model.getPlayerParty.getFighters.contains(board.fighterAt(cursorLoc).get)) {
+          setSelectedLocationOpt(Some(cursorLoc))
+          board.fighterAt(cursorLoc).map { fighter =>
+            setMoveLocations(board.availableMoveLocations(fighter))
+            setActionLocationsMap(board.availableActionsLocationMap(fighter))
+          }
+        }
+        //Enemy fighter on this tile.
+        else{
+          //TODO do something when enemy fighter selected?
         }
     }
   }

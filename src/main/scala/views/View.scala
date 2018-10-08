@@ -42,10 +42,10 @@ object View{
     RESOURCE_ROOT_DIRECTORY + "/" + IMAGES_DIRECTORY + "/" + imageFilename
 
   def getWeaponSourcePath(weapon: Weapon): String =
-    RESOURCE_ROOT_DIRECTORY + "/" + IMAGES_DIRECTORY + "/" + WEAPONS_DIRECTORY + "/" + weapon.toString + ".png"
+    RESOURCE_ROOT_DIRECTORY + "/" + IMAGES_DIRECTORY + "/" + WEAPONS_DIRECTORY + "/" + weapon.toString.replace(' ', '_') + ".png"
 
   def getPowerSourcePath(power: Power): String =
-    RESOURCE_ROOT_DIRECTORY + "/" + IMAGES_DIRECTORY + "/" + POWERS_DIRECTORY + "/" + power.toString + ".png"
+    RESOURCE_ROOT_DIRECTORY + "/" + IMAGES_DIRECTORY + "/" + POWERS_DIRECTORY + "/" + power.toString.replace(' ', '_') + ".png"
 
   def getActionSourcePath(action: Action): String = action match{
     case Wait(f) => getSourcePath("TODO.png") //TODO the wait image.
