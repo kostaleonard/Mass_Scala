@@ -13,7 +13,7 @@ import views.View
   */
 object BoardPainter {
   val MAX_TILE_SIZE = 100
-  val DEFAULT_TILE_SIZE = 75
+  val DEFAULT_TILE_SIZE = 200
   val MIN_TILE_SIZE = 10
 }
 class BoardPainter(board: Board) {
@@ -87,6 +87,8 @@ class BoardPainter(board: Board) {
     g2d.dispose()
     bufferedImage
   }
+
+  def getTileSize: Int = tileSize
 
   def setTileSize(newSize: Int): Unit = {
     tileSize = (newSize min BoardPainter.MAX_TILE_SIZE) max BoardPainter.MIN_TILE_SIZE

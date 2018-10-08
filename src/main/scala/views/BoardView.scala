@@ -16,14 +16,18 @@ import views.objects.BoardPainter
 /**
   * Created by Leonard on 7/29/2017.
   */
+object BoardView{
+  val FRAME_ERROR_FACTOR_X = 25
+  val FRAME_ERROR_FACTOR_Y = 50
+}
 class BoardView(model: Model) extends View(model) {
   if(model.getCurrentBoard.isEmpty) throw new UnsupportedOperationException("Cannot draw empty board.")
   protected val bufferedImage = new BufferedImage(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
   protected val backgroundImage = ImageIO.read(new File(View.getSourcePath("boardBackground.jpg")))
     .getScaledInstance(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
   protected val boardPainter = new BoardPainter(model.getCurrentBoard.get)
-  protected var boardOffset_X = 300
-  protected var boardOffset_Y = 50
+  protected var boardOffset_X = 0
+  protected var boardOffset_Y = 0
   //TODO the cursor should probably start over one of the players.
   protected var cursorLoc = Location(0, 0)
   protected var selectedLocOpt: Option[Location] = None
@@ -31,6 +35,7 @@ class BoardView(model: Model) extends View(model) {
   protected var actionLocationsMap = scala.collection.immutable.Map.empty[Location, scala.collection.immutable.Set[Action]]
 
   setupBoardPainter
+  moveCursorToLocation(cursorLoc)
 
   def setupBoardPainter: Unit = {
     boardPainter.setCursorLocOpt(Some(cursorLoc))
@@ -56,6 +61,14 @@ class BoardView(model: Model) extends View(model) {
     if(loc.inBounds(model.getCurrentBoard.get.getTiles)){
       cursorLoc = loc
       boardPainter.setCursorLocOpt(Some(cursorLoc))
+      while(getCursorDrawLoc.get.row > View.FRAME_DESIGN_WIDTH - boardPainter.getTileSize - BoardView.FRAME_ERROR_FACTOR_X)
+        boardOffset_X -= boardPainter.getTileSize
+      while(getCursorDrawLoc.get.row < 0)
+        boardOffset_X += boardPainter.getTileSize
+      while(getCursorDrawLoc.get.col > View.FRAME_DESIGN_HEIGHT - boardPainter.getTileSize - BoardView.FRAME_ERROR_FACTOR_Y)
+        boardOffset_Y -= boardPainter.getTileSize
+      while(getCursorDrawLoc.get.col < 0)
+        boardOffset_Y += boardPainter.getTileSize
     }
   }
 
