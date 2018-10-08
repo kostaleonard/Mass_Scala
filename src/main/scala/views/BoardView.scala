@@ -9,6 +9,7 @@ import javax.imageio.ImageIO
 import actions.Action
 import board.Location
 import controller.KeyMappings
+import fighter.Fighter
 import model.Model
 import views.objects.BoardPainter
 
@@ -68,6 +69,15 @@ class BoardView(model: Model) extends View(model) {
     boardPainter.setActionLocationsMap(actionLocationsMap)
   }
 
+  def getSelectedFighterOpt: Option[Fighter] = selectedLocOpt match{
+    case Some(loc) => model.getCurrentBoard.get.fighterAt(loc)
+    case None => None
+  }
+
+  def getCursorLoc: Location = cursorLoc
+
+  def getActionLocationMap: Map[Location, Set[Action]] = actionLocationsMap
+
   def cursorSelect: Unit = {
     val board = model.getCurrentBoard.get
     selectedLocOpt match{
@@ -78,8 +88,7 @@ class BoardView(model: Model) extends View(model) {
           cursorSelect
         }
         else if(actionLocationsMap.contains(cursorLoc)){
-          println("Bring up action menu") //TODO action menu.
-          cursorDeselect
+          setNextView(Some(new BoardActionMenuView(model, this)))
         }
         else{
           cursorDeselect

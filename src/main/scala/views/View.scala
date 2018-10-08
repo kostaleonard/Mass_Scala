@@ -43,6 +43,8 @@ abstract class View(model: Model) {
 
   def getNextView = nextView
 
+  def setNextView(newViewOpt: Option[View]): Unit = nextView = newViewOpt
+
   protected def getTestImage1: BufferedImage = {
     ImageIO.read(new File(View.getSourcePath("testImage.jpg")))
   }

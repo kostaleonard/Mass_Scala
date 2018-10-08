@@ -1,6 +1,6 @@
 package controller
 
-import views.{MainMenuView, PrintView, ViewManager}
+import views.{MainMenuView, PrintView, View, ViewManager}
 import model.Model
 import board.Board
 import board.Location
@@ -159,24 +159,27 @@ class Controller {
     */
   }
 
-
+  def changeViews(nextView: View): Unit = {
+    viewManager.getCurrentView.setNextView(None)
+    viewManager.setCurrentView(nextView)
+  }
 
   //Key methods:
   def keyPressed(keyCode: Int): Unit = {
     viewManager.getCurrentView.keyPressed(keyCode)
-    viewManager.getCurrentView.getNextView.map(nextView => viewManager.setCurrentView(nextView))
+    viewManager.getCurrentView.getNextView.map(nextView => changeViews(nextView))
   }
   def keyReleased(keyCode: Int): Unit = {
     viewManager.getCurrentView.keyReleased(keyCode)
-    viewManager.getCurrentView.getNextView.map(nextView => viewManager.setCurrentView(nextView))
+    viewManager.getCurrentView.getNextView.map(nextView => changeViews(nextView))
   }
   def keyTyped(keyCode: Int): Unit = {
     viewManager.getCurrentView.keyTyped(keyCode)
-    viewManager.getCurrentView.getNextView.map(nextView => viewManager.setCurrentView(nextView))
+    viewManager.getCurrentView.getNextView.map(nextView => changeViews(nextView))
   }
   def keyHeld(keyCode: Int): Unit = {
     viewManager.getCurrentView.keyHeld(keyCode)
-    viewManager.getCurrentView.getNextView.map(nextView => viewManager.setCurrentView(nextView))
+    viewManager.getCurrentView.getNextView.map(nextView => changeViews(nextView))
   }
 
   def exitGame: Unit = {

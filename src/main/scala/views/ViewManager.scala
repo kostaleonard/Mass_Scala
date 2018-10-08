@@ -28,6 +28,7 @@ class ViewManager(initialView: View, controller: Controller){
   def getCurrentView: View = currentView
 
   def setCurrentView(newView: View): Unit = {
+    currentView.setKeyPressManager(None)
     currentView = newView
     currentView.setKeyPressManager(Some(frame.getKeyPressManager))
   }

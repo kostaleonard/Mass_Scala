@@ -45,7 +45,7 @@ class MainMenuView(model: Model) extends View(model) {
         fighterArray(i).setLocation(Location(i, i))
       }
       model.getCurrentBoard.get.placePlayerPartyOnBoard(model.getPlayerParty)
-      nextView = Some(new BoardView(model))}))
+      setNextView(Some(new BoardView(model)))}))
     mainMenu.appendMenuItem(MenuItem("MULTIPLAYER", GuiAction()))
     mainMenu.appendMenuItem(MenuItem("INVASION", GuiAction(), false))
     mainMenu.appendMenuItem(MenuItem("SETTINGS", GuiAction()))

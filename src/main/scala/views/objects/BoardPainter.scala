@@ -51,7 +51,7 @@ class BoardPainter(board: Board) {
       board.getTiles(r).indices.foreach{ c =>
         val tile = board.getTiles(r)(c)
         tile match{
-          case grass: GrassPlains => g2d.setColor(Color.GREEN)
+          case grass: GrassPlains => g2d.setColor(Color.GREEN.darker())
           case mountinas: Mountains => g2d.setColor(Color.ORANGE.darker())
           case _ => g2d.setColor(Color.BLACK)
         }

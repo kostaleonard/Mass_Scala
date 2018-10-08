@@ -14,12 +14,11 @@ import views.View
 object CursorPainter {
   val DEFAULT_HEIGHT = 150
   val DEFAULT_WIDTH = 150
-  val DEFAULT_COLOR = Color.ORANGE
+  val DEFAULT_COLOR = Color.GREEN.brighter()
   val DEFAULT_OPACITY = 0.2
   val DEFAULT_CURSOR_FILENAME = View.getSourcePath("cursor.png")
 }
 class CursorPainter {
-  new File(CursorPainter.DEFAULT_CURSOR_FILENAME).delete()
   protected var height = CursorPainter.DEFAULT_HEIGHT
   protected var width = CursorPainter.DEFAULT_WIDTH
   protected var color = CursorPainter.DEFAULT_COLOR
@@ -29,6 +28,8 @@ class CursorPainter {
     getHeight,
     BufferedImage.TYPE_INT_ARGB
   )
+
+  new File(CursorPainter.DEFAULT_CURSOR_FILENAME).delete()
 
   def getHeight: Int = height
 
