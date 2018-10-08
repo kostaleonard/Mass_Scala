@@ -11,8 +11,6 @@ import scala.collection.mutable.ArrayBuffer
   * Created by Leonard on 7/29/2017.
   */
 object BasicMenu{
-  val DEFAULT_WIDTH = 300
-  val DEFAULT_HEIGHT = 300
   val DEFAULT_TITLE_FONT = new Font(Font.MONOSPACED, Font.BOLD, 50)
   val DEFAULT_TITLE_FONT_COLOR = Color.BLACK
   val DEFAULT_MENUITEM_FONT = new Font(Font.MONOSPACED, Font.BOLD, 30)
@@ -25,10 +23,10 @@ object BasicMenu{
   val DEFAULT_TITLE_SEPARATOR_THICKNESS = 2
   val DEFAULT_NONSELECTABLE_MENUITEM_COLOR = Color.GRAY.brighter()
 }
-class BasicMenu {
-  protected val menuItems = ArrayBuffer.empty[MenuItem]
-  protected var width = BasicMenu.DEFAULT_WIDTH
-  protected var height = BasicMenu.DEFAULT_HEIGHT
+class BasicMenu extends Menu[BasicMenuItem] {
+  override protected val menuItems = ArrayBuffer.empty[BasicMenuItem]
+  width = Menu.DEFAULT_WIDTH
+  height = Menu.DEFAULT_HEIGHT
   protected var titleFont = BasicMenu.DEFAULT_TITLE_FONT
   protected var titleFontColor = BasicMenu.DEFAULT_TITLE_FONT_COLOR
   protected var menuItemFont = BasicMenu.DEFAULT_MENUITEM_FONT
@@ -44,21 +42,12 @@ class BasicMenu {
   protected var wrapContentHeight = true //Will supersede this.height
   protected var wrapContentWidth = false //Will supersede this.width
   protected var titleString = "MENU"
-  protected var selectedMenuItem = 0
-  protected var isActive = true
-  //protected var isVisible = true
-
-  def getMenuItems: ArrayBuffer[MenuItem] = menuItems
-
-  def appendMenuItem(menuItem: MenuItem): Unit = menuItems.append(menuItem)
-
-  def removeMenuItem(index: Int): MenuItem = menuItems.remove(index)
 
   def setTitleString(title: String): Unit = titleString = title
 
-  def getWidth: Int = if(wrapContentWidth) getWrappedWidth else width
+  override def getWidth: Int = if(wrapContentWidth) getWrappedWidth else width
 
-  def getHeight: Int = if(wrapContentHeight) getWrappedHeight else height
+  override def getHeight: Int = if(wrapContentHeight) getWrappedHeight else height
 
   def getWrappedWidth: Int = {
     val buffer = borderThickness * 4
@@ -82,7 +71,7 @@ class BasicMenu {
 
   def setWrapContentWidth(b: Boolean): Unit = wrapContentWidth = b
 
-  def getImage: BufferedImage = {
+  override def getImage: BufferedImage = {
     val bufferedImage = new BufferedImage(getWidth, getHeight, BufferedImage.TYPE_INT_RGB)
     val g2d = bufferedImage.getGraphics.asInstanceOf[Graphics2D]
     g2d.setColor(borderColor)
@@ -98,35 +87,23 @@ class BasicMenu {
     val heightStartMenuItems = titleHeight
     val menuItemHeight = g2d.getFontMetrics(menuItemFont).getHeight
     g2d.setFont(menuItemFont)
-    menuItems.indices.foreach{ i =>
+    menuItems.indices.foreach { i =>
       val menuItem = menuItems(i)
       val heightStartThisMenuItem = heightStartMenuItems + menuItemHeight * i
-      if(selectedMenuItem == i && isActive){
+      if (selectedMenuItem == i && isActive) {
         g2d.setColor(highlightColor)
-        if(i == 0)
+        if (i == 0)
           g2d.fillRect(borderThickness, heightStartThisMenuItem + borderThickness, getWidth - 2 * borderThickness, menuItemHeight - borderThickness)
-        else if(i == menuItems.length - 1)
+        else if (i == menuItems.length - 1)
           g2d.fillRect(borderThickness, heightStartThisMenuItem, getWidth - 2 * borderThickness, menuItemHeight - borderThickness)
         else
           g2d.fillRect(borderThickness, heightStartThisMenuItem, getWidth - 2 * borderThickness, menuItemHeight)
       }
-      if(menuItem.isSelectable) g2d.setColor(menuItemFontColor)
+      if (menuItem.isSelectable) g2d.setColor(menuItemFontColor)
       else g2d.setColor(nonSelectableMenuItemColor)
       g2d.drawString(menuItem.text, borderThickness * 2, heightStartThisMenuItem + (menuItemHeight * 3) / 4)
     }
     g2d.dispose()
     bufferedImage
-  }
-
-  def makeSelection: Unit = if(isActive) menuItems(selectedMenuItem).guiAction.functionToCall()
-
-  def scrollDown: Unit = if(isActive && selectedMenuItem < menuItems.length - 1){
-    val nextSelectableIndex = menuItems.indices.find{ i => i > selectedMenuItem && menuItems(i).isSelectable }
-    nextSelectableIndex.map(index => selectedMenuItem = index)
-  }
-
-  def scrollUp: Unit = if(isActive && selectedMenuItem > 0){
-    val nextSelectableIndex = menuItems.indices.reverse.find{ i => i < selectedMenuItem && menuItems(i).isSelectable }
-    nextSelectableIndex.map(index => selectedMenuItem = index)
   }
 }

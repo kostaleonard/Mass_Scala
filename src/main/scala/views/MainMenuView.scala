@@ -9,7 +9,7 @@ import javax.imageio.ImageIO
 import board.{Board, Location}
 import controller.{Controller, KeyMappings}
 import model.Model
-import views.gui.{BasicMenu, GuiAction, MenuItem}
+import views.gui.{BasicMenu, BasicMenuItem, GuiAction, MenuItem}
 
 /**
   * Created by Leonard on 7/16/2017.
@@ -37,7 +37,7 @@ class MainMenuView(model: Model) extends View(model) {
 
   def setupMainMenu: Unit = {
     mainMenu.setTitleString("MAIN MENU")
-    mainMenu.appendMenuItem(MenuItem("CAMPAIGN", GuiAction{() =>
+    mainMenu.appendMenuItem(BasicMenuItem("CAMPAIGN", GuiAction{() =>
       //TODO do not use test board
       model.setCurrentBoard(Some(Board.getTestBoard))
       val fighterArray = model.getPlayerParty.getFighters.toArray
@@ -46,11 +46,11 @@ class MainMenuView(model: Model) extends View(model) {
       }
       model.getCurrentBoard.get.placePlayerPartyOnBoard(model.getPlayerParty)
       setNextView(Some(new BoardView(model)))}))
-    mainMenu.appendMenuItem(MenuItem("MULTIPLAYER", GuiAction()))
-    mainMenu.appendMenuItem(MenuItem("INVASION", GuiAction(), false))
-    mainMenu.appendMenuItem(MenuItem("SETTINGS", GuiAction()))
-    mainMenu.appendMenuItem(MenuItem("CHANGE PROFILE", GuiAction()))
-    mainMenu.appendMenuItem(MenuItem("EXIT GAME", GuiAction(), false))
+    mainMenu.appendMenuItem(BasicMenuItem("MULTIPLAYER", GuiAction()))
+    mainMenu.appendMenuItem(BasicMenuItem("INVASION", GuiAction(), false))
+    mainMenu.appendMenuItem(BasicMenuItem("SETTINGS", GuiAction()))
+    mainMenu.appendMenuItem(BasicMenuItem("CHANGE PROFILE", GuiAction()))
+    mainMenu.appendMenuItem(BasicMenuItem("EXIT GAME", GuiAction(), false))
   }
 
   override def keyPressed(keyCode: Int): Unit = keyCode match{
