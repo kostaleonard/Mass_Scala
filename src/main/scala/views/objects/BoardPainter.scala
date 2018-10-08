@@ -44,6 +44,11 @@ class BoardPainter(board: Board) {
 
   def setActionLocationsMap(map: Map[Location, Set[Action]]): Unit = actionLocationsMap = map
 
+  def getCursorDrawLoc: Option[Location] = cursorLocOpt match{
+    case Some(loc) => Some(Location(loc.col * tileSize, loc.row * tileSize))
+    case None => None
+  }
+
   def getImage: BufferedImage = {
     val g2d = bufferedImage.getGraphics.asInstanceOf[Graphics2D]
     //Draw board:

@@ -22,7 +22,7 @@ class BoardView(model: Model) extends View(model) {
   protected val backgroundImage = ImageIO.read(new File(View.getSourcePath("boardBackground.jpg")))
     .getScaledInstance(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
   protected val boardPainter = new BoardPainter(model.getCurrentBoard.get)
-  protected var boardOffset_X = 100
+  protected var boardOffset_X = 300
   protected var boardOffset_Y = 50
   //TODO the cursor should probably start over one of the players.
   protected var cursorLoc = Location(0, 0)
@@ -45,6 +45,11 @@ class BoardView(model: Model) extends View(model) {
     g2d.drawImage(boardImage, boardOffset_X, boardOffset_Y, boardImage.getWidth, boardImage.getHeight, null)
     g2d.dispose()
     bufferedImage
+  }
+
+  def getCursorDrawLoc: Option[Location] = boardPainter.getCursorDrawLoc match{
+    case Some(loc) => Some(Location(loc.row + boardOffset_X, loc.col + boardOffset_Y))
+    case None => None
   }
 
   def moveCursorToLocation(loc: Location): Unit = {

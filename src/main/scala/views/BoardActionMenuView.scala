@@ -10,6 +10,11 @@ import views.gui.{BasicMenu, GuiAction, MenuItem}
 /**
   * Created by Leonard on 10/7/2018.
   */
+object BoardActionMenuView{
+  val LEFT_SIDE_MENU_START_X = 50
+  val RIGHT_SIDE_MENU_START_X = 1200
+  val MENU_START_Y = 50
+}
 class BoardActionMenuView(model: Model, boardView: BoardView) extends View(model){
   protected val bufferedImage = new BufferedImage(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
   protected val actionMenu = new BasicMenu
@@ -21,7 +26,10 @@ class BoardActionMenuView(model: Model, boardView: BoardView) extends View(model
     g2d.drawImage(boardView.getImage, 0, 0, View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, null)
     val actionMenuImage = actionMenu.getImage
     //TODO change menu location.
-    g2d.drawImage(actionMenuImage, 1250, 500, actionMenu.getWidth, actionMenu.getHeight, null)
+    if(boardView.getCursorDrawLoc.get.row > View.FRAME_DESIGN_WIDTH / 2)
+      g2d.drawImage(actionMenuImage, BoardActionMenuView.LEFT_SIDE_MENU_START_X, BoardActionMenuView.MENU_START_Y, actionMenu.getWidth, actionMenu.getHeight, null)
+    else
+      g2d.drawImage(actionMenuImage, BoardActionMenuView.RIGHT_SIDE_MENU_START_X, BoardActionMenuView.MENU_START_Y, actionMenu.getWidth, actionMenu.getHeight, null)
     g2d.dispose()
     bufferedImage
   }
