@@ -2,10 +2,12 @@ package views
 
 import java.awt.Graphics2D
 import java.awt.image.BufferedImage
+import java.io.File
+import javax.imageio.ImageIO
 
 import controller.KeyMappings
 import model.Model
-import views.gui.{BasicMenu, GuiAction, MenuItem}
+import views.gui._
 
 /**
   * Created by Leonard on 10/7/2018.
@@ -14,10 +16,15 @@ object BoardActionMenuView{
   val LEFT_SIDE_MENU_START_X = 50
   val RIGHT_SIDE_MENU_START_X = 1200
   val MENU_START_Y = 50
+  val DEFAULT_ENTRY_WIDTH = 200
+  val DEFAULT_ENTRY_HEIGHT = 100
 }
 class BoardActionMenuView(model: Model, boardView: BoardView) extends View(model){
   protected val bufferedImage = new BufferedImage(View.FRAME_DESIGN_WIDTH, View.FRAME_DESIGN_HEIGHT, BufferedImage.TYPE_INT_RGB)
-  protected val actionMenu = new BasicMenu
+  //protected val actionMenu = new BasicMenu
+  protected val actionMenu = new ImageMenu
+  protected val entryWidth = BoardActionMenuView.DEFAULT_ENTRY_WIDTH
+  protected val entryHeight = BoardActionMenuView.DEFAULT_ENTRY_HEIGHT
 
   setupActionMenu
 
@@ -34,11 +41,27 @@ class BoardActionMenuView(model: Model, boardView: BoardView) extends View(model
     bufferedImage
   }
 
+  /*
   def setupActionMenu: Unit = {
     actionMenu.setTitleString("ACTIONS")
+    actionMenu.setWrapContentWidth(true)
     val actionsOnTargetLocation = boardView.getActionLocationMap(boardView.getCursorLoc)
     actionsOnTargetLocation.foreach { act =>
       actionMenu.appendMenuItem(new MenuItem(act.toString, GuiAction{() =>
+        act.doAction
+        exitActionMenu
+      }))
+    }
+  }
+  */
+
+  def setupActionMenu: Unit = {
+    actionMenu.setTitleString("ACTIONS")
+    actionMenu.setWrapContentWidth(true)
+    val actionsOnTargetLocation = boardView.getActionLocationMap(boardView.getCursorLoc)
+    actionsOnTargetLocation.foreach { act =>
+      val image = ImageIO.read(new File(View.getActionSourcePath(act)))
+      actionMenu.appendMenuItem(new ImageItem(image, entryWidth, entryHeight, GuiAction{() =>
         act.doAction
         exitActionMenu
       }))

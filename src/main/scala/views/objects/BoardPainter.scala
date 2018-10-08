@@ -13,7 +13,7 @@ import views.View
   */
 object BoardPainter {
   val MAX_TILE_SIZE = 100
-  val DEFAULT_TILE_SIZE = 200
+  val DEFAULT_TILE_SIZE = 150
   val MIN_TILE_SIZE = 10
 }
 class BoardPainter(board: Board) {

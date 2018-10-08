@@ -6,8 +6,11 @@ import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
 
+import actions._
 import model.Model
 import model.Model.RESOURCE_ROOT_DIRECTORY
+import powers.Power
+import weapons.Weapon
 
 /**
   * Created by Leonard on 6/3/2017.
@@ -32,8 +35,27 @@ object View{
   val FRAME_DESIGN_WIDTH = 1600
   val FRAME_DESIGN_HEIGHT = 900
   val IMAGES_DIRECTORY = "images"
+  val WEAPONS_DIRECTORY = "weapons"
+  val POWERS_DIRECTORY = "powers"
 
-  def getSourcePath(imageFilename: String): String = RESOURCE_ROOT_DIRECTORY + "/" + IMAGES_DIRECTORY + "/" + imageFilename
+  def getSourcePath(imageFilename: String): String =
+    RESOURCE_ROOT_DIRECTORY + "/" + IMAGES_DIRECTORY + "/" + imageFilename
+
+  def getWeaponSourcePath(weapon: Weapon): String =
+    RESOURCE_ROOT_DIRECTORY + "/" + IMAGES_DIRECTORY + "/" + WEAPONS_DIRECTORY + "/" + weapon.toString + ".png"
+
+  def getPowerSourcePath(power: Power): String =
+    RESOURCE_ROOT_DIRECTORY + "/" + IMAGES_DIRECTORY + "/" + POWERS_DIRECTORY + "/" + power.toString + ".png"
+
+  def getActionSourcePath(action: Action): String = action match{
+    case Wait(f) => getSourcePath("TODO.png") //TODO the wait image.
+    case UseWeapon(w, a, t, b) => getWeaponSourcePath(w)
+    case ReloadWeapon(w, a) => getSourcePath("TODO.png") //TODO the reload image.
+    case UseActivatedPower(p, a, t, b) => getPowerSourcePath(p)
+    case UseSustainedPower(p, a) => getPowerSourcePath(p)
+    case DiscontinueSustainedPower(p, a) => getSourcePath("TODO.png") //TODO the discontinue image.
+    case _ => throw new UnsupportedOperationException("Unrecognized action: " + action.toString)
+  }
 }
 abstract class View(model: Model) {
   protected var keyPressManager: Option[KeyPressManager] = None

@@ -6,7 +6,7 @@ package weapons
 class OmniBlade extends MeleeWeapon {
   baseDamage = getDefaultWeaponDamage
 
-  override def toString: String = "Omni-Blade"
+  override def toString: String = "OmniBlade"
 
   override def getDefaultWeaponDamage: Int = 100 //TODO decrease Omni-Blade damage
 }
