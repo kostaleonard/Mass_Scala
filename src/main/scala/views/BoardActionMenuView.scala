@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
 
-import controller.KeyMappings
+import controller.{EndTurn, KeyMappings, SwitchViews}
 import model.Model
 import views.gui._
 
@@ -57,7 +57,7 @@ class BoardActionMenuView(model: Model, boardView: BoardView) extends View(model
       case None =>
         val image = ImageIO.read(new File(View.getSourcePath(BoardActionMenuView.END_TURN_FILENAME)))
         actionMenu.appendMenuItem(new ImageItem(image, entryWidth, entryHeight, GuiAction{() =>
-          //TODO end turn
+          sendControllerMessage(EndTurn)
           exitActionMenu
         }))
     }
@@ -66,7 +66,7 @@ class BoardActionMenuView(model: Model, boardView: BoardView) extends View(model
 
   def exitActionMenu: Unit = {
     boardView.cursorDeselect
-    setNextView(Some(boardView))
+    sendControllerMessage(SwitchViews(boardView))
   }
 
   override def keyPressed(keyCode: Int): Unit = keyCode match{

@@ -32,21 +32,7 @@ class Controller {
 
   def runMainMenu: Unit = viewManager.setCurrentView(new MainMenuView(model))
 
-  def playRandomBoard: Unit = {
-    //TODO remove playRandomBoard function
-    model.setCurrentBoard(Some(Board.getTestBoard))
-    val fighterArray = model.getPlayerParty.getFighters.toArray
-    fighterArray.indices.foreach { i =>
-      fighterArray(i).setLocation(Location(i, i))
-    }
-    model.getCurrentBoard.get.placePlayerPartyOnBoard(model.getPlayerParty)
-    while(model.isBoardActive){
-      doTurn
-    }
-  }
-
-  def doTurn: Unit = {
-    doPlayerTurn
+  def doEnemyPhase: Unit = {
     doEnemyTurn
     recoverMovesAndActions
     doTurnlyEffects
@@ -62,92 +48,18 @@ class Controller {
     model.doTurnlyActions
   }
 
-  def doPlayerTurn: Unit = {
-    /*
-    var endTurn = false
-    while(!endTurn) {
-      view.showBoard
-      view.showPlayerParty
-      view.showBoardCommands
-      val command = this.waitForStringInput
-      command match {
-        case Some("q") =>
-          System.out.println("Exiting")
-          exitGame
-        case Some("e") =>
-          System.out.println("Ending turn")
-          endTurn = true
-        case Some("m") => movePlayerFighter
-        case Some("a") => doPlayerAction
-        case _ => System.out.println("Unrecognized command")
-      }
-    }
-    */
-  }
-
-  def doPlayerAction: Unit = {
-  /*
-    val fighter = getFighterFromInput
-    if(fighter == None){
-      System.out.println("No fighter at that location.")
-      return
-    }
-    else if(!fighter.get.canAttack){
-      System.out.println("That fighter cannot attack.")
-      return
-    }
-    val actionsArray = model.getAvailableActions(fighter.get).toArray
-    view.showAvailableActions(fighter.get, actionsArray)
-    System.out.println("Which action (0..n)?")
-    val choice = getNumFromInput(this.waitForStringInput)
-    if(choice.isEmpty || choice.get < 0 || choice.get >= actionsArray.length) System.out.println("Unrecognized choice")
-    else model.doFighterAction(actionsArray(choice.get))
-    */
-  }
-
-  def movePlayerFighter: Unit = {
-    /*
-    def getEndLocation: Option[Location] = {
-      System.out.println("Enter to row: ")
-      val toRow = getNumFromInput(this.waitForStringInput)
-      System.out.println("Enter to col: ")
-      val toCol = getNumFromInput(this.waitForStringInput)
-      if(toRow.isEmpty || toCol.isEmpty) None
-      else Some(Location(toRow.get, toCol.get))
-    }
-    val fighter = getFighterFromInput
-    if(fighter == None){
-      System.out.println("No fighter at that location.")
-      return
-    }
-    else if(!fighter.get.canMove){
-      System.out.println("That fighter cannot move.")
-      return
-    }
-    val moves = model.getAvailableMoves(fighter.get)
-    view.showAvailableMoves(moves)
-    val endLocation = getEndLocation
-    if(endLocation == None){
-      System.out.println("Not a valid location.")
-      return
-    }
-    if(!moves(endLocation.get)) System.out.println("The Fighter cannot move to that location.")
-    else model.moveFighter(fighter.get.getLocation, endLocation.get)
-    */
-  }
-
   def doEnemyTurn: Unit = {
-    /*
     //TODO give this to an AI handler class
+    //TODO show this in the view.
     def doRandomMove(fighter: Fighter): Unit = {
       val moveChoices = scala.util.Random.shuffle(model.getAvailableMoves(fighter).toList)
       if(moveChoices.nonEmpty) model.moveFighter(fighter.getLocation, moveChoices.head)
     }
     def doRandomAction(fighter: Fighter): Unit = {
       val actionChoices = scala.util.Random.shuffle(model.getAvailableActions(fighter).toList)
-      view.showAvailableActions(fighter, actionChoices.toSet)
+      //view.showAvailableActions(fighter, actionChoices.toSet)
       if(actionChoices.nonEmpty){
-        view.showChosenAction(fighter, actionChoices.head)
+        //view.showChosenAction(fighter, actionChoices.head)
         model.doFighterAction(actionChoices.head)
       }
 
@@ -156,30 +68,37 @@ class Controller {
       while(f.canMove) doRandomMove(f)
       while(f.canAttack) doRandomAction(f)
     }
-    */
   }
 
-  def changeViews(nextView: View): Unit = {
-    viewManager.getCurrentView.setNextView(None)
-    viewManager.setCurrentView(nextView)
+  def clearControllerMessages: Unit = viewManager.getCurrentView.clearControllerMessages
+
+  def checkControllerMessages: Unit = {
+    viewManager.getCurrentView.getControllerMessages.foreach(m => m match{
+      case SwitchViews(nextView) => changeViews(nextView)
+      case EndTurn => doEnemyPhase
+      case _ => throw new UnsupportedOperationException("Unrecognized Controller Message: " + m)
+    })
+    clearControllerMessages
   }
+
+  def changeViews(nextView: View): Unit = viewManager.setCurrentView(nextView)
 
   //Key methods:
   def keyPressed(keyCode: Int): Unit = {
     viewManager.getCurrentView.keyPressed(keyCode)
-    viewManager.getCurrentView.getNextView.map(nextView => changeViews(nextView))
+    checkControllerMessages
   }
   def keyReleased(keyCode: Int): Unit = {
     viewManager.getCurrentView.keyReleased(keyCode)
-    viewManager.getCurrentView.getNextView.map(nextView => changeViews(nextView))
+    checkControllerMessages
   }
   def keyTyped(keyCode: Int): Unit = {
     viewManager.getCurrentView.keyTyped(keyCode)
-    viewManager.getCurrentView.getNextView.map(nextView => changeViews(nextView))
+    checkControllerMessages
   }
   def keyHeld(keyCode: Int): Unit = {
     viewManager.getCurrentView.keyHeld(keyCode)
-    viewManager.getCurrentView.getNextView.map(nextView => changeViews(nextView))
+    checkControllerMessages
   }
 
   def exitGame: Unit = {

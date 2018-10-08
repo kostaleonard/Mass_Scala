@@ -7,7 +7,7 @@ import java.io.File
 import javax.imageio.ImageIO
 
 import board.{Board, Location}
-import controller.{Controller, KeyMappings}
+import controller.{Controller, KeyMappings, SwitchViews}
 import model.Model
 import views.gui.{BasicMenu, BasicMenuItem, GuiAction, MenuItem}
 
@@ -45,7 +45,8 @@ class MainMenuView(model: Model) extends View(model) {
         fighterArray(i).setLocation(Location(i, i))
       }
       model.getCurrentBoard.get.placePlayerPartyOnBoard(model.getPlayerParty)
-      setNextView(Some(new BoardView(model)))}))
+      sendControllerMessage(SwitchViews(new BoardView(model)))
+    }))
     mainMenu.appendMenuItem(BasicMenuItem("MULTIPLAYER", GuiAction()))
     mainMenu.appendMenuItem(BasicMenuItem("INVASION", GuiAction(), false))
     mainMenu.appendMenuItem(BasicMenuItem("SETTINGS", GuiAction()))

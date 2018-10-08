@@ -8,7 +8,7 @@ import javax.imageio.ImageIO
 
 import actions.Action
 import board.Location
-import controller.KeyMappings
+import controller.{KeyMappings, SwitchViews}
 import fighter.Fighter
 import model.Model
 import views.objects.BoardPainter
@@ -106,7 +106,7 @@ class BoardView(model: Model) extends View(model) {
           cursorSelect
         }
         else if(actionLocationsMap.contains(cursorLoc)){
-          setNextView(Some(new BoardActionMenuView(model, this)))
+          sendControllerMessage(SwitchViews(new BoardActionMenuView(model, this)))
         }
         else{
           cursorDeselect
@@ -115,7 +115,7 @@ class BoardView(model: Model) extends View(model) {
       case None =>
         //No fighter on this tile; bring up menu to end turn.
         if(board.fighterAt(cursorLoc).isEmpty){
-          setNextView(Some(new BoardActionMenuView(model, this)))
+          sendControllerMessage(SwitchViews(new BoardActionMenuView(model, this)))
         }
         //Player fighter on this tile; select this tile.
         else if(model.getPlayerParty.getFighters.contains(board.fighterAt(cursorLoc).get)) {

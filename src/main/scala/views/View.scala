@@ -7,6 +7,7 @@ import java.io.File
 import javax.imageio.ImageIO
 
 import actions._
+import controller.ControllerMessage
 import model.Model
 import model.Model.RESOURCE_ROOT_DIRECTORY
 import powers.Power
@@ -59,13 +60,15 @@ object View{
 }
 abstract class View(model: Model) {
   protected var keyPressManager: Option[KeyPressManager] = None
-  protected var nextView: Option[View] = None
+  protected val controllerMessages: scala.collection.mutable.Set[ControllerMessage] = scala.collection.mutable.Set.empty
 
   def setKeyPressManager(opt: Option[KeyPressManager]): Unit = keyPressManager = opt
 
-  def getNextView = nextView
+  def sendControllerMessage(message: ControllerMessage): Unit = controllerMessages.add(message)
 
-  def setNextView(newViewOpt: Option[View]): Unit = nextView = newViewOpt
+  def clearControllerMessages: Unit = controllerMessages.clear
+
+  def getControllerMessages: scala.collection.mutable.Set[ControllerMessage] = controllerMessages
 
   protected def getTestImage1: BufferedImage = {
     ImageIO.read(new File(View.getSourcePath("testImage.jpg")))
