@@ -1,9 +1,6 @@
 compile
 run
 clean
-compile
-run
-clean
 CLEAN
 clean
 compile
@@ -495,6 +492,9 @@ clean
 compile
 clean
 compile
+clean
+compile
+run
 clean
 compile
 run

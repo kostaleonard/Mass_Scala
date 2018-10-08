@@ -63,11 +63,11 @@ class BoardView(model: Model) extends View(model) {
       boardPainter.setCursorLocOpt(Some(cursorLoc))
       while(getCursorDrawLoc.get.row > View.FRAME_DESIGN_WIDTH - boardPainter.getTileSize - BoardView.FRAME_ERROR_FACTOR_X)
         boardOffset_X -= boardPainter.getTileSize
-      while(getCursorDrawLoc.get.row < 0)
+      while(getCursorDrawLoc.get.row < 0 + BoardView.FRAME_ERROR_FACTOR_X)
         boardOffset_X += boardPainter.getTileSize
       while(getCursorDrawLoc.get.col > View.FRAME_DESIGN_HEIGHT - boardPainter.getTileSize - BoardView.FRAME_ERROR_FACTOR_Y)
         boardOffset_Y -= boardPainter.getTileSize
-      while(getCursorDrawLoc.get.col < 0)
+      while(getCursorDrawLoc.get.col < 0 + BoardView.FRAME_ERROR_FACTOR_Y)
         boardOffset_Y += boardPainter.getTileSize
     }
   }
